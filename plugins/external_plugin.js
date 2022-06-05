@@ -33,7 +33,7 @@ Module({
         url = url.toString()
     }
     try {
-        var response = await axios(url);
+        var response = await axios(url+"?timestamp="+new Date());
     } catch {
         return await message.sendMessage(Lang.INVALID_URL)
     }
