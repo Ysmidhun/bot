@@ -11,7 +11,6 @@ const {
   AUDIO_DATA,
   BOT_INFO
 } = require('../config');
-const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
 const {
   getString
