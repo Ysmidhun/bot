@@ -29,7 +29,6 @@ const {
     ytdlServer,
     skbuffer
 } = require('raganork-bot');
-const ytdl = require('ytdl-core');
 const LanguageDetect = require('languagedetect');
 const lngDetector = new LanguageDetect();
 Module({
@@ -106,13 +105,17 @@ Module({
     if (!match[1]) return await message.sendReply(Lang.NEED_WORD);
     var count = parseInt(match[1].split(",")[1]) || 5
     var query = match[1].split(",")[0] || match[1];
-  
+    try {
         const results = await gis(query);
-        await message.sendReply("*"+Lang.IMG.format(results.splice(0, count).length, query)+"*")
-       results.splice(0, count).map(async result => {
-       await message.client.sendMessage(message.jid,{image:{url: result.url}, caption: "*Image size:* "+result.height+"×"+result.width});
-        });
-    
+        await message.sendReply(Lang.IMG.format(results.splice(0, count).length, query))
+        for (var i = 0; i < (results.length < count ? results.length : count); i++) {
+            await message.sendMessage({
+                url: results[i].url
+            }, 'image');
+        }
+    } catch (e) {
+        await message.sendReply(e);
+    }
 }));
 Module({
     pattern: 'video ?(.*)',
@@ -120,13 +123,10 @@ Module({
     desc: Lang.VIDEO_DESC
 }, async (message, match) => {
     var s1 = !match[1].includes('youtu') ? message.reply_message.message : match[1]
-    if (!s1) return await message.sendReply(Lang.NEED_VIDEO);
-    if (!s1.includes('youtu')) return await message.sendReply(Lang.NEED_VIDEO);
+    if (!s1) return await message.sendReply("*"+Lang.NEED_VIDEO+"*");
+    if (!s1.includes('youtu')) return await message.sendReply("*"+Lang.NEED_VIDEO+"*");
     const getID = /(?:http(?:s|):\/\/|)(?:(?:www\.|)youtube(?:\-nocookie|)\.com\/(?:watch\?.*(?:|\&)v=|embed|shorts\/|v\/)|youtu\.be\/)([-_0-9A-Za-z]{11})/
     var qq = getID.exec(s1)
-    try {
-        var dl = await getVideo(qq[1])
-    } catch {
         var {
             url,
             thumbnail,
@@ -139,39 +139,8 @@ Module({
             mimetype: "video/mp4",
             caption: title,
             thumbnail: await skbuffer(thumbnail)
-        });
-    }
-    var cap = dl.details.title || ""
-    var th = dl.details.thumbnail.url || null
-    try {
-        var yt = ytdl(qq[1], {
-            filter: format => format.container === 'mp4' && ['720p', '480p', '360p', '240p', '144p'].map(() => true)
-        });
-    } catch {
-        var {
-            url,
-            thumbnail,
-            title
-        } = await ytdlServer("https://youtu.be/" + qq[1]);
-        return await message.client.sendMessage(message.jid, {
-            video: {
-                url: url
-            },
-            mimetype: "video/mp4",
-            caption: title,
-            thumbnail: await skbuffer(thumbnail)
-        });
-    }
-    yt.pipe(fs.createWriteStream('./temp/' + qq[1] + '.mp4'));
-    yt.on('end', async () => {
-        await message.client.sendMessage(message.jid, {
-            video: fs.readFileSync('./temp/' + qq[1] + '.mp4'),
-            mimetype: "video/mp4",
-            caption: cap,
-            thumbnail: await skbuffer(th)
         });
     });
-});
 Module({
     pattern: 'news ?(.*)',// Credit: LyFE's API
     fromMe: w,
