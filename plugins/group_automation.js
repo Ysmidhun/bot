@@ -68,8 +68,8 @@ Module({
 var res = await getAutoMute(message.jid,match[1]);
 var msg = '';
 for (i in res){
-msg += `*Group:* ${(await message.client.groupMetadata(res[i].chat)).subject}
-*Time:* ${tConvert(res[i].time)}` + "\n";
+msg += `*•Group:* ${(await message.client.groupMetadata(res[i].chat)).subject}
+*•Time:* ${tConvert(res[i].time)}` + "\n\n";
 }
 return await message.sendReply("*Automute Info*\n\n"+msg)
 });
@@ -80,8 +80,8 @@ Module({
 var res = await getAutounMute(message.jid,match[1]);
 var msg = '';
 for (i in res){
-msg += `*Group:* ${(await message.client.groupMetadata(res[i].chat)).subject}
-*Time:* ${tConvert(res[i].time)}` + "\n";
+msg += `*•Group:* ${(await message.client.groupMetadata(res[i].chat)).subject}
+*•Time:* ${tConvert(res[i].time)}` + "\n\n";
 }
 return await message.sendReply("*AutoUnmute Info*\n\n"+msg)
 });
