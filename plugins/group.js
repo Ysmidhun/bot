@@ -201,6 +201,14 @@ Module({
     await message.client.updateBlockStatus(user, "block");
 }));
 Module({
+    pattern: 'join ?(.*)',
+    fromMe: true
+}, (async (message, match) => {
+    var rgx = /^(https?:\/\/)?chat\.whatsapp\.com\/(?:invite\/)?([a-zA-Z0-9_-]{22})$/
+    if (!match[1] || !rgx.test(match[1])) return await message.sendReply("*Need group link*");
+    await message.client.groupAcceptInvite(match[1].split("/")[3])
+}));
+Module({
     pattern: 'unblock ?(.*)',
     fromMe: true
 }, (async (message, match) => {
