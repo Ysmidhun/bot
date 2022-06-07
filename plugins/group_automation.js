@@ -46,6 +46,45 @@ if (!admin) return await message.sendReply("*I'm not admin*");
 await setAutounMute(message.jid,match[1]);
 return await message.sendReply("*Group autounmute set! Restart to make functional*")
 });
+var {
+    getAutoMute,
+    getAutounMute
+} = require('./misc/scheduler');
+function tConvert (time) {
+  // Check correct time format and split into components
+  time = time.toString ().match (/^([01]\d|2[0-3])( )([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+  if (time.length > 1) { // If time format correct
+    time = time.slice (1);  // Remove full string match value
+    time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+    time[0] = +time[0] % 12 || 12; // Adjust hours
+  }
+  return time.join(''). replace(" ",":"); // return adjusted time or original string
+}
+Module({
+    pattern: "getautomute ?(.*)",
+    fromMe: true
+}, async (message, match) => {
+var res = await getAutoMute(message.jid,match[1]);
+var msg = '';
+for (i in res){
+msg += `*Group:* ${(await message.client.groupMetadata(res[i].chat)).subject}
+*Time:* ${tConvert(res[i].time)}` + "\n";
+}
+return await message.sendReply("*Automute Info*\n\n"+msg)
+});
+Module({
+    pattern: "getautounmute ?(.*)",
+    fromMe: true
+}, async (message, match) => {
+var res = await getAutounMute(message.jid,match[1]);
+var msg = '';
+for (i in res){
+msg += `*Group:* ${(await message.client.groupMetadata(res[i].chat)).subject}
+*Time:* ${tConvert(res[i].time)}` + "\n";
+}
+return await message.sendReply("*AutoUnmute Info*\n\n"+msg)
+});
 Module({
     pattern: "antifake",
     fromMe: true
