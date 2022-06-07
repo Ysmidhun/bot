@@ -173,6 +173,21 @@ Module({
     await message.sendMessage(Lang.REVOKED)
 }))
 Module({
+    pattern: 'common ?(.*)',
+    fromMe: true,
+    desc: "Get common participants in two groups"
+}, (async (message, match) => {
+var co = match[1].split(",")
+var g1 = (await message.client.groupMetadata(co[0])).participants
+var g2 = (await message.client.groupMetadata(message.jid)).participants 
+var common = g1.filter(x => g2.includes(x));
+var msg = "*Common participants:\n*"
+common.map(async s => {
+msg += s.split("@")[0]
+})    
+return await message.sendReply(msg)
+}));
+Module({
     pattern: 'tagall',
     fromMe: true,
     desc: Lang.TAGALL_DESC
