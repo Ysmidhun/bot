@@ -251,7 +251,7 @@ Module({
     desc: "Change/Get profile picture with replied message"
 }, (async (message, match) => {
     if (message.reply_message && message.reply_message.image) {
-    var image = await saveFile(message.reply_message)
+    var image = await saveMessage(message.reply_message)
     await message.client.updateProfilePicture(message.client.user.id.split(":")[0]+"@s.whatsapp.net",{url: image});
     return await message.sendReply("*Updated profile pic ✅*")
 }
