@@ -11,6 +11,10 @@ const {
     setAntifake,
     parseWelcome
 } = require('./misc/misc');
+const {
+    setAutoMute,
+    setAutounMute
+} = require('./misc/scheduler');
 const greeting = require('./sql/greeting');
 const {
     Module
@@ -19,10 +23,34 @@ const {
     ALLOWED
 } = require('../config')
 Module({
+    pattern: "automute ?(.*)",
+    fromMe: true
+}, async (message, match) => {
+if (!match[1]) return await message.sendReply("*Wrong format!\n.automute 22 00 (For 10 PM)\n.automute 06 00 (For 6 AM)*");
+var mregex = /[0-2][0-9] [0-5][0-9]/
+if (mregex.test(match[1]) === false) return await message.sendReply("*Wrong format!\n.automute 22 00 (For 10 PM)\n.automute 06 00 (For 6 AM)*");
+var admin = await isAdmin(message)
+if (!admin) return await message.sendReply("*I'm not admin*");
+await setAutoMute(message.jid,match[1]);
+});
+Module({
+    pattern: "autounmute ?(.*)",
+    fromMe: true
+}, async (message, match) => {
+if (!match[1]) return await message.sendReply("*Wrong format!\n.autounmute 22 00 (For 10 PM)\n.autounmute 06 00 (For 6 AM)*");
+var mregex = /[0-2][0-9] [0-5][0-9]/
+if (mregex.test(match[1]) === false) return await message.sendReply("*Wrong format!\n.autounmute 22 00 (For 10 PM)\n.autounmute 06 00 (For 6 AM)*");
+var admin = await isAdmin(message)
+if (!admin) return await message.sendReply("*I'm not admin*");
+await setAutounMute(message.jid,match[1]);
+});
+Module({
     pattern: "antifake",
     fromMe: true
 }, async (message, match) => {
-    var {
+var admin = await isAdmin(message)
+if (!admin) return await message.sendReply("*I'm not admin*");
+var {
         subject,
         owner
     } = await message.client.groupMetadata(message.jid)
@@ -31,28 +59,28 @@ Module({
     const templateButtons = [{
             index: 1,
             urlButton: {
-                displayText: 'ADMIN',
-                url: 'https://wa.me/' + owner.split("@")[0]
+                displayText: 'WIKI',
+                url: 'https://github.com/souravkl11/raganork-md/wiki/Docs'
             }
         },
         {
             index: 2,
             quickReplyButton: {
-                displayText: 'ENABLE ✅',
+                displayText: 'ENABLE',
                 id: 'fake_on' + myid
             }
         },
         {
             index: 3,
             quickReplyButton: {
-                displayText: 'DISABLE ❌',
+                displayText: 'DISABLE',
                 id: 'fake_off' + myid
             }
         },
         {
             index: 4,
             quickReplyButton: {
-                displayText: 'ALLOWED ℹ️',
+                displayText: 'ALLOWED PREFIXES',
                 id: 'fake_get' + myid
             }
         },
