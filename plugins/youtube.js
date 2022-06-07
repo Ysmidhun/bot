@@ -53,7 +53,7 @@ Module({
       return;
         }
   var myid = message.client.user.id.split("@")[0].split(":")[0]
-  let sr = await searchSong(match[1]);
+  let sr = await songSearch(match[1]);
   sr = sr.results.songs;
   if (sr.length < 1) return await message.sendReply(Lang.NO_RESULT);
   var SongData = []
