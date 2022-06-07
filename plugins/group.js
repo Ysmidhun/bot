@@ -180,7 +180,7 @@ Module({
 var co = match[1].split(",")
 var g1 = (await message.client.groupMetadata(co[0])).participants
 var g2 = (await message.client.groupMetadata(co[1])).participants 
-var common = g1.filter(x => g2.includes(x));
+var common = g1.filter(({ value: jid1 }) => !g2.some(({ value: jid2 }) => jid2 === jid1));
 var msg = "*Common participants*\n_count: "+common.length+"_ \n"
 common.map(async s => {
 msg += s.split("@")[0]
