@@ -39,7 +39,7 @@ Module({
     var savedFile = await saveMessage(message.reply_message);
     var exif = {
         author: STICKER_DATA.split(";")[1] || "",
-        packname: STICKER_DATA.split(";")[0] || "",
+        packname: message.senderName,
         categories: STICKER_DATA.split(";")[2] || "😂",
         android: "https://github.com/souravkl11/Raganork-md/",
         ios: "https://github.com/souravkl11/Raganork-md/"
