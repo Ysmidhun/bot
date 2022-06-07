@@ -32,6 +32,7 @@ if (mregex.test(match[1]) === false) return await message.sendReply("*Wrong form
 var admin = await isAdmin(message)
 if (!admin) return await message.sendReply("*I'm not admin*");
 await setAutoMute(message.jid,match[1]);
+return await message.sendReply("*Group automute set! Restart to make functional*")
 });
 Module({
     pattern: "autounmute ?(.*)",
@@ -43,6 +44,7 @@ if (mregex.test(match[1]) === false) return await message.sendReply("*Wrong form
 var admin = await isAdmin(message)
 if (!admin) return await message.sendReply("*I'm not admin*");
 await setAutounMute(message.jid,match[1]);
+return await message.sendReply("*Group autounmute set! Restart to make functional*")
 });
 Module({
     pattern: "antifake",
