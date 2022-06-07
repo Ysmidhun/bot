@@ -97,9 +97,7 @@ Module({
     fromMe: true,
     desc: Lang.LEAVE_DESC
 }, (async (message, match) => {
-    await message.client.sendMessage(message.jid, {
-        text: Lang.LEAVING
-    })
+    
     return await message.client.groupLeave(message.jid);
 }))
 Module({
@@ -183,7 +181,7 @@ var g2 = (await message.client.groupMetadata(co[1])).participants
 var common = g1.filter(({ value: jid1 }) => g2.some(({ value: jid2 }) => jid2 === jid1));
 var msg = "*Common participants*\n_count: "+common.length+"_ \n"
 common.map(async s => {
-msg += s.id.split("@")[0]
+msg += "```"+s.id.split("@")[0]+"```\n"
 })    
 return await message.sendReply(msg)
 }));
@@ -198,7 +196,7 @@ var g2 = (await message.client.groupMetadata(co[1])).participants
 var common = g1.filter(({ value: jid1 }) => !g2.some(({ value: jid2 }) => jid2 === jid1));
 var msg = "*Difference of participants*\n_count: "+common.length+"_ \n"
 common.map(async s => {
-msg += s.id.split("@")[0]
+msg += "```"+s.id.split("@")[0]+"``` \n"
 })    
 return await message.sendReply(msg)
 }));
