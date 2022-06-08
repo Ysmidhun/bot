@@ -73,7 +73,7 @@ for (e in mute){
   if(temp.time) {
     mute[e].unmute = temp.time;
   }
-  msg += `*${Math.floor(e+1)}. Group:* ${(await message.client.groupMetadata(mute[e].chat)).subject}
+  msg += `*${Math.floor(parseInt(e)+1)}. Group:* ${(await message.client.groupMetadata(mute[e].chat)).subject}
 *➥ Mute:* ${tConvert(mute[e].time)}
 *➥ Unmute:* ${tConvert(mute[e].unmute)}` + "\n\n";
 };
