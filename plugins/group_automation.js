@@ -62,28 +62,22 @@ function tConvert (time) {
   return time.join(''). replace(" ",":"); // return adjusted time or original string
 }
 Module({
-    pattern: "getautomute ?(.*)",
+    pattern: "getmute ?(.*)",
     fromMe: true
 }, async (message, match) => {
-var res = await getAutoMute(message.jid,match[1]);
+var mute = await getAutoMute(message.jid,match[1]);
+var unmute = await getAutounMute(message.jid,match[1]);
 var msg = '';
-for (i in res){
-msg += `*•Group:* ${(await message.client.groupMetadata(res[i].chat)).subject}
-*•Time:* ${tConvert(res[i].time)}` + "\n\n";
-}
-return await message.sendReply("*Automute Info*\n\n"+msg)
-});
-Module({
-    pattern: "getautounmute ?(.*)",
-    fromMe: true
-}, async (message, match) => {
-var res = await getAutounMute(message.jid,match[1]);
-var msg = '';
-for (i in res){
-msg += `*•Group:* ${(await message.client.groupMetadata(res[i].chat)).subject}
-*•Time:* ${tConvert(res[i].time)}` + "\n\n";
-}
-return await message.sendReply("*AutoUnmute Info*\n\n"+msg)
+for (e in mute){
+  let temp = unmute.find(element=> element.chat === mute[e].chat)
+  if(temp.time) {
+    mute[e].unmute = temp.time;
+  }
+  msg += `*Group:* ${(await message.client.groupMetadata(mute[e].chat)).subject}
+*Mute:* ${tConvert(mute[e].time)}
+*Unmute:* ${tConvert(mute[e].unmute)}` + "\n\n";
+};
+message.sendReply("*Scheduled Mutes/Unmutes*\n\n"+msg)
 });
 Module({
     pattern: "antifake",
