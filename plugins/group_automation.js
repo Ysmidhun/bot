@@ -73,9 +73,9 @@ for (e in mute){
   if(temp.time) {
     mute[e].unmute = temp.time;
   }
-  msg += `*Group:* ${(await message.client.groupMetadata(mute[e].chat)).subject}
-*Mute:* ${tConvert(mute[e].time)}
-*Unmute:* ${tConvert(mute[e].unmute)}` + "\n\n";
+  msg += `${e+1}. *Group:* ${(await message.client.groupMetadata(mute[e].chat)).subject}
+*> Mute:* ${tConvert(mute[e].time)}
+*> Unmute:* ${tConvert(mute[e].unmute)}` + "\n\n";
 };
 message.sendReply("*Scheduled Mutes/Unmutes*\n\n"+msg)
 });
