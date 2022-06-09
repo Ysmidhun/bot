@@ -109,9 +109,8 @@ Module({
         const results = await gis(query);
         await message.sendReply(Lang.IMG.format(results.splice(0, count).length, query))
         for (var i = 0; i < (results.length < count ? results.length : count); i++) {
-            await message.sendMessage({
-                url: results[i].url
-            }, 'image');
+         var buff = await skbuffer(results[i].url);
+         await message.sendMessage(buff, 'image');
         }
     } catch (e) {
         await message.sendReply(e);
