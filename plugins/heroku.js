@@ -187,19 +187,91 @@ Module({
     }
 );
 Module({
-    pattern: 'chatbot ?(.*)',
+    pattern: 'mode',
     fromMe: true,
-    desc: "Activates chatbot",
-    usage: '.chatbot on / off'
+    desc: "Switches mode"
 }, (async (message, match) => {
-    var toggle = match[1] == 'off' ? 'off' : 'on'
-    await heroku.patch(baseURI + '/config-vars', {
-        body: {
-            ['CHATBOT']: toggle
+    var buttons = [{
+        urlButton: {
+            displayText: 'WIKI',
+            url: 'https://github.com/souravkl11/raganork-md/wiki'
         }
-    });
-    if (toggle === 'on') await message.sendMessage("*Chatbot activated ✅*")
-    if (toggle === 'off') await message.sendMessage("*Chatbot deactivated ✔*")
+    },
+    {
+        quickReplyButton: {
+            displayText: 'PUBLIC',
+            id: 'public '+message.myjid
+        }
+    }, {
+        quickReplyButton: {
+            displayText: 'PRIVATE',
+            id: 'private '+message.myjid
+        }  
+    }]
+    await m.sendImageTemplate(await skbuffer("https://mma.prnewswire.com/media/701943/Mode_Logo.jpg"),"Working mode configuration","Current mode: "+Config.MODE,buttons);
+    }));
+Module({
+    pattern: 'chatbot',
+    fromMe: true,
+    desc: "Activates chatbot"
+}, (async (message, match) => {
+    var buttons = [{
+        urlButton: {
+            displayText: 'WIKI',
+            url: 'https://github.com/souravkl11/raganork-md/wiki'
+        }
+    },
+    {
+        quickReplyButton: {
+            displayText: 'ENABLE',
+            id: 'cbe '+message.myjid
+        }
+    }, {
+        quickReplyButton: {
+            displayText: 'DISABLE',
+            id: 'cbd '+message.myjid
+        }  
+    }]
+    await m.sendImageTemplate(await skbuffer("https://kriyatec.com/wp-content/uploads/2020/05/chatbot2.jpeg"),"🤖 Chatbot configuration","Current status: "+Config.CHATBOT,buttons);
+    }));
+Module({
+    on: 'button',
+    fromMe: true
+}, (async (message, match) => {
+    if (message.button && message.button.startsWith("public") && message.button.includes(message.myjid)) {
+        await heroku.patch(baseURI + '/config-vars', {
+            body: {
+                ['MODE']: 'public'
+            }
+        });
+        await message.sendReply("*Switched mode to public ✅*")
+        return await message.sendReply("*Restarting*")
+    }
+    if (message.button && message.button.startsWith("private") && message.button.includes(message.myjid)) {
+        await heroku.patch(baseURI + '/config-vars', {
+            body: {
+                ['MODE']: 'private'
+            }
+        });
+        await message.sendReply("*Switched mode to private ✅*")
+        return await message.sendReply("*Restarting*")
+    }
+    if (message.button && message.button.startsWith("cbe") && message.button.includes(message.myjid)) {
+        await heroku.patch(baseURI + '/config-vars', {
+            body: {
+                ['CHATBOT']: 'on'
+            }
+        });
+      return await message.sendReply("*Chatbot activated ✅*")
+    }
+    if (message.button && message.button.startsWith("cbd") && message.button.includes(message.myjid)) {
+        await heroku.patch(baseURI + '/config-vars', {
+            body: {
+                ['CHATBOT']: 'off'
+            }
+        });
+      return await message.sendReply("*Chatbot deactivated ❗*")
+    }
 }));
 Module({
     on: 'text',
