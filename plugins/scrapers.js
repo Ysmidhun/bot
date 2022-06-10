@@ -12,8 +12,7 @@ const {
 } = require('./misc/lang');
 const {
     sendYtQualityList,
-    processYtv,
-    dlYT
+    processYtv
 } = require('./misc/misc');
 const gis = require('async-g-i-s');
 const axios = require('axios');
@@ -36,7 +35,8 @@ Module({
     pattern: 'trt ?(.*)',
     fromMe: w,
     usage: Lang.TRANSLATE_USAGE,
-    desc: Lang.TRANSLATE_DESC
+    desc: Lang.TRANSLATE_DESC,
+    use: 'utility'
 }, async (message, match) => {
     if (!message.reply_message) return await message.sendReply(Lang.NEED_REPLY)
     var from = match[1].split(" ")[0] || ''
@@ -53,7 +53,8 @@ Module({
 Module({
     pattern: 'tts ?(.*)',
     fromMe: w,
-    desc: Lang.TTS_DESC
+    desc: Lang.TTS_DESC,
+    use: 'utility'
 }, async (message, match) => {
     var query = match[1] || message.reply_message.text
     if (!query) return await message.sendReply(Lang.TTS_NEED_REPLY);
@@ -88,7 +89,8 @@ Module({
 Module({
     pattern: 'ytv ?(.*)',
     fromMe: w,
-    desc: Lang.YTV_DESC
+    desc: Lang.YTV_DESC,
+    use: 'download'
 }, (async (message, match) => {
     await sendYtQualityList(message, match);
 }));
@@ -101,7 +103,8 @@ Module({
 Module({
     pattern: 'img ?(.*)',
     fromMe: w,
-    desc: Lang.IMG_DESC
+    desc: Lang.IMG_DESC,
+    use: 'search'
 }, (async (message, match) => {
     if (!match[1]) return await message.sendReply(Lang.NEED_WORD);
     var count = parseInt(match[1].split(",")[1]) || 5
@@ -114,13 +117,14 @@ Module({
          await message.sendMessage(buff, 'image');
         }
     } catch (e) {
-        console.log(e)
+        await message.sendReply(e);
     }
 }));
 Module({
     pattern: 'video ?(.*)',
     fromMe: w,
-    desc: Lang.VIDEO_DESC
+    desc: Lang.VIDEO_DESC,
+    use: 'download'
 }, async (message, match) => {
     var s1 = !match[1].includes('youtu') ? message.reply_message.message : match[1]
     if (!s1) return await message.sendReply("*"+Lang.NEED_VIDEO+"*");
@@ -130,20 +134,8 @@ Module({
         var {
             url,
             thumbnail,
-            title,
-            size,
-            mb
-        } = await dlYT(qq[1]);
-        if (mb > 100) {
-            var buttons = [{
-                urlButton: {
-                    displayText: 'Download',
-                    url: url
-                }
-            }]
-            return await message.sendImageTemplate(await skbuffer(thumbnail),'*Sorry, can\'t send files over 100 MB. You can download externally by just clicking here*',title + ` (${size})`,buttons);
-        }
-        await message.sendReply("*Uploading:* ```"+title+"``` ("+size+")")
+            title
+        } = await ytdlServer("https://youtu.be/" + qq[1]);
         return await message.client.sendMessage(message.jid, {
             video: {
                 url: url
@@ -156,7 +148,8 @@ Module({
 Module({
     pattern: 'news ?(.*)',// Credit: LyFE's API
     fromMe: w,
-    desc: "Malayalam news"
+    desc: "Malayalam news",
+    use: 'utility'
 }, async (message, match) => {
     var news = [];
     var res = (await axios("https://levanter.up.railway.app/news")).data
@@ -165,7 +158,6 @@ Module({
     }
     const headlines = [{title: "കൂടുതല്‍ അറിയുവാന്‍ വാര്‍ത്തകള്‍ ക്ലിക്ക് ചെയ്യൂ",rows: news}]
     const listMessage = {
-        text:"And 9 more...",
         footer: "📰 Latest news from www.manoramanews.com",
         title: res.result[0].title,
         buttonText: "മറ്റു വാര്‍ത്തകള്‍ 🔍",
@@ -176,7 +168,8 @@ Module({
 Module({
     pattern: 'mediafire ?(.*)',
     fromMe: w,
-    desc: "Mediafire Download Link"
+    desc: "Mediafire Download Link",
+    use: 'utility'
 }, async (message, match) => {
     if (!match[1]) return await message.sendReply("*Need url*");
     var {link,title,size} = (await axios("https://raganork-api.vercel.app/api/mediafire?url="+match[1])).data
@@ -201,7 +194,8 @@ Module({
     Module({
         pattern: 'detectlang$',
         fromMe: w,
-        desc: Lang.DLANG_DESC
+        desc: Lang.DLANG_DESC,
+        use: 'utility'
     }, async (message, match) => {
     
     if (!message.reply_message) return await message.sendMessage(Lang.NEED_REPLY)
@@ -230,7 +224,8 @@ Module({
 Module({
     pattern: 'movie (.*)',
     fromMe: w,
-    desc: "Movie search"
+    desc: "Movie search",
+    use: 'search'
 }, async (message, match) => {
     if (match[1] === '') return await message.sendReply('```Give me a movie name 👀.```');
 	var {data} = await axios(`http://www.omdbapi.com/?apikey=742b2d09&t=${match[1]}&plot=full`);
