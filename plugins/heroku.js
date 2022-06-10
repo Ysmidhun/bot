@@ -7,6 +7,9 @@ const {
     Module
 } = require('../main');
 const {
+    skbuffer
+} = require('raganork-bot');
+const {
     chatBot
 } = require('./misc/misc');
 const Config = require('../config');
