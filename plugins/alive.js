@@ -56,15 +56,28 @@ Module({
         id: 'support'+myid
     }
 }]
-var gc=commands.filter(a=>"group"===a.use),oc=commands.filter(a=>"group"===a.use),dc=commands.filter(a=>"group"===a.use),ec=commands.filter(a=>"group"===a.use),sc=commands.filter(a=>"group"===a.use),uc=commands.filter(a=>"group"===a.use),setarr=[...gc,...dc,...oc,...ec,...sc,...uc]
+var gc=commands.filter(a=>"group"===a.use),oc=commands.filter(a=>"owner"===a.use),dc=commands.filter(a=>"download"===a.use),ec=commands.filter(a=>"edit"===a.use),sc=commands.filter(a=>"search"===a.use),uc=commands.filter(a=>"utility"===a.use),setarr=[...gc,...dc,...oc,...ec,...sc,...uc]
 var gmsg="",ownmsg="",dlmsg="",utilmsg="",srmsg="",edmsg="";
-for(var i in setarr)"group"===setarr[i].use&&(gmsg+=`┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} 
-`),"download"===setarr[i].use&&(dlmsg+=`┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} 
-`),"owner"===setarr[i].use&&(ownmsg+=`┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} 
-`),"edit"===setarr[i].use&&(edmsg+=`┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} 
-`),"search"===setarr[i].use&&(srmsg+=`┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} 
-`),"utility"===setarr[i].use&&(utilmsg+=`┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} 
-`)
+for (var i in setarr) {
+if (setarr[i].use === 'group') {
+  gmsg += `┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+}
+if (setarr[i].use === 'owner') {
+  dlmsg += `┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+}
+if (setarr[i].use === 'owner') {
+  ownmsg += `┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+}
+if (setarr[i].use === 'edit') {
+  edmsg += `┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+}
+if (setarr[i].use === 'search') {
+  srmsg += `┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+}
+if (setarr[i].use === 'utility') {
+  utilmsg += `┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
+}
+}
   var menu = `╭═══〘 ${BOT_INFO.split(";")[0]} 〙═══⊷❍
 ┃❉╭──────────────
 ┃❉│
