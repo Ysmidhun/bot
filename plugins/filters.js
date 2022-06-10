@@ -11,7 +11,7 @@ Module({
     pattern: 'filter ?(.*)',
     fromMe: true,
     desc: "Adds filter in chat",
-    dontAddCommandList: true
+    use: 'utility'
 }, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);
     if (message.reply_message.text) {
@@ -49,6 +49,7 @@ Module({
 Module({
     pattern: 'stop ?(.*)',
     fromMe: true,
+    use: 'utility',
     desc: "Deletes a filter",
     dontAddCommandList: true
 }, (async (message, match) => {

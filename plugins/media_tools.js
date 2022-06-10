@@ -33,7 +33,8 @@ const {
       pattern: 'trim ?(.*)',
       fromMe: fromMe,
       desc: Lang.TRIM_DESC,
-      usage: Lang.TRIM_USE
+      usage: Lang.TRIM_USE,
+      use: 'edit'
   }, async (message, match) => {
       if (!message.reply_message || (!message.reply_message.video && !message.reply_message.audio)) return await message.sendReply(Lang.TRIM_NEED_REPLY);
       if (message.reply_message.audio) {
@@ -60,7 +61,8 @@ const {
   Module({
       pattern: "avmix",
       fromMe: fromMe,
-      desc: Lang.AVMIX_DESC
+      desc: Lang.AVMIX_DESC,
+      use: 'edit'
   }, async (message, match) => {
       if (!fs.existsSync("./temp/avmix")) {
           fs.mkdirSync("./temp/avmix")
@@ -88,7 +90,8 @@ const {
   Module({
       pattern: "avmix",
       fromMe: fromMe,
-      desc: Lang.AVMIX_DESC
+      desc: Lang.AVMIX_DESC,
+      use: 'edit'
   }, async (message, match) => {
       if (!fs.existsSync("./temp/avmix")) {
           fs.mkdirSync("./temp/avmix")
@@ -116,7 +119,8 @@ const {
   Module({
       pattern: "slowmo",
       fromMe: fromMe,
-      desc: "Video to smooth slow motion"
+      desc: "Video to smooth slow motion",
+      use: 'edit'
   }, async (message, match) => {
       if (!message.reply_message || !message.reply_message.video) return await message.sendReply("*Reply to a video*");
       var savedFile = await saveMessage(message.reply_message);
@@ -134,7 +138,8 @@ const {
  Module({
       pattern: "circle",
       fromMe: fromMe,
-      desc: "Sticker/photo to circle crop"
+      desc: "Sticker/photo to circle crop",
+      use: 'edit'
   }, async (message, match) => {
       await circle(message);
   });
@@ -160,7 +165,8 @@ const {
   Module({
       pattern: "interp ?(.*)",
       fromMe: fromMe,
-      desc: "Increases video's frame rate (FPS)"
+      desc: "Increases video's frame rate (FPS)",
+      use: 'edit'
   }, async (message, match) => {
       if (!message.reply_message || !message.reply_message.video) return await message.sendReply("*Reply to a video*");
       if (match[1] <= 10) return await message.sendMessage('*Low FPS Value ⚠️*\n*Minimun = 10*');
@@ -178,7 +184,9 @@ const {
 Module({
       pattern: "find ?(.*)",
       fromMe: fromMe,
-      desc: "Finds music name. Like Shazam"
+      desc: "Finds music name. Like Shazam",
+      usage: ".find reply to a music",
+      use: 'search'
   }, async (message, match) => {
       if (!message.reply_message || !message.reply_message.audio) return await message.sendReply("*Reply to a music*");
       if (message.reply_message.duration > 60) return await message.sendMessage('*Audio too large! Use .trim command and cut the audio to < 60*');

@@ -21,7 +21,8 @@ const {
 Module({
     pattern: 'kick ?(.*)',
     fromMe: true,
-    desc: Lang.KICK_DESC
+    desc: Lang.KICK_DESC,
+    use: 'group'
 }, (async (message, match) => {
     if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
     var {
@@ -54,7 +55,8 @@ Module({
 Module({
     pattern: 'add ?(.*)',
     fromMe: true,
-    desc: Lang.ADD_DESC
+    desc: Lang.ADD_DESC,
+    use: 'group'
 }, (async (message, match) => {
     if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
     var init = match[1]
@@ -79,6 +81,7 @@ Module({
 Module({
     pattern: 'promote',
     fromMe: true,
+    use: 'group',
     desc: Lang.PROMOTE_DESC
 }, (async (message, match) => {
     const user = message.mention[0] || message.reply_message.jid
@@ -103,6 +106,7 @@ Module({
 Module({
     pattern: 'demote',
     fromMe: true,
+    use: 'group',
     desc: Lang.DEMOTE_DESC
 }, (async (message, match) => {
     if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
@@ -118,6 +122,7 @@ Module({
 }))
 Module({
     pattern: 'mute',
+    use: 'group',
     fromMe: true,
     desc: Lang.MUTE_DESC
 }, (async (message, match) => {
@@ -129,6 +134,7 @@ Module({
 }))
 Module({
     pattern: 'unmute',
+    use: 'group',
     fromMe: true,
     desc: Lang.UNMUTE_DESC
 }, (async (message, match) => {
@@ -140,6 +146,7 @@ Module({
 }))
 Module({
     pattern: 'jid',
+    use: 'group',
     fromMe: true,
     desc: Lang.JID_DESC
 }, (async (message, match) => {
@@ -149,6 +156,7 @@ Module({
 Module({
     pattern: 'invite',
     fromMe: true,
+    use: 'group',
     desc: Lang.INVITE_DESC
 }, (async (message, match) => {
     if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
@@ -162,6 +170,7 @@ Module({
 Module({
     pattern: 'revoke',
     fromMe: true,
+    use: 'group',
     desc: Lang.REVOKE_DESC
 }, (async (message, match) => {
     if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
@@ -173,12 +182,14 @@ Module({
 Module({
     pattern: 'common ?(.*)',
     fromMe: true,
+    use: 'group',
     desc: "Get common participants in two groups"
 }, (async (message, match) => {
+if (!match[1]) return await message.sendReply("*Need jids*\n*.common jid1,jid2*")
 var co = match[1].split(",")
 var g1 = (await message.client.groupMetadata(co[0])).participants
 var g2 = (await message.client.groupMetadata(co[1])).participants 
-var common = g1.filter(({ value: jid1 }) => g2.some(({ value: jid2 }) => jid2 === jid1));
+var common = g1.filter(({ id: id1 }) => g2.some(({ id: id2 }) => id2 === id1));
 var msg = "*Common participants*\n_count: "+common.length+"_ \n"
 common.map(async s => {
 msg += "```"+s.id.split("@")[0]+"```\n"
@@ -188,12 +199,14 @@ return await message.sendReply(msg)
 Module({
     pattern: 'diff ?(.*)',
     fromMe: true,
+    use: 'utility',
     desc: "Get difference of participants in two groups"
 }, (async (message, match) => {
+if (!match[1]) return await message.sendReply("*Need jids*\n*.diff jid1,jid2*")
 var co = match[1].split(",")
 var g1 = (await message.client.groupMetadata(co[0])).participants
 var g2 = (await message.client.groupMetadata(co[1])).participants 
-var common = g1.filter(({ value: jid1 }) => !g2.some(({ value: jid2 }) => jid2 === jid1));
+var common = g1.filter(({ id: jid1 }) => !g2.some(({ id: jid2 }) => jid2 === jid1));
 var msg = "*Difference of participants*\n_count: "+common.length+"_ \n"
 common.map(async s => {
 msg += "```"+s.id.split("@")[0]+"``` \n"
@@ -203,7 +216,8 @@ return await message.sendReply(msg)
 Module({
     pattern: 'tagall',
     fromMe: true,
-    desc: Lang.TAGALL_DESC
+    desc: Lang.TAGALL_DESC,
+    use: 'group'
 }, (async (message, match) => {
     if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
     var group = await message.client.groupMetadata(message.jid)
@@ -221,7 +235,8 @@ Module({
 }))
 Module({
     pattern: 'block ?(.*)',
-    fromMe: true
+    fromMe: true,
+    use: 'owner'
 }, (async (message, match) => {
     var isGroup = message.jid.endsWith('@g.us')
     var user = message.jid
@@ -230,7 +245,8 @@ Module({
 }));
 Module({
     pattern: 'join ?(.*)',
-    fromMe: true
+    fromMe: true,
+    use: 'owner'
 }, (async (message, match) => {
     var rgx = /^(https?:\/\/)?chat\.whatsapp\.com\/(?:invite\/)?([a-zA-Z0-9_-]{22})$/
     if (!match[1] || !rgx.test(match[1])) return await message.sendReply("*Need group link*");
@@ -238,7 +254,8 @@ Module({
 }));
 Module({
     pattern: 'unblock ?(.*)',
-    fromMe: true
+    fromMe: true,
+    use: 'owner'
 }, (async (message, match) => {
     var isGroup = message.jid.endsWith('@g.us')
     if (!isGroup) return;
@@ -248,6 +265,7 @@ Module({
 Module({
     pattern: 'pp ?(.*)',
     fromMe: true,
+    use: 'owner',
     desc: "Change/Get profile picture with replied message"
 }, (async (message, match) => {
     if (message.reply_message && message.reply_message.image) {

@@ -18,6 +18,7 @@ let Lang = getString('external_plugin');
 Module({
     pattern: 'install ?(.*)',
     fromMe: true,
+    use: 'owner',
     desc: Lang.INSTALL_DESC
 }, (async (message, match) => {
     if (match[1] === '') return await message.sendMessage(Lang.NEED_URL)
@@ -53,6 +54,7 @@ Module({
 Module({
     pattern: 'plugin ?(.*)',
     fromMe: true,
+    use: 'owner',
     desc: Lang.PLUGIN_DESC
 }, (async (message, match) => {
     var plugins = await Db.PluginDB.findAll();
@@ -82,6 +84,7 @@ Module({
 Module({
     pattern: 'remove(?: |$)(.*)',
     fromMe: true,
+    use: 'owner',
     desc: Lang.REMOVE_DESC
 }, (async (message, match) => {
     if (match[1] === '') return await message.sendMessage(Lang.NEED_PLUGIN);

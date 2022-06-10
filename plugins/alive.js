@@ -25,6 +25,7 @@ let w = MODE == 'public' ? false : true
 Module({
   pattern: 'menu',
   fromMe: w,
+  use: 'utility',
   desc: 'Is bot alive?'
 }, (async (message, match) => {
   var myid = message.client.user.id.split(":")[0]
@@ -139,6 +140,7 @@ if (button) {
 Module({
   pattern: 'ping',
   fromMe: w,
+  use: 'utility',
   desc: 'Measures ping'
 }, (async (message, match) => {
   const start = new Date().getTime()

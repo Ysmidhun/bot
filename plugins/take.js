@@ -37,7 +37,8 @@ let ur = '/apps/' + HEROKU.APP_NAME;
 Module({
     pattern: 'take ?(.*)',
     fromMe: a,
-    desc: 'Changes sticker/audio pack & author name. Title, artist, thumbnail etc.'
+    desc: 'Changes sticker/audio pack & author name. Title, artist, thumbnail etc.',
+    use: 'edit'
 }, (async (m, match) => {
     if (!m.reply_message.data.quotedMessage) return await m.sendMessage('_Reply to an audio or a sticker_')
     var audiomsg = m.reply_message.audio;

@@ -31,7 +31,8 @@ Module({
     pattern: 'insta ?(.*)',
     fromMe: sourav,
     desc: 'Downloads post/reel/igtv from instagram',
-    usage: 'insta link or reply to a link'
+    usage: 'insta link or reply to a link',
+    use: 'download'
 }, (async (msg, query) => {
      var q = !msg.reply_message.message ? query[1] : msg.reply_message.message
     if (q.startsWith('l')) return;
@@ -75,7 +76,8 @@ Module({
     pattern: 'ig ?(.*)',
     fromMe: sourav,
     desc: 'Gets account info from instagram',
-    usage: 'ig username'
+    usage: 'ig username',
+    use: 'search'
 }, (async (msg, query) => {
     if (query[1] === '') return await msg.client.sendMessage(msg.jid, {
         text: need_acc
@@ -100,7 +102,8 @@ Module({
     pattern: 'story ?(.*)',
     fromMe: sourav,
     desc: 'Downloads full/single story from instagram',
-    usage: '.story username or link'
+    usage: '.story username or link',
+    use: 'download'
 }, (async (msg, query) => {
     if (query[1] === '') return await msg.sendReply(need_acc_s);
     var user = query[1];

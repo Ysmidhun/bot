@@ -24,7 +24,8 @@ const {
 } = require('../config')
 Module({
     pattern: "automute ?(.*)",
-    fromMe: true
+    fromMe: true,
+    use: 'group'
 }, async (message, match) => {
 if (!match[1]) return await message.sendReply("*Wrong format!\n.automute 22 00 (For 10 PM)\n.automute 06 00 (For 6 AM)*");
 var mregex = /[0-2][0-9] [0-5][0-9]/
@@ -36,7 +37,8 @@ return await message.sendReply("*Group automute set! Restart to make functional*
 });
 Module({
     pattern: "autounmute ?(.*)",
-    fromMe: true
+    fromMe: true,
+    use: 'group'
 }, async (message, match) => {
 if (!match[1]) return await message.sendReply("*Wrong format!\n.autounmute 22 00 (For 10 PM)\n.autounmute 06 00 (For 6 AM)*");
 var mregex = /[0-2][0-9] [0-5][0-9]/
@@ -63,7 +65,8 @@ function tConvert (time) {
 }
 Module({
     pattern: "getmute ?(.*)",
-    fromMe: true
+    fromMe: true,
+    use: 'group'
 }, async (message, match) => {
 var mute = await getAutoMute(message.jid,match[1]);
 var unmute = await getAutounMute(message.jid,match[1]);
@@ -81,7 +84,8 @@ message.sendReply("*Scheduled Mutes/Unmutes*\n\n"+msg)
 });
 Module({
     pattern: "antifake",
-    fromMe: true
+    fromMe: true,
+    use: 'group'
 }, async (message, match) => {
 var admin = await isAdmin(message)
 if (!admin) return await message.sendReply("*I'm not admin*");

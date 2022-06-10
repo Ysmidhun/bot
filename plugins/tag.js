@@ -8,7 +8,7 @@ const {getString} = require('./misc/lang');
 const {readFileSync} = require('fs');
 const {saveMessage} = require('./misc/saveMessage');
 const Lang = getString('group');
-Module({pattern: 'tag', fromMe: true, desc: Lang.TAGALL_DESC}, (async (message, match) => {
+Module({pattern: 'tag',use: 'group', fromMe: true, desc: Lang.TAGALL_DESC}, (async (message, match) => {
 if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
 if (!message.reply_message) return;
 var group = await message.client.groupMetadata(message.jid)

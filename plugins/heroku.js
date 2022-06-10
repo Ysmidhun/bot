@@ -44,7 +44,8 @@ let baseURI = '/apps/' + Config.HEROKU.APP_NAME;
 Module({
     pattern: 'restart$',
     fromMe: true,
-    dontAddCommandList: true
+    dontAddCommandList: true,
+    use: 'owner'
 }, (async (message, match) => {
 
     await message.sendReply(Lang.RESTART_MSG)
@@ -57,7 +58,8 @@ Module({
 Module({
     pattern: 'shutdown$',
     fromMe: true,
-    dontAddCommandList: true
+    dontAddCommandList: true,
+    use: 'owner'
 }, (async (message, match) => {
 
     await heroku.get(baseURI + '/formation').then(async (formation) => {
@@ -76,7 +78,8 @@ Module({
 Module({
     pattern: 'dyno$',
     fromMe: true,
-    dontAddCommandList: true
+    dontAddCommandList: true,
+    use: 'owner'
 }, (async (message, match) => {
 
     heroku.get('/account').then(async (account) => {
@@ -95,10 +98,10 @@ Module({
             percentage = Math.round((quota_used / total_quota) * 100);
             remaining = total_quota - quota_used;
             await message.sendReply(
-                Lang.DYNO_TOTAL + ": ```{}```\n\n".format(secondsToHms(total_quota)) +
-                Lang.DYNO_USED + ": ```{}```\n".format(secondsToHms(quota_used)) +
-                Lang.PERCENTAGE + ": ```{}```\n\n".format(percentage) +
-                Lang.DYNO_LEFT + ": ```{}```\n".format(secondsToHms(remaining)))
+                "TOTAL: ```{}```\n\n".format(secondsToHms(total_quota)) +
+                "USED: ```{}```\n".format(secondsToHms(quota_used)) +
+                "PERCENT: ```{}```\n\n".format(percentage) +
+                "REMAINING: ```{}```\n".format(secondsToHms(remaining)))
 
         }).catch(async (err) => {
             await message.sendMessage(error.message)
@@ -109,7 +112,8 @@ Module({
 Module({
     pattern: 'setvar ?(.*)',
     fromMe: true,
-    desc: Lang.SETVAR_DESC
+    desc: Lang.SETVAR_DESC,
+    use: 'owner'
 }, (async (message, match) => {
 
     if (match[1] === '' || !match[1].includes(":")) return await message.sendReply(Lang.KEY_VAL_MISSING)
@@ -131,7 +135,8 @@ Module({
 Module({
     pattern: 'delvar ?(.*)',
     fromMe: true,
-    desc: Lang.DELVAR_DESC
+    desc: Lang.DELVAR_DESC,
+    use: 'owner'
 }, (async (message, match) => {
 
     if (match[1] === '') return await message.sendReply(Lang.NOT_FOUND)
@@ -156,7 +161,8 @@ Module({
 Module({
     pattern: 'getvar ?(.*)',
     fromMe: true,
-    desc: Lang.GETVAR_DESC
+    desc: Lang.GETVAR_DESC,
+    use: 'owner'
 }, (async (message, match) => {
 
     if (match[1] === '') return await message.sendReply(Lang.NOT_FOUND)
@@ -172,7 +178,8 @@ Module({
 Module({
         pattern: "allvar",
         fromMe: true,
-        desc: Lang.ALLVAR_DESC
+        desc: Lang.ALLVAR_DESC,
+        use: 'owner'
     },
     async (message, match) => {
         let msg = Lang.ALL_VARS + "\n\n\n```"
@@ -192,7 +199,8 @@ Module({
 Module({
     pattern: 'mode',
     fromMe: true,
-    desc: "Switches mode"
+    desc: "Switches mode",
+    use: 'config'
 }, (async (message, match) => {
     var buttons = [{
         urlButton: {
@@ -216,7 +224,8 @@ Module({
 Module({
     pattern: 'chatbot',
     fromMe: true,
-    desc: "Activates chatbot"
+    desc: "Activates chatbot",
+    use: 'config'
 }, (async (message, match) => {
     var buttons = [{
         urlButton: {

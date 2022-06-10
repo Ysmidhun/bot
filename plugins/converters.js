@@ -28,6 +28,7 @@ const Lang = getString('converters');
 let w = MODE == 'public' ? false : true
 Module({
     pattern: 'sticker$',
+    use: 'edit',
     fromMe: w,
     desc: Lang.STICKER_DESC
 }, (async (message, match) => {
@@ -50,6 +51,7 @@ Module({
 Module({
     pattern: 'mp3$',
     fromMe: w,
+    use: 'edit',
     desc: Lang.MP3_DESC
 }, (async (message, match) => {
     if (message.reply_message === false) return await message.sendReply(Lang.MP3_NEED_REPLY)
@@ -69,6 +71,7 @@ Module({
 Module({
     pattern: 'bass ?(.*)',
     fromMe: w,
+    use: 'edit',
     desc: Lang.BASS_DESC
 }, (async (message, match) => {
     if (message.reply_message === false) return await message.sendReply(Lang.BASS_NEED_REPLY)
@@ -86,6 +89,7 @@ Module({
 Module({
     pattern: 'photo$',
     fromMe: w,
+    use: 'edit',
     desc: Lang.PHOTO_DESC
 }, (async (message, match) => {
     if (message.reply_message === false) return await message.sendMessage(Lang.PHOTO_NEED_REPLY)
@@ -101,6 +105,7 @@ Module({
 Module({
     pattern: 'attp ?(.*)',
     fromMe: w,
+    use: 'utility',
     desc: "Text to animated sticker"
 }, (async (message, match) => {
     if (match[1] == '') return await message.sendMessage("*Need text*")

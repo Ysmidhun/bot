@@ -10,7 +10,7 @@ const {Fancy} = require('raganork-bot')
 let {isAdmin} = require('./misc/misc');
 let Lang = getString('group');
 let {setWarn,resetWarn,mentionjid} = require('./misc/misc');
-Module({pattern: 'warn ?(.*)', fromMe: true, desc:Lang.WARN_DESC}, (async (m, mat) => { 
+Module({pattern: 'warn ?(.*)', fromMe: true,use: 'group', desc:Lang.WARN_DESC}, (async (m, mat) => { 
 if (m.message.includes(Lang.REMAINING)) return;
 var user = m.mention[0] || m.reply_message.jid
 if (!user) return await m.sendReply(Lang.NEED_USER)
@@ -44,7 +44,7 @@ if (warn !== 0) {
     await m.client.groupParticipantsUpdate(m.jid, [user], "remove")
  }
 }));
-Module({pattern: 'reset warn', fromMe: true, desc:'Resets the warn count of the user'}, (async (m, mat) => { 
+Module({pattern: 'reset warn',use: 'group',fromMe: true, desc:'Resets the warn count of the user'}, (async (m, mat) => { 
 var user = m.mention[0] || m.reply_message.jid
 if (!user) return await m.sendReply(Lang.NEED_USER)
 if (!m.jid.endsWith('@g.us')) return await m.sendReply(Lang.GROUP_COMMAND)
