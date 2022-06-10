@@ -9,9 +9,6 @@ const {
 const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
 const {
-    saveMessage
-} = require('./misc/saveMessage');
-const {
     skbuffer
 } = require('raganork-bot');
 const Config = require('../config');
@@ -36,7 +33,7 @@ Module({
 }, (async (message, match) => {
 
     if (message.reply_message === false) return await message.sendMessage(Lang.STICKER_NEED_REPLY)
-    var savedFile = await saveMessage(message.reply_message);
+    var savedFile = await message.reply_message.download();
     var exif = {
         author: STICKER_DATA.split(";")[1] || "",
         packname: message.senderName,
@@ -56,7 +53,7 @@ Module({
     desc: Lang.MP3_DESC
 }, (async (message, match) => {
     if (message.reply_message === false) return await message.sendReply(Lang.MP3_NEED_REPLY)
-    var savedFile = await saveMessage(message.reply_message);
+    var savedFile = await message.reply_message.download();
     ffmpeg(savedFile)
         .save('./temp/tomp3.mp3')
         .on('end', async () => {
@@ -75,7 +72,7 @@ Module({
     desc: Lang.BASS_DESC
 }, (async (message, match) => {
     if (message.reply_message === false) return await message.sendReply(Lang.BASS_NEED_REPLY)
-    var savedFile = await saveMessage(message.reply_message);
+    var savedFile = await message.reply_message.download();
     bass(savedFile, match[1], async function(audio) {
         await message.client.sendMessage(message.jid, {
             audio: audio,
@@ -92,7 +89,7 @@ Module({
     desc: Lang.PHOTO_DESC
 }, (async (message, match) => {
     if (message.reply_message === false) return await message.sendMessage(Lang.PHOTO_NEED_REPLY)
-        var savedFile = await saveMessage(message.reply_message);
+        var savedFile = await message.reply_message.download();
         ffmpeg(savedFile)
             .fromFormat('webp_pipe')
             .save('output.png')
