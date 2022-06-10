@@ -12,7 +12,8 @@ const {
 } = require('./misc/lang');
 const {
     sendYtQualityList,
-    processYtv
+    processYtv,
+    dlYT
 } = require('./misc/misc');
 const gis = require('async-g-i-s');
 const axios = require('axios');
@@ -113,7 +114,7 @@ Module({
          await message.sendMessage(buff, 'image');
         }
     } catch (e) {
-        await message.sendReply(e);
+        console.log(e)
     }
 }));
 Module({
@@ -129,8 +130,20 @@ Module({
         var {
             url,
             thumbnail,
-            title
-        } = await ytdlServer("https://youtu.be/" + qq[1]);
+            title,
+            size,
+            mb
+        } = await dlYT(qq[1]);
+        if (mb > 100) {
+            var buttons = [{
+                urlButton: {
+                    displayText: 'Download',
+                    url: url
+                }
+            }]
+            return await message.sendImageTemplate(await skbuffer(thumbnail),'*Sorry, can\'t send files over 100 MB. You can download externally by just clicking here*',title + ` (${size})`,buttons);
+        }
+        await message.sendReply("*Uploading:* ```"+title+"``` ("+size+")")
         return await message.client.sendMessage(message.jid, {
             video: {
                 url: url

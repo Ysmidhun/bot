@@ -17,7 +17,8 @@ const {
 } = require('./misc/lang');
 const {
   getJson,
-  searchYT
+  searchYT,
+  dlYT
 } = require('./misc/misc');
 const Lang = getString('scrapers');
 const fs = require('fs');
@@ -70,7 +71,7 @@ Module({
   }];
   const listMessage = {
       text: "and "+(sr.length-1)+" more results..",
-      footer: "user: " + message.data.pushName,
+      footer: "Can't find song? use .yts command",
       title: sr[0].title,
       buttonText: "Select song",
       sections
@@ -167,8 +168,9 @@ Module({
      }
   if (message.list && message.list.startsWith("song") && message.list.includes(message.client.user.id.split("@")[0].split(":")[0])) {
           var {
-              url, thumbnail,title
-          } = await ytdlServer("https://youtu.be/" + message.list.split(";")[1], "128kbps", "audio");
+              url, thumbnail,title,size
+          } = await dlYT(message.list.split(";")[1],"audio");
+          await message.client.sendMessage(message.jid,{image: {url: thumbnail},caption: "*Uploading:* ```"+title+"```"+` (${size})`})
           await fs.writeFileSync("./temp/song.mp3",await skbuffer(url))
           var song = await addInfo("./temp/song.mp3",title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
           return await message.client.sendMessage(message.jid, {
