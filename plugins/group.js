@@ -59,7 +59,7 @@ Module({
     use: 'group'
 }, (async (message, match) => {
     if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
-    var init = match[1]
+    var init = match[1] || message.reply_message.jid.split("@")[0]
     if (!init) return await message.sendReply(Lang.NEED_USER)
     var admin = await isAdmin(message);
     if (!admin) return await message.sendReply(Lang.NOT_ADMIN)
@@ -72,11 +72,8 @@ Module({
         msg += '@' + number + '\n'
         jids.push(number + '@s.whatsapp.net');
     });
-    await message.client.groupParticipantsUpdate(message.jid, jids, "add")
-    await message.client.sendMessage(message.jid, {
-        text: msg + ' ' + Lang.ADDED,
-        mentions: jids
-    })
+    var txt = mat
+    await message.client.groupAdd(init,message)
 }))
 Module({
     pattern: 'promote',
