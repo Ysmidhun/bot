@@ -350,7 +350,15 @@ Module({
         jids.push(data.jid)
     });
     if (jids.includes(message.jid)) {
+    var allowed = process.env.ALLOWED_LINKS || "gist,instagram,youtu";
+    var checker = [];
+    allowed.map(e=> checker.push(msg.includes(e)))
+    if (!checker.includes(true)){
+    if (!(await isAdmin(message.sender))) {
+    await message.sendReply("*Links aren't allowed!*");
     await message.client.groupParticipantsUpdate(message.jid, [message.sender], "remove")
+    }
+    }
     }
 }
 }));
