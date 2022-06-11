@@ -13,7 +13,9 @@ const {
 } = require('./misc/misc');
 const {
     setAutoMute,
-    setAutounMute
+    setAutounMute,
+    delAutounMute,
+    delAutoMute
 } = require('./misc/scheduler');
 const greeting = require('./sql/greeting');
 const {
@@ -21,48 +23,56 @@ const {
 } = require('../main')
 const {
     ALLOWED
-} = require('../config')
+} = require('../config');
+function tConvert(time) {
+  time = time.toString ().match (/^([01]\d|2[0-3])( )([0-5]\d)(:[0-5]\d)?$/) || [time];
+ if (time.length > 1) { 
+    time = time.slice (1); 
+    time[5] = +time[0] < 12 ? ' AM' : ' PM';
+    time[0] = +time[0] % 12 || 12; 
+  }
+  return time.join(''). replace(" ",":");
+}
 Module({
     pattern: "automute ?(.*)",
     fromMe: true,
+    warn: "This works according to IST (Indian standard time)",
     use: 'group'
 }, async (message, match) => {
-if (!match[1]) return await message.sendReply("*Wrong format!\n.automute 22 00 (For 10 PM)\n.automute 06 00 (For 6 AM)*");
+if (!match[1]) return await message.sendReply("*Wrong format!*\n*.automute 22 00 (For 10 PM)*\n*.automute 06 00 (For 6 AM)*\n*.automute off*");
+if (match[1]==="off") {
+await delAutoMute(message.jid);
+return await message.sendReply("*Automute has been disabled in this group ❗*");       
+}  
 var mregex = /[0-2][0-9] [0-5][0-9]/
 if (mregex.test(match[1]) === false) return await message.sendReply("*Wrong format!\n.automute 22 00 (For 10 PM)\n.automute 06 00 (For 6 AM)*");
 var admin = await isAdmin(message)
 if (!admin) return await message.sendReply("*I'm not admin*");
 await setAutoMute(message.jid,match[1]);
-return await message.sendReply("*Group automute set! Restart to make functional*")
+return await message.sendReply(`*Group will automatically mute at ${tConvert(match[1])}. Please restart after setting is complete*`)
 });
 Module({
     pattern: "autounmute ?(.*)",
     fromMe: true,
+    warn: "This works according to IST (Indian standard time)",
     use: 'group'
 }, async (message, match) => {
-if (!match[1]) return await message.sendReply("*Wrong format!\n.autounmute 22 00 (For 10 PM)\n.autounmute 06 00 (For 6 AM)*");
+if (!match[1]) return await message.sendReply("*Wrong format!*\n*.autounmute 22 00 (For 10 PM)*\n*.autounmute 06 00 (For 6 AM)*\n*.autounmute off*");
+if (match[1]==="off") {
+await delAutounMute(message.jid);
+return await message.sendReply("*Auto Unmute has been disabled in this group ❗*");       
+}
 var mregex = /[0-2][0-9] [0-5][0-9]/
 if (mregex.test(match[1]) === false) return await message.sendReply("*Wrong format!\n.autounmute 22 00 (For 10 PM)\n.autounmute 06 00 (For 6 AM)*");
 var admin = await isAdmin(message)
 if (!admin) return await message.sendReply("*I'm not admin*");
 await setAutounMute(message.jid,match[1]);
-return await message.sendReply("*Group autounmute set! Restart to make functional*")
+return await message.sendReply(`*Group will automatically open at ${tConvert(match[1])}. Please restart after setting is complete*`)
 });
 var {
     getAutoMute,
     getAutounMute
 } = require('./misc/scheduler');
-function tConvert (time) {
-  // Check correct time format and split into components
-  time = time.toString ().match (/^([01]\d|2[0-3])( )([0-5]\d)(:[0-5]\d)?$/) || [time];
-
-  if (time.length > 1) { // If time format correct
-    time = time.slice (1);  // Remove full string match value
-    time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
-    time[0] = +time[0] % 12 || 12; // Adjust hours
-  }
-  return time.join(''). replace(" ",":"); // return adjusted time or original string
-}
 Module({
     pattern: "getmute ?(.*)",
     fromMe: true,
