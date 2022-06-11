@@ -72,7 +72,6 @@ Module({
         msg += '@' + number + '\n'
         jids.push(number + '@s.whatsapp.net');
     });
-    var txt = mat
     await message.client.groupAdd(init,message)
 }))
 Module({
