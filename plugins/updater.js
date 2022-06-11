@@ -12,6 +12,7 @@ const exec = require('child_process').exec;
 const Heroku = require('heroku-client');
 const { PassThrough } = require('stream');
 const heroku = new Heroku({ token: Config.HEROKU.API_KEY })
+const { skbuffer } = require('raganork-bot');
 Module({
     pattern: 'update',
     fromMe: true,
