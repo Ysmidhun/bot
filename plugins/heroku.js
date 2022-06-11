@@ -7,6 +7,12 @@ const {
     Module
 } = require('../main');
 const {
+    isAdmin,
+    delAntilink,
+    getAntilink,
+    setAntilink
+} = require('./misc/misc');
+const {
     skbuffer
 } = require('raganork-bot');
 const {
@@ -247,6 +253,38 @@ Module({
     await message.sendImageTemplate(await skbuffer("https://kriyatec.com/wp-content/uploads/2020/05/chatbot2.jpeg"),"🤖 Chatbot configuration","Current status: "+Config.CHATBOT,buttons);
     }));
 Module({
+    pattern: 'antilink',
+    fromMe: true,
+    desc: "Activates antilink",
+    use: 'config'
+}, (async (message, match) => {
+    if (!(await isAdmin(message))) return await message.sendReply("*I'm not an admin!*")
+    var db = await getAntilink();
+    const jids = []
+    db.map(data => {
+        jids.push(data.jid)
+    });
+    var buttons = [{
+        urlButton: {
+            displayText: 'WIKI',
+            url: 'https://github.com/souravkl11/raganork-md/wiki'
+        }
+    },
+    {
+        quickReplyButton: {
+            displayText: 'ENABLE',
+            id: 'ante '+message.myjid
+        }
+    }, {
+        quickReplyButton: {
+            displayText: 'DISABLE',
+            id: 'antd '+message.myjid
+        }  
+    }]
+    var status = jids.includes(message.jid) ? 'on' : 'off';
+    await message.sendImageTemplate(await skbuffer("https://thumbs.dreamstime.com/b/settings-gears-icon-crystal-blue-banner-background-isolated-172063768.jpg"),"🔗 Antilink configuration of "+(await message.client.groupMetadata(message.jid)).subject,"Current status: "+status,buttons);
+    }));
+Module({
     on: 'button',
     fromMe: true
 }, (async (message, match) => {
@@ -284,6 +322,14 @@ Module({
         });
       return await message.sendReply("*Chatbot deactivated ❗*")
     }
+    if (message.button && message.button.startsWith("ante") && message.button.includes(message.myjid)) {
+        await setAntilink(message.jid) 
+        return await message.sendReply("*Antilink has been enabled in this group ✅*")
+    }
+    if (message.button && message.button.startsWith("antd") && message.button.includes(message.myjid)) {
+        await delAntilink(message.jid) 
+        return await message.sendReply("*Antilink has been disabled in this group ❗*")
+    }
 }));
 Module({
     on: 'text',
@@ -292,4 +338,19 @@ Module({
     if (Config.CHATBOT === 'on') {
         await chatBot(message, Config.BOT_NAME)
     }
+}));
+Module({
+    on: 'text',
+    fromMe: false
+}, (async (message, match) => {
+    if (/\bhttps?:\/\/\S+/gi.test(message.message)){
+    var db = await getAntilink();
+    const jids = []
+    db.map(data => {
+        jids.push(data.jid)
+    });
+    if (jids.includes(message.jid)) {
+    await message.client.groupParticipantsUpdate(message.jid, [message.sender], "remove")
+    }
+}
 }));
