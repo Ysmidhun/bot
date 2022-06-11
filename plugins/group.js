@@ -183,14 +183,35 @@ Module({
     pattern: 'common ?(.*)',
     fromMe: true,
     use: 'group',
-    desc: "Get common participants in two groups"
+    desc: "Get common participants in two groups, and kick using .common kick jid"
 }, (async (message, match) => {
-if (!match[1]) return await message.sendReply("*Need jids*\n*.common jid1,jid2*")
+if (!match[1]) return await message.sendReply("*Need jids*\n*.common jid1,jid2*\n _OR_ \n*.common kick group_jid*")
+if (match[1].includes("kick")) {
+var co = match[1].split(" ")[1]
+var g1 = (await message.client.groupMetadata(co))
+var g2 = (await message.client.groupMetadata(message.jid)) 
+var common = g1.participants.filter(({ id: id1 }) => g2.participants.some(({ id: id2 }) => id2 === id1));
+var jids = [];
+var msg = `Kicking common participants of:* ${g1.subject} & ${g2.subject} \n_count: ${common.length} \n`
+common.map(async s => {
+msg += "```@"+s.id.split("@")[0]+"```\n"
+jids.push(s.id.split("@")[0]+"@s.whatsapp.net")
+})    
+await message.client.sendMessage(message.jid, {
+        text: msg,
+        mentions: jids
+    })
+for (let user of jids){
+await new Promise((r) => setTimeout(r, 1000))
+await message.client.groupParticipantsUpdate(message.jid, [user], "remove")
+}
+return;
+}
 var co = match[1].split(",")
-var g1 = (await message.client.groupMetadata(co[0])).participants
-var g2 = (await message.client.groupMetadata(co[1])).participants 
-var common = g1.filter(({ id: id1 }) => g2.some(({ id: id2 }) => id2 === id1));
-var msg = "*Common participants*\n_count: "+common.length+"_ \n"
+var g1 = (await message.client.groupMetadata(co[0]))
+var g2 = (await message.client.groupMetadata(co[1])) 
+var common = g1.participants.filter(({ id: id1 }) => g2.participants.some(({ id: id2 }) => id2 === id1));
+var msg = `*Common participants of:* ${g1.subject} & ${g2.subject}\n_count: ${common.length}_ \n`
 common.map(async s => {
 msg += "```"+s.id.split("@")[0]+"```\n"
 })    
