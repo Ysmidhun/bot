@@ -31,10 +31,10 @@ Module({
         }
     }];
     } else {
-        var changelog = "Updates are available\n";
+        var changelog = "_Updates are available_\n\n";
         commits['all'].map(
             (commit) => {
-                changelog += `${commit.message} ${'```'}[${commit.date.substring(0, 10)}]${'```'} *\n`
+                changelog += `⧉ *${commit.message}* ${'```'}[${commit.date.substring(0, 10)}]${'```'} \n`
             }
         );
         mss = changelog;
