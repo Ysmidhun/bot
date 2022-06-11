@@ -62,7 +62,7 @@ for (var i in setarr) {
 if (setarr[i].use === 'group') {
   gmsg += `┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
 }
-if (setarr[i].use === 'owner') {
+if (setarr[i].use === 'download') {
   dlmsg += `┃❉│ ${Math.floor(parseInt(i)+1)}. ${setarr[i].pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/)[2]} \n`
 }
 if (setarr[i].use === 'owner') {
