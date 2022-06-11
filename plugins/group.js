@@ -212,10 +212,15 @@ var g1 = (await message.client.groupMetadata(co[0]))
 var g2 = (await message.client.groupMetadata(co[1])) 
 var common = g1.participants.filter(({ id: id1 }) => g2.participants.some(({ id: id2 }) => id2 === id1));
 var msg = `*Common participants of:* ${g1.subject} & ${g2.subject}\n_count: ${common.length}_ \n`
+var jids = [];
 common.map(async s => {
-msg += "```"+s.id.split("@")[0]+"```\n"
+msg += "```@"+s.id.split("@")[0]+"```\n"
+jids.push(s.id.split("@")[0]+"@s.whatsapp.net")
 })    
-return await message.sendReply(msg)
+await message.client.sendMessage(message.jid, {
+        text: msg,
+        mentions: jids
+    })
 }));
 Module({
     pattern: 'diff ?(.*)',
