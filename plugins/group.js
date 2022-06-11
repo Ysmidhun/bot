@@ -288,15 +288,31 @@ Module({
     pattern: 'pp ?(.*)',
     fromMe: true,
     use: 'owner',
-    desc: "Change/Get profile picture with replied message"
+    desc: "Change/Get profile picture (full screen supported) with replied message"
 }, (async (message, match) => {
     if (message.reply_message && message.reply_message.image) {
-    var image = await saveMessage(message.reply_message)
+    var image = await message.reply_message.download()
     await message.client.updateProfilePicture(message.client.user.id.split(":")[0]+"@s.whatsapp.net",{url: image});
     return await message.sendReply("*Updated profile pic ✅*")
 }
 if (message.reply_message && !message.reply_message.image) {
    try { var image = await message.client.profilePictureUrl(message.reply_message.jid,'image') } catch {return await message.sendReply("Profile pic not found!")}
+   return await message.sendReply({url:image},"image")
+}
+}));
+Module({
+    pattern: 'gpp ?(.*)',
+    fromMe: true,
+    use: 'owner',
+    desc: "Change/Get group icon (full screen supported) with replied message"
+}, (async (message, match) => {
+    if (message.reply_message && message.reply_message.image) {
+    var image = await message.reply_message.download()
+    await message.client.updateProfilePicture(message.jid,{url: image});
+    return await message.sendReply("*Updated profile pic ✅*")
+}
+if (!message.reply_message.image) {
+   try { var image = await message.client.profilePictureUrl(message.jid,'image') } catch {return await message.sendReply("Profile pic not found!")}
    return await message.sendReply({url:image},"image")
 }
 }));
