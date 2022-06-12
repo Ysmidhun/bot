@@ -307,17 +307,20 @@ var text = match[1]
 var api_url = "https://raganork-api.vercel.app/api/logo/kgf?style=1&text="+text
 var image = await skbuffer(api_url);
 await message.sendReply(image,'image');
-})Module({pattern: "logo 49 ?(.*)",fromMe: x,use: 'logo'}, async(message, match) => {
+})
+Module({pattern: "logo 49 ?(.*)",fromMe: x,use: 'logo'}, async(message, match) => {
 var text = match[1]
 var api_url = "https://raganork-api.vercel.app/api/logo/kgf?style=2&text="+text
 var image = await skbuffer(api_url);
 await message.sendReply(image,'image');
-})Module({pattern: "logo 46 ?(.*)",fromMe: x,use: 'logo'}, async(message, match) => {
+})
+Module({pattern: "logo 46 ?(.*)",fromMe: x,use: 'logo'}, async(message, match) => {
 var text = match[1]
 var api_url = "https://raganork-api.vercel.app/api/logo/kgf?style=3&text="+text
 var image = await skbuffer(api_url);
 await message.sendReply(image,'image');
-})Module({pattern: "logo 50 ?(.*)",fromMe: x,use: 'logo'}, async(message, match) => {
+})
+Module({pattern: "logo 50 ?(.*)",fromMe: x,use: 'logo'}, async(message, match) => {
 var text = match[1]
 var api_url = "https://raganork-api.vercel.app/api/logo/kgf?style=4&text="+text
 var image = await skbuffer(api_url);
