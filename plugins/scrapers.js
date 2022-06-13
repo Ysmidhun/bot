@@ -172,7 +172,7 @@ Module({
     use: 'utility'
 }, async (message, match) => {
     if (!match[1]) return await message.sendReply("*Need url*");
-    var {link,title,size} = (await axios("https://raganork-api.vercel.app/api/mediafire?url="+match[1])).data
+    var {link,title,size} = (await axios("https://raganork-network.vercel.app/api/mediafire?url="+match[1])).data
     var mediaFire = [{
         urlButton: {
             displayText: 'Download',
