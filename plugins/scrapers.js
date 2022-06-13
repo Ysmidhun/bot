@@ -11,6 +11,9 @@ const {
     getString
 } = require('./misc/lang');
 const {
+    downloadYT
+  } = require('./misc/yt');
+const {
     sendYtQualityList,
     processYtv
 } = require('./misc/misc');
@@ -30,6 +33,7 @@ const {
     skbuffer
 } = require('raganork-bot');
 const LanguageDetect = require('languagedetect');
+const { downloadYT } = require('./misc/yt');
 const lngDetector = new LanguageDetect();
 Module({
     pattern: 'trt ?(.*)',
@@ -135,7 +139,7 @@ Module({
             url,
             thumbnail,
             title
-        } = await ytdlServer("https://youtu.be/" + qq[1]);
+        } = await downloadYT(qq[1]);
         return await message.client.sendMessage(message.jid, {
             video: {
                 url: url

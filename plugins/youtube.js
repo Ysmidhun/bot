@@ -20,6 +20,9 @@ const {
   searchYT,
   searchSong
 } = require('./misc/misc');
+const {
+    downloadYT
+  } = require('./misc/yt');
 const Lang = getString('scrapers');
 const fs = require('fs');
 const {
@@ -42,7 +45,7 @@ Module({
       var query = getID.exec(link[0]);
           var {
               url
-          } = await ytdlServer("https://youtu.be/" + query[1], "128kbps", "audio");
+          } = await downloadYT(query[1],"audio");
           return await message.client.sendMessage(message.jid, {
               audio: {
                   url: url
@@ -144,7 +147,7 @@ Module({
               url,
               thumbnail,
               title
-          } = await ytdlServer("https://youtu.be/" + message.button.split(";")[2]);
+          } = await downloadYT(message.button.split(";")[2]);
           return await message.client.sendMessage(message.jid, {
               video: {
                   url: url
@@ -157,7 +160,7 @@ Module({
   if (message.button && message.button.startsWith("ytsa") && message.button.includes(message.client.user.id.split("@")[0].split(":")[0])) {
           var {
               url
-          } = await ytdlServer("https://youtu.be/" + message.button.split(";")[2], "128kbps", "audio");
+          } = await downloadYT(message.button.split(";")[2],"audio");
           return await message.client.sendMessage(message.jid, {
               audio: {
                   url: url
@@ -170,7 +173,7 @@ Module({
   if (message.list && message.list.startsWith("song") && message.list.includes(message.client.user.id.split("@")[0].split(":")[0])) {
           var {
               url, thumbnail,title
-          } = await ytdlServer("https://youtu.be/" + message.list.split(";")[1], "128kbps", "audio");
+          } = await downloadYT(message.list.split(";")[1], "audio");
           await fs.writeFileSync("./temp/song.mp3",await skbuffer(url))
           var song = await addInfo("./temp/song.mp3",title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
           return await message.client.sendMessage(message.jid, {
