@@ -1,4 +1,5 @@
 const {Module} = require('../main')
+const {aadhar,blur} = require('./misc/main')
 const {MODE} = require('../config')
 const {skbuffer} = require('raganork-bot');
 var x = MODE == 'public'?false:true
@@ -337,4 +338,14 @@ var text = match[1]
 var api_url = "https://raganork-network.vercel.app/api/logo/kgf?style=6&text="+text
 var image = await skbuffer(api_url);
 await message.sendReply(image,'image');
+})
+Module({pattern: "aadhar ?(.*)",fromMe: x,use: 'logo'}, async(message, match) => {
+var text = match[1]
+if (!text || !message.reply_message || !message.reply_message.image || !text.includes(",")) return await message.sendReply("*Wrong format*\n*Reply to image .aadhar name,date,gender*")
+await message.sendReply(await aadhar(text,await message.reply_message.download()),'image');
+})
+Module({pattern: "blur ?(.*)",fromMe: x,usage: '.blur 10 (up to 100)',use: 'logo'}, async(message, match) => {
+var percent = match[1] || 5
+if (!message.reply_message || !message.reply_message.image) return await message.sendReply("*Wrong format*\n*Reply to image*\n*.blur*\n*.blur 25*")
+await message.sendReply(await blur(await message.reply_message.download(),percent),'image');
 })
