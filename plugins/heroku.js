@@ -29,22 +29,19 @@ const heroku = new Heroku({
     token: Config.HEROKU.API_KEY
 });
 
-function secondsToHms(d) {
-    d = Number(d)
-    var h = Math.floor(d / 3600)
-    var m = Math.floor((d % 3600) / 60)
-    var s = Math.floor((d % 3600) % 60)
-
-    var hDisplay =
-        h > 0 ? h + (h == 1 ? " " + Lang.HOUR + ", " : " " + Lang.HOUR + ", ") : ""
-    var mDisplay =
-        m > 0 ?
-        m + (m == 1 ? " " + Lang.MINUTE + ", " : " " + Lang.MINUTE + ", ") :
-        ""
-    var sDisplay =
-        s > 0 ? s + (s == 1 ? " " + Lang.SECOND : " " + Lang.SECOND) : ""
-    return hDisplay + mDisplay + sDisplay
-}
+function secondsToDhms(seconds) {
+    seconds = Number(seconds);
+    var d = Math.floor(seconds / (3600*24));
+    var h = Math.floor(seconds % (3600*24) / 3600);
+    var m = Math.floor(seconds % 3600 / 60);
+    var s = Math.floor(seconds % 60);
+    
+    var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+    var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+    var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+    var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+    return dDisplay + hDisplay + mDisplay + sDisplay;
+    }
 let baseURI = '/apps/' + Config.HEROKU.APP_NAME;
 
 Module({
@@ -104,10 +101,10 @@ Module({
             percentage = Math.round((quota_used / total_quota) * 100);
             remaining = total_quota - quota_used;
             await message.sendReply(
-                "TOTAL: ```{}```\n\n".format(secondsToHms(total_quota)) +
-                "USED: ```{}```\n".format(secondsToHms(quota_used)) +
-                "PERCENT: ```{}```\n\n".format(percentage) +
-                "REMAINING: ```{}```\n".format(secondsToHms(remaining)))
+                "Total: ```{}```\n\n".format(secondsToDhms(total_quota)) +
+                "Used: ```{}```\n".format(secondsToDhms(quota_used)) +
+                "Percent: ```{}```\n\n".format(percentage) +
+                "Remaining: ```{}```\n".format(secondsToDhms(remaining)))
 
         }).catch(async (err) => {
             await message.sendMessage(error.message)
