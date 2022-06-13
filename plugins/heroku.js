@@ -351,7 +351,7 @@ Module({
     var checker = [];
     allowed.split(",").map(e=> checker.push(message.message.includes(e)))
     if (!checker.includes(true)){
-    if (!(await isAdmin(message.sender))) {
+    if (!(await isAdmin(message,message.sender))) {
     await message.sendReply("*Links aren't allowed!*");
     await message.client.groupParticipantsUpdate(message.jid, [message.sender], "remove")
     }
