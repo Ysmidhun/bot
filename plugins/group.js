@@ -249,7 +249,30 @@ Module({
         mn += '@' + user.id.split('@')[0] + '\n';
         jids.push(user.id.replace('c.us', 's.whatsapp.net'));
     });
-    var msg = message.reply_message.message || mn
+    var msg = mn
+    await message.client.sendMessage(message.jid, {
+        text: msg,
+        mentions: jids
+    })
+}))
+Module({
+    pattern: 'tagadmin',
+    fromMe: true,
+    desc: Lang.TAGALL_DESC,
+    dontAddCommandList: true,
+    use: 'group'
+}, (async (message, match) => {
+    if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
+    if (message.reply_message) return;
+    var group = await message.client.groupMetadata(message.jid)
+    var jids = [];
+    var mn = '';
+    var admins = group.participants.filter(v => v.admin !== null).map(x => x.id);
+    admins.map(async (user) => {
+        mn += '@' + user.split('@')[0] + '\n';
+        jids.push(user.replace('c.us', 's.whatsapp.net'));
+    });
+    var msg = mn
     await message.client.sendMessage(message.jid, {
         text: msg,
         mentions: jids
