@@ -352,7 +352,7 @@ Module({
     if (jids.includes(message.jid)) {
     var allowed = process.env.ALLOWED_LINKS || "gist,instagram,youtu";
     var checker = [];
-    allowed.map(e=> checker.push(msg.includes(e)))
+    allowed.split(",").map(e=> checker.push(msg.includes(e)))
     if (!checker.includes(true)){
     if (!(await isAdmin(message.sender))) {
     await message.sendReply("*Links aren't allowed!*");
