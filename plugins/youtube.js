@@ -173,7 +173,7 @@ Module({
   if (message.list && message.list.startsWith("song") && message.list.includes(message.client.user.id.split("@")[0].split(":")[0])) {
           var {
               url, thumbnail,title
-          } = await downloadYT(message.list.split(";")[1]);
+          } = await getJson(`https://raganork-network.vercel.app/api/youtube?apikey=souravkl11&url=https://youtu.be/${message.list.split(";")[1]}&quality=128kbps&type=audio`);
           await fs.writeFileSync("./temp/song.mp3",await skbuffer(url))
           var song = await addInfo("./temp/song.mp3",title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
           return await message.client.sendMessage(message.jid, {
