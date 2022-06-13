@@ -1,5 +1,5 @@
 const {Module} = require('../main')
-const {aadhar,blur} = require('./misc/main')
+const {aadhar,blur} = require('./misc/misc')
 const {MODE} = require('../config')
 const {skbuffer} = require('raganork-bot');
 var x = MODE == 'public'?false:true
