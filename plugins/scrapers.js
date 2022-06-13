@@ -11,9 +11,6 @@ const {
     getString
 } = require('./misc/lang');
 const {
-    downloadYT
-  } = require('./misc/yt');
-const {
     sendYtQualityList,
     processYtv
 } = require('./misc/misc');
