@@ -174,14 +174,19 @@ Module({
   if (message.list && message.list.startsWith("song") && message.list.includes(message.client.user.id.split("@")[0].split(":")[0])) {
           var {
               thumbnail,title,size
-          } = await downloadYT(message.list.split(";")[1]);
+          } = await downloadYT(message.list.split(";")[1],'audio');
           await message.client.sendMessage(message.jid,{image: {url: thumbnail},caption:`*Downloading:* ${'```'+title+'```'} \n *Size:* ${'```'+size+'```'}`})
-          var song = await addInfo(await getSong(message.list.split(";")[1]),title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
+          var song = await getSong(message.list.split(";")[1]);
+          ffmpeg(song)
+         .save('./song.mp3')
+         .on('end', async () => {
+          var song = await addInfo('./song.mp3',title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
           return await message.client.sendMessage(message.jid, {
               audio:song,
               mimetype: 'audio/mp4'
           }, {
               quoted: message.data
           });
+        });
       }
 }));
