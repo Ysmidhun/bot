@@ -179,7 +179,7 @@ Module({
           var song = await addInfo(await getSong(message.list.split(";")[1]),title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
           return await message.client.sendMessage(message.jid, {
               audio:song,
-              mimetype: 'audio/mpeg'
+              mimetype: 'audio/mp4'
           }, {
               quoted: message.data
           });
