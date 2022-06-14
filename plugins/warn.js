@@ -26,18 +26,12 @@ if (m.reply_message.image) ms = 'Image Message'
 if (m.reply_message.data.quotedMessage.listMessage) ms = 'List message'
 var reason = mat[1] ? mat[1].replace(mentionjid(user),"") : ms
 var msg = `╭──〔 *⚠️ Warning ⚠️* 〕
-├ *Participant:* ${mentionjid(user)}
+├ *User:* ${mentionjid(user)}
 ├ *Reason:* ${reason}
-├ *Remaining:* ${warn}
-├ *Total limit:* ${WARN}
-├ *Group:* ${m.jid}
-├ *Warner:* ${mentionjid(m.sender)}
-├ *Time:* ${new Date().toLocaleTimeString()}
+├ *Remaining:* ${warn} of ${WARN}
 ╰──────────────`
-var txts = [Fancy(msg,29),Fancy(msg,30)]
-var rtxt = txts[Math.floor(Math.random()*txts.length)];
 if (warn !== 0) {
-    return await m.client.sendMessage(m.jid, { text: rtxt ,mentions:[user]},{ quoted: m.data })
+    return await m.client.sendMessage(m.jid, { text: Fancy(msg,29) ,mentions:[user]},{ quoted: m.data })
 } else {
         await m.sendMessage(Lang.WARN_OVER.format(WARN,mentionjid(user).replace("@","")))
     await m.client.sendMessage(m.jid,{text: mentionjid(user)+Lang.KICKED, mentions: [user] })
