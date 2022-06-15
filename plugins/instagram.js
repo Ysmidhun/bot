@@ -109,6 +109,7 @@ Module({
     use: 'download'
 }, (async (msg, query) => {
     var user = query[1] !== '' ? query[1] : msg.reply_message.text;
+    if (user === 'g') return;
     if (!user) return await msg.sendReply("*Need url*");
     if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
     try { var res = await pin(user) } catch {return await msg.sendReply("*Server error*")}
