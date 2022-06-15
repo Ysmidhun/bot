@@ -19,6 +19,12 @@ const {
     getStory,
     skbuffer
 } = require('raganork-bot');
+const {
+    downloadGram,
+    pin,
+    story,
+    tiktok
+} = require('./misc/misc');
 const Config = require('../config');
 const s = require('../config');
 var need = "*_Need instagram link!_*";
@@ -30,45 +36,26 @@ let sourav = setting.MODE == 'public' ? false : true
 Module({
     pattern: 'insta ?(.*)',
     fromMe: sourav,
-    desc: 'Downloads post/reel/igtv from instagram',
+    desc: 'Instagram post downloader',
     usage: 'insta link or reply to a link',
     use: 'download'
 }, (async (msg, query) => {
      var q = !msg.reply_message.message ? query[1] : msg.reply_message.message
     if (q.startsWith('l')) return;
-    if (!q) return await msg.client.sendMessage(msg.jid, {
-        text: "*Need instagram link*"
-    }, {
-        quoted: msg.data
-    })
+    if (!q) return await msg.sendReply("*Need instagram link*")
+    if (q.includes("stories")) return await msg.sendReply("*Use .story command!*")
     if (q && !q.includes('instagram.com')) return await msg.client.sendMessage(msg.jid, {
         text: need
-    }, {
-        quoted: msg.data
-    })
-    await msg.client.sendMessage(msg.jid, {
-        text: downloading
     }, {
         quoted: msg.data
     })
     var getid = /(?:https?:\/\/)?(?:www\.)?(?:instagram\.com(?:\/.+?)?\/(p|reel|tv)\/)([\w-]+)(?:\/)?(\?.*)?$/
     var url = getid.exec(q)
     if (url != null) {
-        var res = await getPost(url[0])
-        var link = res.data
-        if (link.length ===0 ) return await msg.sendReply("*Download failed*");
-        for (var i = 0; i < (link.length); i++) {
-            var get = got(link[i], {
-                https: {
-                    rejectUnauthorized: false
-                }
-            });
-            var type = link[i].includes('mp4') ? 'video' : 'image'
-            var mime = link[i].includes('mp4') ? 'video/mp4' : 'image/jpeg'
-            var stream = get.buffer();
-            stream.then(async (video) => {
-                await msg.sendReply(video, type)
-            })
+        var res = await downloadGram(url[0])
+        if (res == false) return await msg.sendReply("*Download failed*");
+        for (var i in res) {
+        await msg.sendReply({url:res[i].url}, res[i].type)
         };
     }
 }));
@@ -101,31 +88,79 @@ Module({
 Module({
     pattern: 'story ?(.*)',
     fromMe: sourav,
-    desc: 'Downloads full/single story from instagram',
+    desc: 'Instagram stories downloader',
     usage: '.story username or link',
     use: 'download'
 }, (async (msg, query) => {
-    if (query[1] === '') return await msg.sendReply(need_acc_s);
-    var user = query[1];
-    try { var res = await getStory(user) } catch {return await msg.sendReply("*Server error*")}
-    if (res === "false") return await msg.sendReply("_Story not found!_")
-    if (res.error) return await msg.sendReply("Status: 403 (forbidden)")
-    var url = ''
-    await msg.sendMessage('```Downloading ' + res.result.stories.length + ' stories of ' + res.result.username || query[1] + '```');
-    res.result.stories.map((result) => {
-        url += result.url + ','
-    });
-    var que = url !== false ? url.split(',') : [];
-    for (var i = 0; i < (que.length < res.result.stories.length ? que.length : res.result.stories.length); i++) {
-        var get = got(que[i], {
-            https: {
-                rejectUnauthorized: false
-            }
-        });
-        var type = que[i].includes('mp4') ? 'video' : 'image'
-        var stream = get.buffer();
-        stream.then(async (video) => {
-            await msg.sendReply(video, type);
-        })
-    };
+    var user = match[1] !== '' ? match[1] : msg.reply_message.text;
+    if (!user) return await msg.sendReply(need_acc_s);
+    if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
+    try { var res = await story(user) } catch {return await msg.sendReply("*Server error*")}
+    await msg.sendMessage('_Downloading ' + res.length + ' stories_');
+    for (var i in res){
+        await msg.sendReply({url: res[i].url},res[i].type)
+    }
 }));
+Module({
+    pattern: 'pin ?(.*)',
+    fromMe: sourav,
+    desc: 'Pinterest downloader',
+    usage: '.pin reply or link',
+    use: 'download'
+}, (async (msg, query) => {
+    var user = match[1] !== '' ? match[1] : msg.reply_message.text;
+    if (!user) return await msg.sendReply("*Need url*");
+    if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
+    try { var res = await pin(user) } catch {return await msg.sendReply("*Server error*")}
+    await msg.sendMessage('_Downloading ' + res.length + ' medias_');
+    for (var i in res){
+        var type = res[i].url.includes("mp4") ? "video" : "image"
+        await msg.sendReply({url:res[i].url },type)
+    }
+}));
+Module({
+    pattern: 'tiktok ?(.*)',
+    fromMe: sourav,
+    desc: 'tiktok downloader',
+    usage: '.tiktok reply or link',
+    use: 'download'
+}, (async (msg, query) => {
+    var link = match[1] !== '' ? match[1] : msg.reply_message.text;
+    if (!link) return await msg.sendReply("*Need a tiktok url*");
+    link = link.match(/\bhttps?:\/\/\S+/gi)[0]
+    try { var res = await tiktok(link) } catch {return await msg.sendReply("*Server error*")}
+    var buttons = [{
+        quickReplyButton: {
+            displayText: 'NO WATERMARK',
+            id: 'tktk nowm '+msg.myjid+' '+res.nowm
+        }
+    }, {
+        quickReplyButton: {
+            displayText: 'WITH WATERMARK',
+            id: 'tktk wm '+msg.myjid+' '+res.wm
+        }  
+    }, {
+        quickReplyButton: {
+            displayText: 'AUDIO ONLY',
+            id: 'tktk aud '+msg.myjid+' '+res.audio
+        }  
+    }]
+    await msg.sendImageTemplate(await skbuffer("https://d15shllkswkct0.cloudfront.net/wp-content/blogs.dir/1/files/2018/10/tiktok.jpeg"),"TikTok Downloader","Choose your media",buttons);
+    }));
+    Module({
+        on: 'button',
+        fromMe: sourav
+    }, (async (msg) => {
+        if (msg.button && msg.button.startsWith("tktk") && msg.button.includes(msg.myjid)){
+        if (msg.button.includes("nowm")){
+        return await msg.sendReply({url: msg.button.split(" ")[3]},'video')
+        }
+           if (msg.button.split(" ")[1] === "wm"){
+                return await msg.sendReply({url: msg.button.split(" ")[3]},'video')
+                }
+                if (msg.button.includes("aud")){
+                    return await msg.sendReply({url: msg.button.split(" ")[3]},'audio')
+                    }     
+        }
+        }));
+    
