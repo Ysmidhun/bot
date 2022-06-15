@@ -113,10 +113,10 @@ Module({
     if (!user) return await msg.sendReply("*Need url*");
     if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
     try { var res = await pin(user) } catch {return await msg.sendReply("*Server error*")}
-    await msg.sendMessage('_Downloading ' + res.length + ' medias_');
+    await msg.sendMessage('_Downloading ' + res.data.length + ' medias_');
     for (var i in res){
-        var type = res[i].url.includes("mp4") ? "video" : "image"
-        await msg.sendReply({url:res[i].url },type)
+        var type = res.data[i].url.includes("mp4") ? "video" : "image"
+        await msg.sendReply({url:res.data[i].url },type)
     }
 }));
 Module({
@@ -141,7 +141,7 @@ Module({
             id: 'tktk wm '+msg.myjid+' '+res.wm
         }  
     }]
-    await msg.sendImageTemplate(await skbuffer("https://d15shllkswkct0.cloudfront.net/wp-content/blogs.dir/1/files/2018/10/tiktok.jpeg"),"TikTok Downloader","Choose your media",buttons);
+    await msg.sendImageTemplate(await skbuffer("https://d15shllkswkct0.cloudfront.net/wp-content/blogs.dir/1/files/2018/10/tiktok.jpeg"),"*TikTok video downloader*","Choose your format:",buttons);
     }));
     Module({
         on: 'button',
