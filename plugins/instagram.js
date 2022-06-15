@@ -92,7 +92,7 @@ Module({
     usage: '.story username or link',
     use: 'download'
 }, (async (msg, query) => {
-    var user = match[1] !== '' ? match[1] : msg.reply_message.text;
+    var user = query[1] !== '' ? query[1] : msg.reply_message.text;
     if (!user) return await msg.sendReply(need_acc_s);
     if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
     try { var res = await story(user) } catch {return await msg.sendReply("*Server error*")}
@@ -108,7 +108,7 @@ Module({
     usage: '.pin reply or link',
     use: 'download'
 }, (async (msg, query) => {
-    var user = match[1] !== '' ? match[1] : msg.reply_message.text;
+    var user = query[1] !== '' ? query[1] : msg.reply_message.text;
     if (!user) return await msg.sendReply("*Need url*");
     if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
     try { var res = await pin(user) } catch {return await msg.sendReply("*Server error*")}
@@ -125,7 +125,7 @@ Module({
     usage: '.tiktok reply or link',
     use: 'download'
 }, (async (msg, query) => {
-    var link = match[1] !== '' ? match[1] : msg.reply_message.text;
+    var link = query[1] !== '' ? query[1] : msg.reply_message.text;
     if (!link) return await msg.sendReply("*Need a tiktok url*");
     link = link.match(/\bhttps?:\/\/\S+/gi)[0]
     try { var res = await tiktok(link) } catch {return await msg.sendReply("*Server error*")}
