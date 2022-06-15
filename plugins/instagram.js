@@ -132,18 +132,13 @@ Module({
     try { var res = await tiktok(link) } catch {return await msg.sendReply("*Server error*")}
     var buttons = [{
         quickReplyButton: {
-            displayText: 'NO WATERMARK',
+            displayText: 'No WM',
             id: 'tktk nowm '+msg.myjid+' '+res.nowm
         }
     }, {
         quickReplyButton: {
-            displayText: 'WITH WATERMARK',
+            displayText: 'With WM',
             id: 'tktk wm '+msg.myjid+' '+res.wm
-        }  
-    }, {
-        quickReplyButton: {
-            displayText: 'AUDIO ONLY',
-            id: 'tktk aud '+msg.myjid+' '+res.audio
         }  
     }]
     await msg.sendImageTemplate(await skbuffer("https://d15shllkswkct0.cloudfront.net/wp-content/blogs.dir/1/files/2018/10/tiktok.jpeg"),"TikTok Downloader","Choose your media",buttons);
