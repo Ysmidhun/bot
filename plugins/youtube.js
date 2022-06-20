@@ -44,18 +44,23 @@ Module({
   var link = match[1].match(/\bhttps?:\/\/\S+/gi)
   if (link !== null && getID.test(link[0])) {
       var query = getID.exec(link[0]);
-          var {
-              url
-          } = await downloadYT(query[1]);
-          return await message.client.sendMessage(message.jid, {
-              audio: {
-                  url: url
-              },
+      var {
+        thumbnail,title,size
+    } = await downloadYT(query[1],'audio');
+    await message.client.sendMessage(message.jid,{image: {url: thumbnail},caption:`*Downloading:* ${'```'+title+'```'}`})
+    var song = await getSong(query[1]);
+      ffmpeg(song)
+     .save('./song.mp3')
+     .on('end', async () => {
+      var song = await addInfo('./song.mp3',title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
+      return await message.client.sendMessage(message.jid, {
+              audio: song,
               mimetype: 'audio/mpeg'
           }, {
               quoted: message.data
           });
-      return;
+
+                 });         return;
         }
   var myid = message.client.user.id.split("@")[0].split(":")[0]
   let sr = await searchYT(match[1]);
@@ -159,18 +164,22 @@ Module({
           },{quoted:message.data});
        }
   if (message.button && message.button.startsWith("ytsa") && message.button.includes(message.client.user.id.split("@")[0].split(":")[0])) {
-          var {
-              url
-          } = await downloadYT(message.button.split(";")[2]);
+    var {
+        thumbnail,title,size
+    } = await downloadYT(message.button.split(";")[2],'audio');
+    await message.client.sendMessage(message.jid,{image: {url: thumbnail},caption:`*Downloading:* ${'```'+title+'```'} \n *Size:* ${'```'+size+'```'}`})
+    var song = await getSong(message.button.split(";")[2]);
+          ffmpeg(song)
+         .save('./song.mp3')
+         .on('end', async () => {
+          var song = await addInfo('./song.mp3',title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
           return await message.client.sendMessage(message.jid, {
-              audio: {
-                  url: url
-              },
+              audio: song,
               mimetype: 'audio/mpeg'
           }, {
               quoted: message.data
           });
-     }
+     })};
   if (message.list && message.list.startsWith("song") && message.list.includes(message.client.user.id.split("@")[0].split(":")[0])) {
           var {
               thumbnail,title,size
