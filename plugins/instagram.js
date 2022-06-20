@@ -95,7 +95,7 @@ Module({
     var user = query[1] !== '' ? query[1] : msg.reply_message.text;
     if (!user) return await msg.sendReply(need_acc_s);
     if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
-    try { var res = await story(user) } catch {return await msg.sendReply("*Server error*")}
+    try { var res = await story(user) } catch {return await msg.sendReply("*Sorry, server error*")}
     await msg.sendMessage('_Downloading ' + res.length + ' stories_');
     for (var i in res){
         await msg.sendReply({url: res[i].url},res[i].type)
