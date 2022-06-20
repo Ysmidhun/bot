@@ -49,6 +49,6 @@ Module({pattern: 'tagadmin',use: 'group', fromMe: true, desc: "Tags admins"}, (a
     if (message.reply_message.text) var type = 'text' 
     if (message.reply_message.text) savedFile = message.reply_message.text 
     var msg = savedFile.startsWith("./temp") ? readFileSync(savedFile) : savedFile;
-    await message.client.sendMessage(message.jid, { [type]: msg, mentions: jids})
+    await message.client.sendMessage(message.jid, { [type]: msg,detectLinks: true, mentions: jids})
     }))
     
