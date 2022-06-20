@@ -55,7 +55,7 @@ Module({
         var res = await downloadGram(url[0])
         if (res == false) return await msg.sendReply("*Download failed*");
         for (var i in res) {
-        await msg.sendReply({url:res[i].url}, res[i].type)
+        await msg.sendReply({url:res[i]}, res[i].includes("mp4")?'video':'image')
         };
     }
 }));
