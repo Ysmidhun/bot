@@ -39,7 +39,7 @@ Module({pattern: 'tagadmin',use: 'group', fromMe: true, desc: "Tags admins"}, (a
     jids.push(user.replace('c.us', 's.whatsapp.net'));});
     if (message.reply_message.data.quotedMessage.hasOwnProperty('listMessage')) return await message.client.sendMessage(message.jid,message.reply_message.data.quotedMessage.listMessage,{mentions: jids})
     if (message.reply_message.data.quotedMessage.hasOwnProperty('extendedTextMessage')) {
-    return await message.client.sendMessage(message.jid, { text: message.reply_message.data.quotedMessage.extendedTextMessage.text, mentions: jids})
+    return await message.client.sendMessage(message.jid, { text: message.reply_message.data.quotedMessage.extendedTextMessage.text,detectLinks: true, mentions: jids})
     }
     var savedFile = await saveMessage(message.reply_message);
     if (message.reply_message.image) var type = 'image' 
