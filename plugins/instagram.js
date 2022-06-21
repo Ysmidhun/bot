@@ -181,9 +181,9 @@ Module({
         on: 'button',
         fromMe: sourav
     }, (async (msg) => {
-        if (msg.button && msg.button.startsWith("igs") && msg.button.split("_").includes(msg.myjid)){
-            var username = msg.button.split("_")[2];
-            var count = parseInt(msg.button.split("_")[3]);
+        if (msg.list && msg.list.startsWith("igs") && msg.list.split("_").includes(msg.myjid)){
+            var username = msg.list.split("_")[2];
+            var count = parseInt(msg.list.split("_")[3]);
             try { var res = await story(username) } catch {return await msg.sendReply("*Sorry, server error*")}
             return await msg.sendReply({url: res[count].url},res[count].type)
         }
