@@ -101,9 +101,9 @@ Module({
   
     for (var i in res){
     StoryData.push({
-      title: "Story "+(i+1),
+      title: "Story "+Math.floor(i+1),
       description: "Type: "+res[i].type,
-      rowId: "igs "+msg.myjid+" "+user+" "+i
+      rowId: "igs_"+msg.myjid+"_"+user+"_"+i
   })
   }
   const sections = [{
@@ -111,7 +111,7 @@ Module({
       rows: StoryData
   }];
   const listMessage = {
-      text: "",
+      text: "User: "+msg.senderName,
       footer: "_Total stories: " + res.length+"_",
       title: "_Download your stories_",
       buttonText: "View all",
@@ -166,8 +166,8 @@ Module({
         fromMe: sourav
     }, (async (msg) => {
         if (msg.button && msg.button.startsWith("igs") && msg.button.includes(msg.myjid)){
-            var username = msg.button.split(" ")[2];
-            var count = parseInt(msg.button.split(" ")[3]);
+            var username = msg.button.split("_")[2];
+            var count = parseInt(msg.button.split("_")[3]);
             try { var res = await story(username) } catch {return await msg.sendReply("*Sorry, server error*")}
             return await msg.sendReply({url: res[count].url},res[count].type)
         }
