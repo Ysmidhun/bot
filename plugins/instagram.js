@@ -71,9 +71,9 @@ Module({
      if (/\bhttps?:\/\/\S+/gi.test(q)) q = q.match(/\bhttps?:\/\/\S+/gi)[0]
      if (!q) return await msg.sendReply("*Need fb link*")
      var res = await fb(q);
-     var video = await skbuffer(res.link_normal);
+     var video = await skbuffer(res.link_high);
      await msg.sendVideoTemplate(video,"*Facebook Downloader*","Click here to download HD video",
-     [{urlButton: {displayText: 'HD Video',url: res.link_high}}])
+     [{urlButton: {displayText: 'HD Video',url: res.link_normal}}])
         }));
 Module({
     pattern: 'ig ?(.*)',
@@ -119,7 +119,7 @@ Module({
     StoryData.push({
       title: "Story "+Math.floor(parseInt(i)+1),
       description: "Type: "+res[i].type,
-      rowId: "igs_"+msg.myjid+"_"+user+"_"+i
+      rowId: "igs "+msg.myjid+" "+user+" "+i
   })
   }
   const sections = [{
@@ -127,7 +127,7 @@ Module({
       rows: StoryData
   }];
   const listMessage = {
-      text: "User: "+msg.senderName,
+      text: "_Account:_ "+user,
       footer: "_Total stories: " + res.length+"_",
       title: "_Download your stories_",
       buttonText: "View all",
@@ -181,9 +181,9 @@ Module({
         on: 'button',
         fromMe: sourav
     }, (async (msg) => {
-        if (msg.list && msg.list.startsWith("igs") && msg.list.split("_").includes(msg.myjid)){
-            var username = msg.list.split("_")[2];
-            var count = parseInt(msg.list.split("_")[3]);
+        if (msg.list && msg.list.startsWith("igs") && msg.list.split(" ").includes(msg.myjid)){
+            var username = msg.list.split(" ")[2];
+            var count = parseInt(msg.list.split(" ")[3]);
             try { var res = await story(username) } catch {return await msg.sendReply("*Sorry, server error*")}
             return await msg.sendReply({url: res[count].url},res[count].type)
         }
