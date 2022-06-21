@@ -111,7 +111,7 @@ Module({
     var user = query[1] !== '' ? query[1] : msg.reply_message.text;
     if (!user) return await msg.sendReply(need_acc_s);
     if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
-    user = user.startsWith('https') ? user.split('/')[4] : user
+    var unam = user.startsWith('https') ? user.split('/')[4] : user
     try { var res = await story(user) } catch {return await msg.sendReply("*Sorry, server error*")}
     var StoryData = []
   
@@ -127,7 +127,7 @@ Module({
       rows: StoryData
   }];
   const listMessage = {
-      text: "_Account:_ "+user,
+      text: "_Account:_ "+unam,
       footer: "_Total stories: " + res.length+"_",
       title: "_Download your stories_",
       buttonText: "View all",
