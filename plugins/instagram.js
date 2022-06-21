@@ -95,11 +95,29 @@ Module({
     var user = query[1] !== '' ? query[1] : msg.reply_message.text;
     if (!user) return await msg.sendReply(need_acc_s);
     if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
+    user = user.startsWith('https') ? user.split('/')[4] : user
     try { var res = await story(user) } catch {return await msg.sendReply("*Sorry, server error*")}
-    await msg.sendMessage('_Downloading ' + res.length + ' stories_');
+    var StoryData = []
+  
     for (var i in res){
-        await msg.sendReply({url: res[i].url},res[i].type)
-    }
+    StoryData.push({
+      title: "Story "+(i+1),
+      description: "Type: "+res[i].type,
+      rowId: "igs "+msg.myjid+" "+user+" "+i
+  })
+  }
+  const sections = [{
+      title: "Click and send to download.",
+      rows: StoryData
+  }];
+  const listMessage = {
+      text: "",
+      footer: "_Total stories: " + res.length+"_",
+      title: "_Download your stories_",
+      buttonText: "View all",
+      sections
+  }
+  await msg.client.sendMessage(msg.jid, listMessage)
 }));
 Module({
     pattern: 'pin ?(.*)',
@@ -147,6 +165,12 @@ Module({
         on: 'button',
         fromMe: sourav
     }, (async (msg) => {
+        if (msg.button && msg.button.startsWith("igs") && msg.button.includes(msg.myjid)){
+            var username = msg.button.split(" ")[2];
+            var count = parseInt(msg.button.split(" ")[3]);
+            try { var res = await story(username) } catch {return await msg.sendReply("*Sorry, server error*")}
+            return await msg.sendReply({url: res[count].url},res[count].type)
+        }
         if (msg.button && msg.button.startsWith("tktk") && msg.button.includes(msg.myjid)){
         if (msg.button.includes("nowm")){
         return await msg.sendReply({url: msg.button.split(" ")[3]},'video')
