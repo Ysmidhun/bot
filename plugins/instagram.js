@@ -23,7 +23,8 @@ const {
     downloadGram,
     pin,
     story,
-    tiktok
+    tiktok,
+    fb
 } = require('./misc/misc');
 const Config = require('../config');
 const s = require('../config');
@@ -59,6 +60,21 @@ Module({
         };
     }
 }));
+Module({
+    pattern: 'fb ?(.*)',
+    fromMe: sourav,
+    desc: 'Facebook video downloader',
+    usage: 'fb link or reply to a link',
+    use: 'download'
+}, (async (msg, query) => {
+     var q = !msg.reply_message.message ? query[1] : msg.reply_message.message
+     if (/\bhttps?:\/\/\S+/gi.test(q)) q = q.match(/\bhttps?:\/\/\S+/gi)[0]
+     if (!q) return await msg.sendReply("*Need fb link*")
+     var res = await fb(q);
+     var video = await skbuffer(res.link_normal);
+     await msg.sendVideoTemplate(video,"*Facebook Downloader*","Click here to download HD video",
+     [{urlButton: {displayText: 'HD Video',url: res.link_high}}])
+        }));
 Module({
     pattern: 'ig ?(.*)',
     fromMe: sourav,
