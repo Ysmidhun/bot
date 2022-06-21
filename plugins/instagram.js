@@ -96,10 +96,26 @@ Module({
     if (!user) return await msg.sendReply(need_acc_s);
     if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
     try { var res = await story(user) } catch {return await msg.sendReply("*Sorry, server error*")}
-    await msg.sendMessage('_Downloading ' + res.length + ' stories_');
-    for (var i in res){
-        await msg.sendReply({url: res[i].url},res[i].type)
-    }
+    var StoryData = []
+  for (var i in res){
+    StoryData.push({
+      title: "Story "+(i+1),
+      description: "Type: "+res[i].type,
+      rowId: "tktk nowm " + msg.myjid+" "+res[i].url
+  })
+  }
+  const sections = [{
+      title: "Click and send to download.",
+      rows: StoryData
+  }];
+  const listMessage = {
+      text: "",
+      footer: "_Total stories: " + res.length+"_",
+      title: "_Download your stories_",
+      buttonText: "View all",
+      sections
+  }
+  await msg.client.sendMessage(msg.jid, listMessage)
 }));
 Module({
     pattern: 'pin ?(.*)',
