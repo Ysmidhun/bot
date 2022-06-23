@@ -87,7 +87,56 @@ const {
           return;
       });
   });
-   Module({
+  Module({
+    pattern: "vmix ?(.*)",
+    fromMe: fromMe,
+    desc: "Merges/Joins two videos",
+    use: 'edit'
+}, async (message, match) => {
+    if (!fs.existsSync("./temp/vmix")) {
+        fs.mkdirSync("./temp/vmix")
+    }
+    let files = fs.readdirSync("./temp/vmix/")
+    if ((!message.reply_message && files.length < 2) || (message.reply_message && !message.reply_message.video)) return await message.sendMessage("Give me videos");
+    if (message.reply_message.video && files.length == 1) {
+        var savedFile = await message.reply_message.download();
+        await fs.writeFileSync('./temp/vmix/video1.mp4', fs.readFileSync(savedFile));
+        return await message.sendReply("*Added video 2. Type .vmix again to process!*")
+    }
+    if (message.reply_message.video && files.length == 0) {
+        var savedFile = await message.reply_message.download();
+        await fs.writeFileSync('./temp/vmix/video2.mp4', fs.readFileSync(savedFile));
+        return await message.sendReply("*Added video 1*")
+    }
+      async function merge(files, folder, filename)
+{
+  return new Promise((resolve, reject) => {
+  
+      var cmd = ffmpeg({priority: 20}).fps(29.7)
+      .on('error', function(err) {
+          resolve()
+      })
+      .on('end', function() {
+          resolve(fs.readFileSync(folder + "/" + filename))
+      });
+
+      for (var i = 0; i < files.length; i++)
+      {
+          cmd.input(files[i]);
+      }
+  
+      cmd.mergeToFile(folder + "/" + filename, folder);
+  });
+}  
+     if (files.length === 2){
+      await message.sendReply("*Merging videos..*")
+      await message.sendMessage(await merge(['./temp/vmix/video1.mp4','./temp/vmix/video2.mp4'],'./temp','merged.mp4'), 'video');
+      await fs.unlinkSync('./temp/vmix/video1.mp4');
+        await fs.unlinkSync('./temp/vmix/video2.mp4');
+        return;  
+     }
+});
+  Module({
       pattern: "slowmo",
       fromMe: fromMe,
       desc: "Video to smooth slow motion",
