@@ -87,36 +87,7 @@ const {
           return;
       });
   });
-  Module({
-      pattern: "avmix",
-      fromMe: fromMe,
-      desc: Lang.AVMIX_DESC,
-      use: 'edit'
-  }, async (message, match) => {
-      if (!fs.existsSync("./temp/avmix")) {
-          fs.mkdirSync("./temp/avmix")
-      }
-      let files = fs.readdirSync("./temp/avmix/")
-      if ((!message.reply_message && files.length < 2) || (message.reply_message && !message.reply_message.audio && !message.reply_message.video)) return await message.sendMessage(Lang.AVMIX_NEED_FILES);
-      if (message.reply_message.audio) {
-          var savedFile = await saveMessage(message.reply_message);
-          await fs.writeFileSync('./temp/avmix/audio.mp3', fs.readFileSync(savedFile));
-          return await message.sendReply(Lang.AVMIX_AUDIO_ADDED)
-      }
-      if (message.reply_message.video) {
-          var savedFile = await saveMessage(message.reply_message);
-          await fs.writeFileSync('./temp/avmix/video.mp4', fs.readFileSync(savedFile));
-          return await message.sendReply(Lang.AVMIX_VIDEO_ADDED)
-      }
-      AVmix('./temp/avmix/video.mp4', './temp/avmix/audio.mp3', './temp/avmix/mixed.mp4', async function(video) {
-          await message.sendMessage(video, 'video');
-          await fs.unlinkSync('./temp/avmix/video.mp4');
-          await fs.unlinkSync('./temp/avmix/audio.mp3');
-          await fs.unlinkSync('./temp/avmix/mixed.mp4');
-          return;
-      });
-  });
-  Module({
+   Module({
       pattern: "slowmo",
       fromMe: fromMe,
       desc: "Video to smooth slow motion",
