@@ -30,7 +30,7 @@ const {
     skbuffer
 } = require('raganork-bot');
 const LanguageDetect = require('languagedetect');
-const { downloadYT } = require('./misc/yt');
+const { y2v } = require('./misc/yt');
 const lngDetector = new LanguageDetect();
 Module({
     pattern: 'trt ?(.*)',
@@ -135,7 +135,7 @@ Module({
             url,
             thumbnail,
             title
-        } = await downloadYT(qq[1]);
+        } = await y2v(qq[1]);
         return await message.client.sendMessage(message.jid, {
             video: {
                 url: url
