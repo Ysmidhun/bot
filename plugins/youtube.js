@@ -21,7 +21,7 @@ const {
   searchSong
 } = require('./misc/misc');
 const {
-    y2v, y2a
+    downloadYT
   } = require('./misc/yt');
 const Lang = getString('scrapers');
 const fs = require('fs');
@@ -45,7 +45,8 @@ Module({
   if (link !== null && getID.test(link[0])) {
       var query = getID.exec(link[0]);
       var {
-        thumbnail,title  } = await y2v(query[1]);
+        thumbnail,title,size
+    } = await downloadYT(query[1],'audio');
     await message.client.sendMessage(message.jid,{image: {url: thumbnail},caption:`*Downloading:* ${'```'+title+'```'}`})
     var song = await getSong(query[1]);
       ffmpeg(song)
@@ -152,7 +153,7 @@ Module({
               url,
               thumbnail,
               title
-          } = await y2v(message.button.split(";")[2]);
+          } = await downloadYT(message.button.split(";")[2]);
           return await message.client.sendMessage(message.jid, {
               video: {
                   url: url
@@ -165,7 +166,7 @@ Module({
   if (message.button && message.button.startsWith("ytsa") && message.button.includes(message.client.user.id.split("@")[0].split(":")[0])) {
     var {
         thumbnail,title,size
-    } = await y2a(message.button.split(";")[2]);
+    } = await downloadYT(message.button.split(";")[2],'audio');
     await message.client.sendMessage(message.jid,{image: {url: thumbnail},caption:`*Downloading:* ${'```'+title+'```'} \n *Size:* ${'```'+size+'```'}`})
     var song = await getSong(message.button.split(";")[2]);
           ffmpeg(song)
@@ -182,7 +183,7 @@ Module({
   if (message.list && message.list.startsWith("song") && message.list.includes(message.client.user.id.split("@")[0].split(":")[0])) {
           var {
               thumbnail,title,size
-          } = await y2a(message.list.split(";")[1]);
+          } = await downloadYT(message.list.split(";")[1],'audio');
           await message.client.sendMessage(message.jid,{image: {url: thumbnail},caption:`*Downloading:* ${'```'+title+'```'} \n *Size:* ${'```'+size+'```'}`})
           var song = await getSong(message.list.split(";")[1]);
           ffmpeg(song)

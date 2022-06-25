@@ -30,7 +30,7 @@ const {
     skbuffer
 } = require('raganork-bot');
 const LanguageDetect = require('languagedetect');
-const { y2v } = require('./misc/yt');
+const { downloadYT } = require('./misc/yt');
 const lngDetector = new LanguageDetect();
 Module({
     pattern: 'trt ?(.*)',
@@ -113,9 +113,10 @@ Module({
     try {
         const results = await gis(query);
         await message.sendReply(Lang.IMG.format(results.splice(0, count).length, query))
-      results.splice(0, count).map(async i =>{  
-  await message.sendMessage({url: i.url}, 'image');
-        })
+        for (var i = 0; i < (results.length < count ? results.length : count); i++) {
+         var buff = await skbuffer(results[i].url);
+         await message.sendMessage(buff, 'image');
+        }
     } catch (e) {
         await message.sendReply(e);
     }
@@ -135,7 +136,7 @@ Module({
             url,
             thumbnail,
             title
-        } = await y2v(qq[1]);
+        } = await downloadYT(qq[1]);
         return await message.client.sendMessage(message.jid, {
             video: {
                 url: url
