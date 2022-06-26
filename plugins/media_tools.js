@@ -25,6 +25,7 @@ const {
   const {
       bass,
       circle,
+      rotate,
       findMusic 
   } = require('./misc/misc');
   const Lang = getString('media');
