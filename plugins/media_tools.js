@@ -240,4 +240,11 @@ const templateMessage = {
 }
 await message.client.sendMessage(message.jid, templateMessage)
   });
-
+  Module({pattern: "rotate ?(.*)",fromMe: fromMe}, async (message, match) => {
+    if (!match[1] || !message.reply_message || !message.reply_message.video) return await message.sendReply("*Reply to a video*\n*.rotate left|right|flip*");        
+    var file = await message.reply_message.download();
+    var angle = "1"
+    if (match[1] === "left") angle = "2" 
+    if (match[1] === "flip") angle = "3" 
+    await message.sendReply(fs.readFileSync(await rotate(file,angle)),'video')
+});
