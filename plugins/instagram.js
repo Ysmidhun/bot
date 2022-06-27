@@ -35,14 +35,14 @@ var fail = "*_Download failed! Check your link and try again_*";
 var need_acc_s = "_Need an instagram username or link!_";
 let sourav = setting.MODE == 'public' ? false : true
 Module({
-    pattern: 'insta ?(.*)',
+    pattern: 'video|insta|igdl ?(.*)',
     fromMe: sourav,
     desc: 'Instagram post downloader',
     usage: 'insta link or reply to a link',
     use: 'download'
 }, (async (msg, query) => {
      var q = !msg.reply_message.message ? query[1] : msg.reply_message.message
-    if (q.startsWith('l')) return;
+     if (q && (q.startsWith('l') || q.includes('youtu'))) return;
     if (!q) return await msg.sendReply("*Need instagram link*")
     if (q.includes("stories")) return await msg.sendReply("*Use .story command!*")
     if (q && !q.includes('instagram.com')) return await msg.client.sendMessage(msg.jid, {
@@ -61,7 +61,7 @@ Module({
     }
 }));
 Module({
-    pattern: 'fb ?(.*)',
+    pattern: 'fb|facebook ?(.*)',
     fromMe: sourav,
     desc: 'Facebook video downloader',
     usage: 'fb link or reply to a link',
@@ -82,6 +82,7 @@ Module({
     usage: 'ig username',
     use: 'search'
 }, (async (msg, query) => {
+    if (query[1] === 'dl') return; 
     if (query[1] === '') return await msg.client.sendMessage(msg.jid, {
         text: need_acc
     }, {
@@ -102,13 +103,14 @@ Module({
     });
 }));
 Module({
-    pattern: 'story ?(.*)',
+    pattern: 'story|igstory|insta ?(.*)',
     fromMe: sourav,
     desc: 'Instagram stories downloader',
     usage: '.story username or link',
     use: 'download'
 }, (async (msg, query) => {
     var user = query[1] !== '' ? query[1] : msg.reply_message.text;
+    if (user && user.includes("/reel/") || user.includes("/tv/") || user.includes("/p/")) return;
     if (!user) return await msg.sendReply(need_acc_s);
     if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
     var unam = user.startsWith('https') ? user.split('/')[4] : user
