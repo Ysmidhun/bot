@@ -128,7 +128,7 @@ Module({
     use: 'download'
 }, async (message, match) => {
     var s1 = !match[1].includes('youtu') ? message.reply_message.message : match[1]
-    if (s1.includes("instagram")) return;
+    if (s1 && s1.includes("instagram")) return;
     if (!s1) return await message.sendReply("*"+Lang.NEED_VIDEO+"*");
     if (!s1.includes('youtu')) return await message.sendReply("*"+Lang.NEED_VIDEO+"*");
     const getID = /(?:http(?:s|):\/\/|)(?:(?:www\.|)youtube(?:\-nocookie|)\.com\/(?:watch\?.*(?:|\&)v=|embed|shorts\/|v\/)|youtu\.be\/)([-_0-9A-Za-z]{11})/

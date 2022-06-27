@@ -27,12 +27,11 @@ const {
 const Lang = getString('converters');
 let w = MODE == 'public' ? false : true
 Module({
-    pattern: 's|sticker ?(.*)',
+    pattern: 'sticker ?(.*)',
     use: 'edit',
     fromMe: w,
     desc: Lang.STICKER_DESC
 }, (async (message, match) => {
-    if (!match.input.includes("sticker") && match[1] !== "") return;
     if (message.reply_message === false) return await message.sendMessage(Lang.STICKER_NEED_REPLY)
     var savedFile = await message.reply_message.download();
     var exif = {
