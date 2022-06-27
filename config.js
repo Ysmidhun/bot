@@ -41,6 +41,6 @@ module.exports = {
     SUDO: process.env.SUDO || '916282344739,0',
     LANGUAGE: process.env.LANGUAGE || 'english',
     DEBUG: DEBUG,
-    ACR_A: "4b64f4e5401d1380e50b30d526def287",
-    ACR_S: "uSVrKResE7wF4d6A1dtqvPWTTy3rBp3YjldsJSCh"
+    ACR_A: "ff489a0160188cf5f0750eaf486eee74",
+    ACR_S: "ytu3AdkCu7fkRVuENhXxs9jsOW4YJtDXimAWMpJp"
     };
