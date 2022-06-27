@@ -18,7 +18,8 @@ let {
     STICKER_DATA,
     MODE,
     HEROKU,
-    AUDIO_DATA
+    AUDIO_DATA,
+    BOT_INFO
 } = require('../config');
 let {
     addInfo,
@@ -35,14 +36,14 @@ const he = new h({
 });
 let ur = '/apps/' + HEROKU.APP_NAME;
 Module({
-    pattern: 'take|wm ?(.*)',
+    pattern: 'take ?(.*)',
     fromMe: a,
-    desc: 'Changes sticker/audio pack & author name. Title, artist, thumbnail etc.',
-    use: 'edit'
+    use: 'edit',
+    desc: 'Changes sticker/audio pack & author name. Title, artist, thumbnail etc.'
 }, (async (m, match) => {
+    if (!m.reply_message.data.quotedMessage) return await m.sendMessage('_Reply to an audio or a sticker_')
     var audiomsg = m.reply_message.audio;
     var stickermsg = m.reply_message.sticker;
-    if (!audiomsg && !stickermsg) return await m.sendMessage('_Reply to an audio or a sticker_')
     var q = await saveMessage(m.reply_message);
     if (stickermsg) {
         if (match[1]!=="") {
@@ -62,18 +63,18 @@ Module({
                 ios: "https://github.com/souravkl11/Raganork-md/"
             }
         }
-        return await m.sendReply(fs.readFileSync(await addExif(q,exif)),'sticker')
+        return await m.client.sendMessage(m.jid,{sticker: fs.readFileSync(await addExif(q,exif))},{quoted:m.quoted})
     }
     if (!stickermsg && audiomsg) {
                 let inf = match[1] !== '' ? match[1] : AUDIO_DATA
                 var spl = inf.split(';')
-                var image = spl[2]?await skbuffer(spl[2]):''
-                var res = await addInfo(q,spl[0],spl[1], 'Raganork Engine', image)
+                var image = spl[2]?await skbuffer(spl[2]): BOT_INFO.split(";")[3]
+                var res = await addInfo(q,spl[0],spl[1]?spl[1]:AUDIO_DATA.split(";")[1], 'Raganork Engine', image)
                 await m.client.sendMessage(m.jid, {
                     audio: res,
                     mimetype: 'audio/mp4',
                 }, {
-                    quoted: m.data,
+                    quoted: m.quoted,
                     ptt: false
                 });
     }
@@ -84,7 +85,7 @@ Module({
     })
 }));
 Module({
-    pattern: 'tovideo|tomp4|mp4 ?(.*)',
+    pattern: 'mp4 ?(.*)',
     fromMe: a,
     desc: 'Converts animated sticker to video'
 }, (async (m, t) => {
@@ -95,8 +96,12 @@ Module({
         } catch {
             return await m.sendReply("*Failed*")
         }
-        await m.sendReply({
+        await m.client.sendMessage(
+            message.jid,
+            {
+            video: {
             url: result
-        }, 'video');
+            }
+        }, {quoted:message.quoted});
     } else return await m.sendReply('_Reply to an animated sticker!_');
 }));

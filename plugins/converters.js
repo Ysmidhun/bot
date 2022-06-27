@@ -42,9 +42,9 @@ Module({
         ios: "https://github.com/souravkl11/Raganork-md/"
     }
     if (message.reply_message.image === true) {
-        return await message.sendReply(fs.readFileSync(await addExif(await sticker(savedFile),exif)), 'sticker')
+        return await message.client.sendReply(message.jid,{sticker: fs.readFileSync(await addExif(await sticker(savedFile),exif))},{quoted: message.quoted})
      } else {
-        return await message.sendReply(fs.readFileSync(await addExif(await sticker(savedFile,'video'),exif)), 'sticker')
+        return await message.client.sendMessage(message.jid,{sticker:fs.readFileSync(await addExif(await sticker(savedFile,'video'),exif))},{quoted: message.quoted})
     }
 }));
 Module({
@@ -63,7 +63,7 @@ Module({
                 mimetype: 'audio/mp4',
                 ptt: false
             }, {
-                quoted: message.data
+                quoted: message.quoted
             })
         });
 }));
