@@ -42,7 +42,7 @@ Module({
         ios: "https://github.com/souravkl11/Raganork-md/"
     }
     if (message.reply_message.image === true) {
-        return await message.client.sendReply(message.jid,{sticker: fs.readFileSync(await addExif(await sticker(savedFile),exif))},{quoted: message.quoted})
+        return await message.client.sendMessage(message.jid,{sticker: fs.readFileSync(await addExif(await sticker(savedFile),exif))},{quoted: message.quoted})
      } else {
         return await message.client.sendMessage(message.jid,{sticker:fs.readFileSync(await addExif(await sticker(savedFile,'video'),exif))},{quoted: message.quoted})
     }
