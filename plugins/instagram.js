@@ -35,7 +35,7 @@ var fail = "*_Download failed! Check your link and try again_*";
 var need_acc_s = "_Need an instagram username or link!_";
 let sourav = setting.MODE == 'public' ? false : true
 Module({
-    pattern: 'video|insta|igdl ?(.*)',
+    pattern: 'insta ?(.*)',
     fromMe: sourav,
     desc: 'Instagram post downloader',
     usage: 'insta link or reply to a link',
@@ -61,7 +61,7 @@ Module({
     }
 }));
 Module({
-    pattern: 'fb|facebook ?(.*)',
+    pattern: 'fb ?(.*)',
     fromMe: sourav,
     desc: 'Facebook video downloader',
     usage: 'fb link or reply to a link',
@@ -103,7 +103,7 @@ Module({
     });
 }));
 Module({
-    pattern: 'story|igstory|insta ?(.*)',
+    pattern: 'story ?(.*)',
     fromMe: sourav,
     desc: 'Instagram stories downloader',
     usage: '.story username or link',

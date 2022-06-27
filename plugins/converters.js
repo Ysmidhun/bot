@@ -48,7 +48,7 @@ Module({
     }
 }));
 Module({
-    pattern: 'mp3|tomp3 ?(.*)',
+    pattern: 'mp3 ?(.*)',
     fromMe: w,
     use: 'edit',
     desc: Lang.MP3_DESC
@@ -86,7 +86,7 @@ Module({
     });
 }));
 Module({
-    pattern: 'photo|image|toimage|tophoto ?(.*)',
+    pattern: 'photo ?(.*)',
     fromMe: w,
     use: 'edit',
     desc: Lang.PHOTO_DESC

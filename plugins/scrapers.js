@@ -122,7 +122,7 @@ Module({
     }
 }));
 Module({
-    pattern: 'video|ytmp4 ?(.*)',
+    pattern: 'video ?(.*)',
     fromMe: w,
     desc: Lang.VIDEO_DESC,
     use: 'download'
