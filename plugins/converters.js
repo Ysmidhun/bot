@@ -27,12 +27,12 @@ const {
 const Lang = getString('converters');
 let w = MODE == 'public' ? false : true
 Module({
-    pattern: 'sticker$',
+    pattern: 's|sticker ?(.*)',
     use: 'edit',
     fromMe: w,
     desc: Lang.STICKER_DESC
 }, (async (message, match) => {
-
+    if (!match.input.includes("sticker") && match[1] !== "") return;
     if (message.reply_message === false) return await message.sendMessage(Lang.STICKER_NEED_REPLY)
     var savedFile = await message.reply_message.download();
     var exif = {
@@ -49,7 +49,7 @@ Module({
     }
 }));
 Module({
-    pattern: 'mp3$',
+    pattern: 'mp3|tomp3 ?(.*)',
     fromMe: w,
     use: 'edit',
     desc: Lang.MP3_DESC
@@ -87,7 +87,7 @@ Module({
     });
 }));
 Module({
-    pattern: 'photo$',
+    pattern: 'photo|image|toimage|tophoto ?(.*)',
     fromMe: w,
     use: 'edit',
     desc: Lang.PHOTO_DESC

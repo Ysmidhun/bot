@@ -8,7 +8,7 @@ const {getString} = require('./misc/lang');
 const {readFileSync} = require('fs');
 const {saveMessage} = require('./misc/saveMessage');
 const Lang = getString('group');
-Module({pattern: 'tag ?(.*)',use: 'group', fromMe: true, desc: Lang.TAGALL_DESC}, (async (message, match) => {
+Module({pattern: 'tag|hidetag ?(.*)',use: 'group', fromMe: true, desc: Lang.TAGALL_DESC}, (async (message, match) => {
 if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
 if (match[1] === "all" || match[1] === "admin" || !message.reply_message) return;
 var target = message.jid
