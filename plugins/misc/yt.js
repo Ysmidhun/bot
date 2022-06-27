@@ -71,6 +71,9 @@ var format = type === 'video' ? 'mp4' : 'mp3';
 var resolution = type === 'mp3' ? '128kbps' : quality;
 var end = resolution.endsWith("p") ? "p" : "kbps";
 var {dl_link,thumb,title,size} = await yt('https://youtu.be/'+vid,resolution,format,resolution.replace(end,""),'en154')
+if (dl_link.includes("app.y2mate")) var {dl_link,thumb,title,size} = await yt('https://youtu.be/'+vid,resolution,format,resolution.replace(end,""),'en154')
+if (dl_link.includes("app.y2mate")) var {dl_link,thumb,title,size} = await yt('https://youtu.be/'+vid,resolution,format,resolution.replace(end,""),'en154')
+if (dl_link.includes("app.y2mate")) var {dl_link,thumb,title,size} = await yt('https://youtu.be/'+vid,resolution,format,resolution.replace(end,""),'en154')
 return {
 url:dl_link,
 title:title,
