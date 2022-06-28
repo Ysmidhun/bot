@@ -26,15 +26,27 @@ Module({
 }, (async (message, match) => {
     if (!message.jid.endsWith('@g.us')) return await message.sendMessage(Lang.GROUP_COMMAND)
     var {
-        participants
+        participants, subject
     } = await message.client.groupMetadata(message.jid)
     if (match[1]) {
+        if (match[1] === 'all') {
+            var admin = await isAdmin(message);
+            if (!admin) return await message.sendReply(Lang.NOT_ADMIN)
+            let users = participants.filter((member) => !member.admin)
+            await message.sendMessage(`_❗❗ Kicking *every* members of ${subject}. Restart bot immediately to kill this process ❗❗_\n*You have 5 seconds left*`)
+            await new Promise((r) => setTimeout(r, 5000))
+            for (let member of users) {
+                await new Promise((r) => setTimeout(r, 1000))
+                await message.client.groupParticipantsUpdate(message.jid, [member.id], "remove")
+            }
+            return;
+        }
         if (isNumeric(match[1])) {
             var admin = await isAdmin(message);
             if (!admin) return await message.sendReply(Lang.NOT_ADMIN)
-            await message.sendMessage(`_Removing all numbers starting with ${match[1]}_`)
-            await new Promise((r) => setTimeout(r, 3000))
-            let users = participants.filter((member) => member.id.startsWith(match[1]))
+            let users = participants.filter((member) => member.id.startsWith(match[1]) && !member.admin)
+            await message.sendMessage(`_❗❗ Kicking *${users.length}* members starting with number *${match[1]}*. Restart bot immediately to kill this process ❗❗_\n*You have 5 seconds left*`)
+            await new Promise((r) => setTimeout(r, 5000))
             for (let member of users) {
                 await new Promise((r) => setTimeout(r, 1000))
                 await message.client.groupParticipantsUpdate(message.jid, [member.id], "remove")
@@ -65,17 +77,10 @@ Module({
     if (!admin) return await message.sendReply(Lang.NOT_ADMIN)
     var initt = init.split(" ").join("")
     var user = initt.replace(/\+/g, '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(/\(/g, '').replace(/\)/g, '').replace(/-/g, '')
-    var jids = [];
-    var msg = '';
-    numbers = user.split(',');
-    numbers.map((number) => {
-        msg += '@' + number + '\n'
-        jids.push(number + '@s.whatsapp.net');
-    });
-    await message.client.groupAdd(init,message)
+    await message.client.groupAdd(user,message)
 }))
 Module({
-    pattern: 'promote',
+    pattern: 'promote ?(.*)',
     fromMe: true,
     use: 'group',
     desc: Lang.PROMOTE_DESC
@@ -100,7 +105,7 @@ Module({
     return await message.client.groupLeave(message.jid);
 }))
 Module({
-    pattern: 'demote',
+    pattern: 'demote ?(.*)',
     fromMe: true,
     use: 'group',
     desc: Lang.DEMOTE_DESC
@@ -160,8 +165,8 @@ Module({
     if (!admin) return await message.sendReply(Lang.NOT_ADMIN)
     var code = await message.client.groupInviteCode(message.jid)
     await message.client.sendMessage(message.jid, {
-        text: "https://chat.whatsapp.com/" + code
-    })
+        text: "https://chat.whatsapp.com/" + code,detectLinks: true
+    },{detectLinks: true})
 }))
 Module({
     pattern: 'revoke',
@@ -301,7 +306,7 @@ Module({
     pattern: 'unblock ?(.*)',
     fromMe: true,
     use: 'owner'
-}, (async (message, match) => {
+}, (async (message) => {
     var isGroup = message.jid.endsWith('@g.us')
     if (!isGroup) return;
     var user = message.mention[0] || message.reply_message.jid
@@ -332,7 +337,7 @@ Module({
     if (message.reply_message && message.reply_message.image) {
     var image = await message.reply_message.download()
     await message.client.updateProfilePicture(message.jid,{url: image});
-    return await message.sendReply("*Updated profile pic ✅*")
+    return await message.sendReply("*Group icon updated ✅*")
 }
 if (!message.reply_message.image) {
    try { var image = await message.client.profilePictureUrl(message.jid,'image') } catch {return await message.sendReply("Profile pic not found!")}

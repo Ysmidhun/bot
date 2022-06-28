@@ -52,7 +52,6 @@ Module({
 }, (async (message, match) => {
 
     await message.sendReply(Lang.RESTART_MSG)
-    console.log(baseURI);
     await heroku.delete(baseURI + '/dynos').catch(async (error) => {
         await message.sendMessage(error.message)
     });
@@ -285,6 +284,12 @@ Module({
     on: 'button',
     fromMe: true
 }, (async (message, match) => {
+    if (message.button && message.button.startsWith("restart") && message.button.includes(message.myjid)) {
+        await message.sendReply("_Restarting_")
+        await heroku.delete(baseURI + '/dynos').catch(async (error) => {
+        await message.sendMessage(error.message)
+    });
+    }
     if (message.button && message.button.startsWith("public") && message.button.includes(message.myjid)) {
         await heroku.patch(baseURI + '/config-vars', {
             body: {
