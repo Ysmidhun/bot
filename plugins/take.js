@@ -97,7 +97,7 @@ Module({
             return await m.sendReply("*Failed*")
         }
         await m.client.sendMessage(
-            message.jid,
+            m.jid,
             {
             video: {
             url: result
