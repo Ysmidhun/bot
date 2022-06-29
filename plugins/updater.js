@@ -34,7 +34,7 @@ Module({
         var changelog = "_Updates are available_\n\n";
         commits['all'].map(
             (commit) => {
-                changelog += `⧉ *${commit.message}* ${'```'}[${commit.date.substring(0, 10)}]${'```'} \n`
+                changelog += `⧉ *${commit.message}* _[${commit.date.substring(0, 10)}]_ \n`
             }
         );
         mss = changelog;
