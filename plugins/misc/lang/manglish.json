@@ -2,13 +2,13 @@
     "STRINGS": {
         "converters": {
         "STICKER_DESC":"Sticker create cheyyan",
-        "STICKER_NEED_REPLY":"Enth sticker? photo/video reply cheyy",
+        "STICKER_NEED_REPLY":"_Photo/video kk reply aayi ayakk!_",
         "MP3_DESC":"Video/Audio mp3 format convert cheyyum",
-        "MP3_NEED_REPLY:":"Reply cheyy. audio/video",
+        "MP3_NEED_REPLY:":"_Reply cheyy. audio/video_",
         "BASS_DESC:":"Audio il bass boost cheyyum. .bass 20",
-        "BASS_NEED_REPLY:":"Audio evide mister?",
+        "BASS_NEED_REPLY:":"_Audio evide mister?_",
         "PHOTO_DESC":"Sticker photo aakki therum",
-        "PHOTO_NEED_REPLY":"Animated allatha oru stickerinu reply chey"
+        "PHOTO_NEED_REPLY":"_Animated allatha oru stickerinu reply chey_"
         },
         "external_plugin": {
             "INSTALL_DESC": "Plugins install cheyyum",
