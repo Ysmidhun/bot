@@ -17,13 +17,13 @@ var user = m.mention[0] || m.reply_message.jid
 if (!user) return await m.sendReply(Lang.NEED_USER)
 if (!m.jid.endsWith('@g.us')) return await m.sendReply(Lang.GROUP_COMMAND)
 var warn = await setWarn(m.jid,user,parseInt(WARN))
-var ms = '```Replied message```';
-if (m.mention[0]) ms = '```Not defined```'
-if (m.reply_message.audio) ms = '```Audio```'
-if (m.reply_message.sticker) ms = '```Sticker```'
-if (m.reply_message.text) ms = m.reply_message.text.length > 40 ? '```Replied message```' : m.reply_message.text
-if (m.reply_message.video) ms = '```Video```'
-if (m.reply_message.image) ms = '```Image```'
+var ms = 'Replied message';
+if (m.mention[0]) ms = 'Not defined'
+if (m.reply_message.audio) ms = 'Audio'
+if (m.reply_message.sticker) ms = 'Sticker'
+if (m.reply_message.text) ms = m.reply_message.text.length > 40 ? 'Replied message' : m.reply_message.text
+if (m.reply_message.video) ms = 'Video'
+if (m.reply_message.image) ms = 'Image'
 var reason = mat[1] ? mat[1].replace(mentionjid(user),"") : ms
 var msg = Lang.WARNING + '\n' +
     Lang.USER.format(mentionjid(user))+ '\n' +
