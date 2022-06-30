@@ -11,7 +11,7 @@ let {isAdmin} = require('./misc/misc');
 let Lang = getString('group');
 let {setWarn,resetWarn,mentionjid} = require('./misc/misc');
 Module({pattern: 'warn ?(.*)', fromMe: true,use: 'group', desc:Lang.WARN_DESC}, (async (m, mat) => { 
-if (match[1] === "reset") return await m.sendReply("*Wrong command! Use _.reset warn_*")
+if (mat[1] === "reset") return await m.sendReply("*Wrong command! Use _.reset warn_*")
 if (m.message.includes(Lang.REMAINING)) return;
 var user = m.mention[0] || m.reply_message.jid
 if (!user) return await m.sendReply(Lang.NEED_USER)
