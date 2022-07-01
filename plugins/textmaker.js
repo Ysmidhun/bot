@@ -1,351 +1,710 @@
+/* 
+Module({
+  pattern: 'textmaker ?(.*)',
+  fromMe: auto,
+
+*/
 const {Module} = require('../main')
-const {aadhar,blur} = require('./misc/misc')
-const {MODE} = require('../config')
 const {skbuffer} = require('raganork-bot');
-var x = MODE == 'public'?false:true
-var list = '```'+`Logo Maker List
-Usage: .logo 14 Text
-01 - 11 : Calligraphy
-12 - 13 : Beast
-14 - 19 : Pubg
-20 - 25 : RRR
-26 - 27 : Free Fire
-28 - 29 : India
-30 - 32 : Avengers
-33 - 34 : Pushpa
-35 - 37 Master
-38 - 44 IPL
-45      : Dhoni
-46      : Vijay
-47 - 52 : KGF`+'```'
-Module({pattern: "logo ?(.*)",fromMe: x,use: 'logo',desc: "45 + Logo maker commands"}, async(message, match) => {
-if (!match[1] || match[1] === 'list') return await message.sendReply(list);
-})
-Module({pattern: "logo 01 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 02 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 03 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=3&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 04 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=4&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 05 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=5&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 06 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=6&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 07 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=7&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 08 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=8&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 09 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=9&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 10 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=10&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 11 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/calligraphy?style=11&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 12 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/beast?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 13 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/beast?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 14 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/pubg?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 15 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/pubg?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 16 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/pubg?style=3&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 17 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/pubg?style=4&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 18 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/pubg?style=5&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 19 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/pubg?style=6&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 20 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/rrr?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 21 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/rrr?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 22 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/rrr?style=3&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 23 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/rrr?style=4&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 24 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/rrr?style=5&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 25 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/rrr?style=6&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 26 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/freefire?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 27 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/freefire?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 28 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/india?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 29 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/india?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 30 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/avengers?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 31 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/avengers?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 32 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/avengers?style=3&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 33 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/pushpa?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 34 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/pushpa?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 35 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/master?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 36 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/master?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 37 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/master?style=3&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 38 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/ipl?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 39 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/ipl?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 40 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/ipl?style=3&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 41 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/ipl?style=4&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 42 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/ipl?style=5&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 43 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/ipl?style=6&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 44 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/ipl?style=7&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 45 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/dhoni?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 46 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/thalapathy?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 47 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/kgf?style=0&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 48 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/kgf?style=1&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 49 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/kgf?style=2&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 46 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/kgf?style=3&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 50 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/kgf?style=4&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 51 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/kgf?style=5&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "logo 52 ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-var api_url = "https://raganork-network.vercel.app/api/logo/kgf?style=6&text="+text
-var image = await skbuffer(api_url);
-await message.sendReply(image,'image');
-})
-Module({pattern: "aadhar ?(.*)",fromMe: x,use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var text = match[1]
-if (!text || !message.reply_message || !message.reply_message.image || !text.includes(",")) return await message.sendReply("*Wrong format*\n*Reply to image .aadhar name,date,gender*")
-await message.sendReply(await aadhar(text,await message.reply_message.download()),'image');
-})
-Module({pattern: "blur ?(.*)",fromMe: x,usage: '.blur 10 (up to 100)',use: 'logo', dontAddCommandList: true}, async(message, match) => {
-var percent = match[1] || 5
-if (!message.reply_message || !message.reply_message.image) return await message.sendReply("*Wrong format*\n*Reply to image*\n*.blur*\n*.blur 25*")
-await message.sendReply(await blur(await message.reply_message.download(),percent),'image');
-})
+const axios = require('axios');
+const {MODE} = require('../config');
+let auto = MODE == 'public' ? false : true
+const _0xfa669e=_0x46fb;(function(_0x137b52,_0x58d7bf){const _0x4df657=_0x46fb,_0x33364a=_0x137b52();while(!![]){try{const _0x6d1a39=parseInt(_0x4df657(0x1ae))/0x1+parseInt(_0x4df657(0x1bf))/0x2*(parseInt(_0x4df657(0x1b2))/0x3)+-parseInt(_0x4df657(0x1a1))/0x4+parseInt(_0x4df657(0x1bb))/0x5*(parseInt(_0x4df657(0x1b7))/0x6)+parseInt(_0x4df657(0x19e))/0x7*(-parseInt(_0x4df657(0x1c3))/0x8)+parseInt(_0x4df657(0x1b3))/0x9*(-parseInt(_0x4df657(0x1a8))/0xa)+parseInt(_0x4df657(0x1be))/0xb*(parseInt(_0x4df657(0x1a5))/0xc);if(_0x6d1a39===_0x58d7bf)break;else _0x33364a['push'](_0x33364a['shift']());}catch(_0x16a051){_0x33364a['push'](_0x33364a['shift']());}}}(_0x1c17,0xcde34));const _0x5bf5e0=_0x7910;function _0x168b(){const _0x542e02=_0x46fb,_0x32fb54=['225'+_0x542e02(0x1c7)+_0x542e02(0x1b6)+_0x542e02(0x1c1)+'i',_0x542e02(0x1ce),_0x542e02(0x1a9),_0x542e02(0x1d6),_0x542e02(0x1c2)+_0x542e02(0x1b8)+_0x542e02(0x1ad)+_0x542e02(0x1a4),'404'+_0x542e02(0x1d1)+_0x542e02(0x1a2)+'VvN',_0x542e02(0x1c5),_0x542e02(0x19f),_0x542e02(0x1a7),_0x542e02(0x1b1),_0x542e02(0x1c0)+_0x542e02(0x1c8)+'W',_0x542e02(0x1d5),_0x542e02(0x1a3),_0x542e02(0x1b4),_0x542e02(0x1cf),'//r',_0x542e02(0x1ba),_0x542e02(0x1a6),'971'+_0x542e02(0x19d)+_0x542e02(0x1bd)+_0x542e02(0x1cc),'263'+_0x542e02(0x1ac)+_0x542e02(0x1c4)+_0x542e02(0x1b5)+'N','etw',_0x542e02(0x1b9),_0x542e02(0x1af)+_0x542e02(0x1b0)+'M',_0x542e02(0x1cd)+_0x542e02(0x1d3)+_0x542e02(0x1d2)+'pYN'+'D',_0x542e02(0x1ab)+'LiJ'+'Ns',_0x542e02(0x1bc)+'388'+_0x542e02(0x1ca)+_0x542e02(0x1a0)];return _0x168b=function(){return _0x32fb54;},_0x168b();}function _0x7910(_0x2d5b4a,_0x229f2b){const _0x4b0ff6=_0x168b();return _0x7910=function(_0x10a236,_0x400bfb){_0x10a236=_0x10a236-0x1bc;let _0x16d5fe=_0x4b0ff6[_0x10a236];return _0x16d5fe;},_0x7910(_0x2d5b4a,_0x229f2b);}(function(_0x57d730,_0x55571b){const _0x51d0cb=_0x46fb,_0x409350=_0x7910,_0x580087=_0x57d730();while(!![]){try{const _0x3610cb=parseInt(_0x409350(0x1c8))/0x1+-parseInt(_0x409350(0x1c9))/0x2+-parseInt(_0x409350(0x1bc))/0x3*(-parseInt(_0x409350(0x1c0))/0x4)+-parseInt(_0x409350(0x1c2))/0x5*(parseInt(_0x409350(0x1c3))/0x6)+parseInt(_0x409350(0x1c4))/0x7+-parseInt(_0x409350(0x1c1))/0x8*(parseInt(_0x409350(0x1ce))/0x9)+-parseInt(_0x409350(0x1bd))/0xa;if(_0x3610cb===_0x55571b)break;else _0x580087[_0x51d0cb(0x1c9)+'h'](_0x580087[_0x51d0cb(0x1d4)+'ft']());}catch(_0x4c66ed){_0x580087[_0x51d0cb(0x1c9)+'h'](_0x580087[_0x51d0cb(0x1d4)+'ft']());}}}(_0x168b,0x2824f));function _0x46fb(_0x167828,_0x87c0b5){const _0x1c17d5=_0x1c17();return _0x46fb=function(_0x46fb63,_0x21eb61){_0x46fb63=_0x46fb63-0x19d;let _0x22536e=_0x1c17d5[_0x46fb63];return _0x22536e;},_0x46fb(_0x167828,_0x87c0b5);}let base=_0x5bf5e0(0x1cc)+_0x5bf5e0(0x1cf)+_0x5bf5e0(0x1d3)+_0x5bf5e0(0x1d4)+_0xfa669e(0x1d0)+_0x5bf5e0(0x1cb)+_0x5bf5e0(0x1be)+_0x5bf5e0(0x1bf)+_0xfa669e(0x1aa)+_0x5bf5e0(0x1ca)+_0x5bf5e0(0x1c7)+_0xfa669e(0x1cb)+_0x5bf5e0(0x1c6)+_0xfa669e(0x1c6)+_0x5bf5e0(0x1cd)+_0x5bf5e0(0x1d5)+_0x5bf5e0(0x1d1)+_0x5bf5e0(0x1c5)+_0x5bf5e0(0x1d2)+_0x5bf5e0(0x1d0)+'{}';function _0x1c17(){const _0x1532e4=['203','XYS','22THSRdr','2648ZBZDFa','9AX','SJz','223','22928SgpAnS','0WC','rce','/te','915','MVZ','pus','Jan','pp/','BuZ','137','={}','&te','nor','874','6iD','509','shi','ps:','l.a','070','1253sgjypb','k-n','yOm','2478180oFSkVS','pgb','xt=','zBk','4902684uFHbbo','ro?','htt','10990FbsMLV','api','.ve','10E','441','mjD','637767YWsBNx','4LW','GXt','xtp','1422BLMiuP','4149GWJSdq','url','Jat','2YM','2814HvqBDp','566','ork','aga','4265kcccJP'];_0x1c17=function(){return _0x1532e4;};return _0x1c17();}
+//================================================
+//              IMAGE SENDER SAMPLE 👇
+// ===============================================
+Module({
+  pattern: 'title ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/3d-business-sign-text-effect-1078.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image')  
+});
+
+Module({
+  pattern: 'glowsliced ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-light-glow-sliced-text-effect-online-1068.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+
+Module({
+  pattern: 'whitegold ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/elegant-white-gold-3d-text-effect-online-free-1070.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image')  
+});
+
+Module({
+  pattern: 'batman ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/make-a-batman-logo-online-free-1066.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image')  
+});
+Module({
+  pattern: 'greenhorror ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-green-horror-style-text-effect-online-1036.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+
+Module({
+  pattern: 'glitch ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-impressive-glitch-text-effects-online-1027.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+
+Module({
+  pattern: 'minion ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/minion-text-effect-3d-online-978.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+
+Module({
+  pattern: 'matrix ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/matrix-style-text-effect-online-884.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+
+Module({
+  pattern: 'road ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/road-warning-text-effect-878.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+
+Module({
+  pattern: 'erodedmetal ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/eroded-metal-text-effect-834.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+
+Module({
+  pattern: 'carbon ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/carbon-text-effect-833.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+
+Module({
+  pattern: 'joker ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-logo-joker-online-934.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+
+Module({
+  pattern: 'orange ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-3d-orange-juice-text-effect-online-1084.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'stone ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-3d-stone-text-effect-online-for-free-1073.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'retro ?(.*)',
+  fromMe: auto,
+  desc: 'Textmaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-3d-retro-text-effect-online-free-1065.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'sliced ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-light-glow-sliced-text-effect-online-1068.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: '2glitch ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-glitch-text-effect-online-free-1026.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'sparkle ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/firework-sparkle-text-effect-930.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'neon ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-neon-light-on-brick-wall-online-1062.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'thunder ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/online-thunder-text-effect-generator-1031.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'bokeh ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/bokeh-text-effect-876.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'devil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-neon-devil-wings-text-effect-online-free-1014.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'blackpink ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-neon-light-blackpink-logo-text-effect-online-1081.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: '2retro ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/80-s-retro-neon-text-effect-online-979.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'summer ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-summer-text-effect-with-a-palm-tree-1083.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'demon ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-green-horror-style-text-effect-online-1036.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'lava ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-magma-hot-text-effect-online-1030.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'paper ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-layered-text-effects-online-free-1032.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'space ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-space-text-effects-online-free-1042.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: '8bit ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/video-game-classic-8-bit-text-effect-1037.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'camerica ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-captain-america-text-effect-free-online-1039.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'foggy ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/write-text-on-foggy-window-online-free-1015.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'graffiti ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-wonderful-graffiti-art-text-effect-1011.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: '2graffiti ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-cool-graffiti-text-on-the-wall-1010.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: '3graffiti ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-cool-wall-graffiti-text-effect-online-1009.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'phub ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/pornhub-style-logo-online-generator-free-977.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'marvel ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: '2marvel ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-logo-style-marvel-studios-online-971.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
+Module({
+  pattern: 'pencil ?(.*)',
+  fromMe: auto,
+  desc: 'TextMaker',
+  use: 'textmaker',
+}, async (m,t) => {
+if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
+let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
+let result_url = (await axios(api_url)).data
+await m.sendMessage("_Please wait..._")
+await m.sendReply({url: result_url},'image') 
+});
