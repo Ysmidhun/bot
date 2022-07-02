@@ -47,7 +47,7 @@ Module({
       var {
         thumbnail,title,size
     } = await downloadYT(query[1],'audio');
-    await message.client.sendMessage(message.jid,{image: {url: thumbnail},caption:`*Downloading:* ${'```'+title+'```'}`})
+    await message.sendImageTemplate({url: thumbnail},`*Downloading:* _${title}_`,`Size: ${size}`,[])
     var song = await getSong(query[1]);
       ffmpeg(song)
      .save('./song.mp3')
@@ -60,7 +60,7 @@ Module({
               quoted: message.data
           });
 
-                 });         return;
+                });         return;
         }
   var myid = message.client.user.id.split("@")[0].split(":")[0]
   let sr = await searchYT(match[1]);
@@ -85,7 +85,7 @@ Module({
       buttonText: "Select song",
       sections
   }
-  await message.client.sendMessage(message.jid, listMessage)
+  await message.client.sendMessage(message.jid, listMessage,{quoted: message.data})
 }));
 Module({
   pattern: 'yts ?(.*)',
@@ -117,7 +117,7 @@ Module({
       buttonText: "Select a video",
       sections
   }
-  await message.client.sendMessage(message.jid, listMessage)
+  await message.client.sendMessage(message.jid, listMessage,{quoted: message.data})
 }));
 Module({
   on: 'button',
