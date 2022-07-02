@@ -21,8 +21,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/3d-business-sign-text-effect-1078.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image')  
 });
 
@@ -34,8 +35,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-light-glow-sliced-text-effect-online-1068.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 
@@ -47,8 +49,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/elegant-white-gold-3d-text-effect-online-free-1070.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image')  
 });
 
@@ -60,8 +63,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/make-a-batman-logo-online-free-1066.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image')  
 });
 Module({
@@ -72,8 +76,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-green-horror-style-text-effect-online-1036.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 
@@ -85,8 +90,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-impressive-glitch-text-effects-online-1027.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 
@@ -98,8 +104,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/minion-text-effect-3d-online-978.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 
@@ -111,8 +118,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/matrix-style-text-effect-online-884.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 
@@ -124,8 +132,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/road-warning-text-effect-878.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 
@@ -137,8 +146,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/eroded-metal-text-effect-834.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 
@@ -150,8 +160,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/carbon-text-effect-833.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 
@@ -163,8 +174,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-logo-joker-online-934.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 
@@ -176,8 +188,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-a-3d-orange-juice-text-effect-online-1084.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -188,8 +201,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-a-3d-stone-text-effect-online-for-free-1073.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -200,8 +214,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-3d-retro-text-effect-online-free-1065.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -212,8 +227,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-light-glow-sliced-text-effect-online-1068.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -224,8 +240,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-a-glitch-text-effect-online-free-1026.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -236,8 +253,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/firework-sparkle-text-effect-930.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -248,8 +266,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-neon-light-on-brick-wall-online-1062.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -260,8 +279,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/online-thunder-text-effect-generator-1031.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -272,8 +292,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/bokeh-text-effect-876.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -284,8 +305,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-neon-devil-wings-text-effect-online-free-1014.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -296,8 +318,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-neon-light-blackpink-logo-text-effect-online-1081.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -308,8 +331,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/80-s-retro-neon-text-effect-online-979.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -320,8 +344,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-a-summer-text-effect-with-a-palm-tree-1083.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -332,8 +357,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-green-horror-style-text-effect-online-1036.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -344,8 +370,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-a-magma-hot-text-effect-online-1030.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -356,8 +383,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-layered-text-effects-online-free-1032.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -368,8 +396,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-space-text-effects-online-free-1042.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -380,8 +409,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/video-game-classic-8-bit-text-effect-1037.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -392,8 +422,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-a-captain-america-text-effect-free-online-1039.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -404,8 +435,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-a-sketch-text-effect-online-1044.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -416,8 +448,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/write-text-on-foggy-window-online-free-1015.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -428,8 +461,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-wonderful-graffiti-art-text-effect-1011.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -440,8 +474,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-a-cool-graffiti-text-on-the-wall-1010.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -452,8 +487,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-cool-wall-graffiti-text-effect-online-1009.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -464,8 +500,9 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/pornhub-style-logo-online-generator-free-977.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -475,10 +512,10 @@ Module({
   use: 'textmaker',
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
-let api_url = base.format("https://textpro.me/create-logo-style-marvel-studios-online-971.html",encodeURIComponent(t[1]))
+let api_url = base.format("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972.html",encodeURIComponent(t[1]))
 await m.sendMessage("_Please wait..._")
 let result_url = (await axios(api_url)).data
-if (typeof result_url === "number") return await m.sendReply("*Need more text!*\n*Ex: Text1,Text2*")
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -491,6 +528,6 @@ if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-logo-style-marvel-studios-online-971.html",encodeURIComponent(t[1]))
 await m.sendMessage("_Please wait..._")
 let result_url = (await axios(api_url)).data
-if (typeof result_url === "number") return await m.sendReply("*Need more text!*\n*Ex: Text1,Text2*")
+if (typeof result_url === "number") return await m.sendReply("*Need "+result_url+" text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
