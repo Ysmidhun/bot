@@ -475,9 +475,10 @@ Module({
   use: 'textmaker',
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
-let api_url = base.format("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
+let api_url = base.format("https://textpro.me/create-logo-style-marvel-studios-online-971.html",encodeURIComponent(t[1]))
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need more text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
 Module({
@@ -488,7 +489,8 @@ Module({
 }, async (m,t) => {
 if (!encodeURIComponent(t[1])) return await m.sendReply("*Need text*")
 let api_url = base.format("https://textpro.me/create-logo-style-marvel-studios-online-971.html",encodeURIComponent(t[1]))
-let result_url = (await axios(api_url)).data
 await m.sendMessage("_Please wait..._")
+let result_url = (await axios(api_url)).data
+if (typeof result_url === "number") return await m.sendReply("*Need more text!*\n*Ex: Text1,Text2*")
 await m.sendReply({url: result_url},'image') 
 });
