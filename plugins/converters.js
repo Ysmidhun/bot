@@ -108,5 +108,6 @@ Module({
     desc: "Text to animated sticker"
 }, (async (message, match) => {
     if (match[1] == '') return await message.sendMessage("*Need text*")
-     await message.sendReply(await skbuffer("https://api.xteam.xyz/attp?file&text="+encodeURI(match[1])), 'sticker');      
+    try { var result = await skbuffer("https://api.xteam.xyz/attp?file&text="+encodeURI(match[1]))} catch {var result = await skbuffer("https://raganork-api.herokuapp.com/api/attp?text="+encodeURI(match[1] +"&apikey=with_love_souravkl11"))} 
+    await message.sendReply(result,'sticker');      
 }));
