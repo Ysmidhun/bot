@@ -73,12 +73,12 @@ const {
     if (!message.reply_message || !message.reply_message.audio) return await message.sendMessage("_Need audio!_");
     var savedFile = await saveMessage(message.reply_message);
         await fs.writeFileSync('./temp/avmix/audio.mp3', fs.readFileSync(savedFile));
-        await fs.writeFileSync('./temp/avmix/video.jpg', await skbuffer("https://i.imgur.com/4pybvW1.jpeg"));
+        await fs.writeFileSync('./temp/avmix/video.mp4', await skbuffer("https://i.imgur.com/TsesS9x.mp4"));
         await message.sendReply("_Processing..._")
         
-    AVmix('./temp/avmix/video.jpg', './temp/avmix/audio.mp3', './temp/avmix/mixed.mp4', async function(video) {
+    AVmix('./temp/avmix/video.mp4', './temp/avmix/audio.mp3', './temp/avmix/mixed.mp4', async function(video) {
         await message.sendMessage(video, 'video');
-        await fs.unlinkSync('./temp/avmix/video.jpg');
+        await fs.unlinkSync('./temp/avmix/video.mp4');
         await fs.unlinkSync('./temp/avmix/audio.mp3');
         await fs.unlinkSync('./temp/avmix/mixed.mp4');
         return;
