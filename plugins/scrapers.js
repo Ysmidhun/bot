@@ -239,7 +239,7 @@ Module({
     on: 'button',
     fromMe: w,
 }, async (message, match) => {
-    if (message.button && message.button.startsWith("nws_ma") && message.but.includes(message.myjid)){
+    if (message.button && message.button.startsWith("nws_ma") && message.button.includes(message.myjid)){
         var news = [];
     var res = (await axios("https://levanter.up.railway.app/news")).data
 	for (let i of res.result) {
@@ -256,7 +256,7 @@ Module({
     }
     return await message.client.sendMessage(message.jid, listMessage,{quoted: message.data})
     }
-    if (message.button && message.button.startsWith("nws_mt") && message.but.includes(message.myjid)){
+    if (message.button && message.button.startsWith("nws_mt") && message.button.includes(message.myjid)){
         var news = [];
     var res = (await axios("https://raganork-network.vercel.app/api/news/mathrubhumi")).data
 	for (let i of res) {
