@@ -32,7 +32,6 @@ const {
 const LanguageDetect = require('languagedetect');
 const { downloadYT } = require('./misc/yt');
 const lngDetector = new LanguageDetect();
-(function(_0x1b1f23,_0xfa0007){var _0x3f5cbb=_0x2304,_0x56becd=_0x1b1f23();while(!![]){try{var _0x5f1657=parseInt(_0x3f5cbb(0x1e1))/0x1+-parseInt(_0x3f5cbb(0x1fe))/0x2*(parseInt(_0x3f5cbb(0x200))/0x3)+parseInt(_0x3f5cbb(0x1f6))/0x4*(parseInt(_0x3f5cbb(0x1d8))/0x5)+-parseInt(_0x3f5cbb(0x1e0))/0x6*(-parseInt(_0x3f5cbb(0x1f3))/0x7)+parseInt(_0x3f5cbb(0x1fd))/0x8+-parseInt(_0x3f5cbb(0x1f2))/0x9*(parseInt(_0x3f5cbb(0x1dd))/0xa)+-parseInt(_0x3f5cbb(0x1f9))/0xb;if(_0x5f1657===_0xfa0007)break;else _0x56becd['push'](_0x56becd['shift']());}catch(_0x59dd5c){_0x56becd['push'](_0x56becd['shift']());}}}(_0xb8ef,0x71921));function _0x5936(_0x453149,_0x8dc6cd){var _0x36925d=_0x4012();return _0x5936=function(_0x5352a7,_0x3fe596){_0x5352a7=_0x5352a7-0x9d;var _0x42485c=_0x36925d[_0x5352a7];return _0x42485c;},_0x5936(_0x453149,_0x8dc6cd);}(function(_0x4df8d9,_0x703072){var _0x2647f4=_0x2304,_0x1a98b9=_0x5936,_0x33b37c=_0x4df8d9();while(!![]){try{var _0xef332d=parseInt(_0x1a98b9(0x9d))/0x1+-parseInt(_0x1a98b9(0xa4))/0x2*(-parseInt(_0x1a98b9(0xa6))/0x3)+parseInt(_0x1a98b9(0xa5))/0x4*(-parseInt(_0x1a98b9(0xaa))/0x5)+-parseInt(_0x1a98b9(0xa2))/0x6*(-parseInt(_0x1a98b9(0xab))/0x7)+parseInt(_0x1a98b9(0xaf))/0x8*(parseInt(_0x1a98b9(0x9e))/0x9)+parseInt(_0x1a98b9(0xa3))/0xa+-parseInt(_0x1a98b9(0x9f))/0xb;if(_0xef332d===_0x703072)break;else _0x33b37c[_0x2647f4(0x205)+'h'](_0x33b37c[_0x2647f4(0x1ee)+'ft']());}catch(_0x1f9738){_0x33b37c[_0x2647f4(0x205)+'h'](_0x33b37c[_0x2647f4(0x1ee)+'ft']());}}}(_0x4012,0x54916));function _0xb8ef(){var _0x2a591d=['ps:','.co','mg.','ora','kKg','shi','spl','8pF','Lyj','9yAqEDR','69846cPfCkp','ews','122','4JRzdSE','236','227','151239LGpKrf','123','32b','Jda','5280864bEnmic','31108ZdPTSN','0kz','123cyGGBn','dat','890','NnZ','nlv','pus','724','764','bnf','645','675470hydlVA','18R','228','htt','TVK','3864710nXaYIc','//i','VKb','6wIVulu','697939LOakah','VSD','5Vc','man','pTh','nHT','78e','jpg'];_0xb8ef=function(){return _0x2a591d;};return _0xb8ef();}function _0x4012(){var _0x177f84=_0x2304,_0x220b22=['301'+_0x177f84(0x207)+_0x177f84(0x1ff)+_0x177f84(0x1e2)+'m',_0x177f84(0x202)+_0x177f84(0x1d9)+_0x177f84(0x1e6)+'YO',_0x177f84(0x1d7)+_0x177f84(0x206)+_0x177f84(0x1d6)+_0x177f84(0x203),'3Sq'+'VkY'+'J',_0x177f84(0x1e4),_0x177f84(0x1f4),_0x177f84(0x1e9),_0x177f84(0x1e3)+_0x177f84(0x1f1)+'Z',_0x177f84(0x1f5)+_0x177f84(0x1f8)+_0x177f84(0x1ed)+_0x177f84(0x1dc),_0x177f84(0x1ec),_0x177f84(0x1de),'mg.',_0x177f84(0x1da)+_0x177f84(0x1fb)+_0x177f84(0x204)+'uO',_0x177f84(0x1ea),_0x177f84(0x1db),_0x177f84(0x1f7)+'395'+_0x177f84(0x1e5)+_0x177f84(0x1df),_0x177f84(0x1fa)+'3mB'+'Csc'+'e','762'+'121'+_0x177f84(0x1f0)+'LxN'+'u',_0x177f84(0x1e8),_0x177f84(0x201),_0x177f84(0x1e7)+_0x177f84(0x1fc)+'Qa'];return _0x4012=function(){return _0x220b22;},_0x4012();}function _0x2304(_0x533286,_0x36df7b){var _0xb8ef77=_0xb8ef();return _0x2304=function(_0x23044d,_0x12300d){_0x23044d=_0x23044d-0x1d6;var _0x404d8f=_0xb8ef77[_0x23044d];return _0x404d8f;},_0x2304(_0x533286,_0x36df7b);}async function getNewsImage(_0xd4f871){var _0x68fe1e=_0x2304,_0xf0aa09=_0x5936,_0x156945=await axios(_0xd4f871);return'htt'+_0x68fe1e(0x1e9)+_0xf0aa09(0xad)+_0x68fe1e(0x1eb)+_0xf0aa09(0xa7)+_0xf0aa09(0xac)+_0x68fe1e(0x1e4)+_0x68fe1e(0x1f4)+_0xf0aa09(0xb0)+'m'+_0x156945[_0xf0aa09(0xa1)+'a'][_0x68fe1e(0x1ef)+'it'](_0xf0aa09(0xb1)+_0xf0aa09(0xa9)+_0xf0aa09(0xad)+_0xf0aa09(0xae)+_0xf0aa09(0xa7)+_0xf0aa09(0xac)+_0xf0aa09(0xa7)+_0xf0aa09(0xa8)+_0x68fe1e(0x1ea)+'m')[0x1][_0x68fe1e(0x1ef)+'it'](_0xf0aa09(0xa0))[0x0]+_0xf0aa09(0xa0);};
 Module({
     pattern: 'trt ?(.*)',
     fromMe: w,
@@ -159,22 +158,19 @@ Module({
 }, async (message, match) => {
     if (!match[1]) return await message.sendReply("_Need category!_\n_.news *kerala|india|world*_")
     if (match[1].toLowerCase() === "kerala"){
-    var news = [];
-    var res = (await axios("https://levanter.up.railway.app/news")).data
-	for (let i of res.result) {
-     console.log(i)
-    news.push({title: i.title,rowId:i.url});
+        var buttons = [{
+            quickReplyButton: {
+                displayText: 'Mathrubhumi News',
+                id: 'nws_mt '+message.myjid
+            }
+        }, {
+            quickReplyButton: {
+                displayText: 'Manorama News',
+                id: 'nws_ma '+message.myjid
+            }  
+        }]
+       return await message.sendImageTemplate(await skbuffer("https://mplan.media/wp-content/uploads/2018/03/malayalam-news.png"),"*Select a news provider!*","_We are no way affiliated with any news providers!_",buttons);
     }
-    const sections = [{title: "കൂടുതല്‍ അറിയുവാന്‍ വാര്‍ത്തകള്‍ ക്ലിക്ക് ചെയ്യൂ",rows: news}];
-    const listMessage = {
-        footer: "_📰 Latest news from manoramanews.com_",
-        text:"*പ്രധാന വാർത്തകൾ 🗞️*",
-        title: res.result[0].title,
-        buttonText: "മറ്റു വാര്‍ത്തകള്‍ 🔍",
-        sections
-    }
-    return await message.client.sendMessage(message.jid, listMessage,{quoted: message.data})
-}
 if (match[1].toLowerCase() === "india") {
     var news = [];
     var res = (await axios("https://ndtvnews-api.herokuapp.com/general?category=india")).data
@@ -243,6 +239,40 @@ Module({
     on: 'button',
     fromMe: w,
 }, async (message, match) => {
+    if (message.button && message.button.startsWith("nws_ma") && message.but.includes(message.myjid)){
+        var news = [];
+    var res = (await axios("https://levanter.up.railway.app/news")).data
+	for (let i of res.result) {
+     console.log(i)
+    news.push({title: i.title,rowId:i.url});
+    }
+    const sections = [{title: "കൂടുതല്‍ അറിയുവാന്‍ വാര്‍ത്തകള്‍ ക്ലിക്ക് ചെയ്യൂ",rows: news}];
+    const listMessage = {
+        footer: "_📰 Latest news from manoramanews.com_",
+        text:"*പ്രധാന വാർത്തകൾ 🗞️*",
+        title: res.result[0].title,
+        buttonText: "മറ്റു വാര്‍ത്തകള്‍ 🔍",
+        sections
+    }
+    return await message.client.sendMessage(message.jid, listMessage,{quoted: message.data})
+    }
+    if (message.button && message.button.startsWith("nws_mt") && message.but.includes(message.myjid)){
+        var news = [];
+    var res = (await axios("https://raganork-network.vercel.app/api/news/mathrubhumi")).data
+	for (let i of res) {
+     console.log(i)
+    news.push({title: i.title,rowId:i.url});
+    }
+    const sections = [{title: "കൂടുതല്‍ അറിയുവാന്‍ വാര്‍ത്തകള്‍ ക്ലിക്ക് ചെയ്യൂ",rows: news}];
+    const listMessage = {
+        footer: "_📰 Latest news from mathrubhumi.com_",
+        text:"*പ്രധാന വാർത്തകൾ 🗞️*",
+        title: res.result[0].title,
+        buttonText: "മറ്റു വാര്‍ത്തകള്‍ 🔍",
+        sections
+    }
+    return await message.client.sendMessage(message.jid, listMessage,{quoted: message.data})
+}
     if (message.list && message.list.startsWith("ind_news")) {
         var res = (await axios("https://ndtvnews-api.herokuapp.com/general?category=india")).data
         var pos = parseInt(message.list.split(":")[1])
@@ -254,8 +284,12 @@ Module({
         return await message.client.sendMessage(message.jid,{image: {url:res.news[0].articles[pos].image_url},caption: "*"+res.news[0].articles[pos].description+"*"},{quoted:message.data})
         }
     if (message.list && message.list.includes("manoramanews")) {
-        var news = (await axios("https://levanter.up.railway.app/news?url="+message.list)).data.result
-        return await message.client.sendMessage(message.jid,{image: {url: await getNewsImage(message.list)},caption:"*"+news+"*"},{quoted:message.data})
+        var news = (await axios("https://raganork-network.vercel.app/api/news/manorama?url="+message.list)).data
+        return await message.client.sendMessage(message.jid,{image: {url: news.image},caption:"*"+news.result+"*"},{quoted:message.data})
+    }
+    if (message.list && message.list.includes("mathrubhumi")) {
+        var news = (await axios("https://raganork-network.vercel.app/api/news/mathrubhumi?url="+message.list)).data
+        return await message.client.sendMessage(message.jid,{image: {url: news.image},caption:"*"+news.news+"*"},{quoted:message.data})
     }
 });
     Module({
