@@ -267,7 +267,7 @@ Module({
     const listMessage = {
         footer: "_📰 Latest news from mathrubhumi.com_",
         text:"*പ്രധാന വാർത്തകൾ 🗞️*",
-        title: res.result[0].title,
+        title: res[0].title,
         buttonText: "മറ്റു വാര്‍ത്തകള്‍ 🔍",
         sections
     }
