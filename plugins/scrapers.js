@@ -168,7 +168,13 @@ Module({
                 displayText: 'Manorama News',
                 id: 'nws_ma '+message.myjid
             }  
-        }]
+        },{
+            quickReplyButton: {
+                displayText: '24 News',
+                id: '24n '+message.myjid
+            }  
+        }
+]
        return await message.sendImageTemplate(await skbuffer("https://mplan.media/wp-content/uploads/2018/03/malayalam-news.png"),"*Select a news provider!*","_We are no way affiliated with any news providers!_",buttons);
     }
 if (match[1].toLowerCase() === "india") {
@@ -273,10 +279,31 @@ Module({
     }
     return await message.client.sendMessage(message.jid, listMessage,{quoted: message.data})
 }
+if (message.button && message.button.startsWith("24n") && message.button.includes(message.myjid)){
+        var news = [];
+    var res = (await axios("https://raganork-network.vercel.app/api/news/twentyfour")).data
+	for (let i of res) {
+     console.log(i)
+    news.push({title: i.title,rowId:i.url});
+    }
+    const sections = [{title: "കൂടുതല്‍ അറിയുവാന്‍ വാര്‍ത്തകള്‍ ക്ലിക്ക് ചെയ്യൂ",rows: news}];
+    const listMessage = {
+        footer: "_📰 Latest news from twentyfournews.com_",
+        text:"*പ്രധാന വാർത്തകൾ 🗞️*",
+        title: res[0].title,
+        buttonText: "മറ്റു വാര്‍ത്തകള്‍ 🔍",
+        sections
+    }
+    return await message.client.sendMessage(message.jid, listMessage,{quoted: message.data})
+}
     if (message.list && message.list.startsWith("ind_news")) {
         var res = (await axios("https://ndtvnews-api.herokuapp.com/general?category=india")).data
         var pos = parseInt(message.list.split(":")[1])
         return await message.client.sendMessage(message.jid,{image: {url:res.news[0].articles[pos].image_url},caption: "*"+res.news[0].articles[pos].description+"*"},{quoted:message.data})
+    }
+    if (message.list && message.list.includes("twentyfournews")) {
+        var res = (await axios("https://raganork-network.vercel.app/api/news/twentyfour?url="+message.list)).data
+        return await message.client.sendMessage(message.jid,{image: {url:res.image},caption: "*"+res.news+"*"},{quoted:message.data})
     }
     if (message.list && message.list.startsWith("wrld_news")) {
         var res = (await axios("https://ndtvnews-api.herokuapp.com/general?category=world")).data
