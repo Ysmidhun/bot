@@ -23,7 +23,8 @@ Module({
     var commits = await git.log(['main' + '..origin/' + 'main']);
     var mss = '';
     if (commits.total === 0) {
-    mss = "*Bot up to date*";
+    mss = "*No pending updates!*";
+    var img = "https://i.imgur.com/ewoHjmm.jpeg"
     var buttons = [{
         urlButton: {
             displayText: 'WIKI',
@@ -31,14 +32,15 @@ Module({
         }
     }];
     } else {
-        var changelog = "_Updates are available_\n\n";
+        var changelog = "_Pending updates:_\n\n";
         commits['all'].map(
             (commit) => {
-                changelog += `⧉ *${commit.message}* _[${commit.date.substring(0, 10)}]_ \n`
+                changelog += `• *${commit.message}* _[${commit.date.substring(0, 10)}]_ \n`
             }
         );
         mss = changelog;
-        var buttons = [{
+       var img = "https://i.imgur.com/z31OAAK.jpeg"
+       var buttons = [{
         urlButton: {
             displayText: 'WIKI',
             url: 'https://github.com/souravkl11/raganork-md/wiki'
@@ -51,7 +53,7 @@ Module({
         }
     }];
     }
-    await message.sendImageTemplate(await skbuffer("https://miro.medium.com/max/800/1*1y0JX_mOL_Xar63-iQAC0A.jpeg"),mss,"Feel free to update!",buttons);
+    await message.sendImageTemplate(await skbuffer(img),mss,"Feel free to update!",buttons);
     }));
 Module({
     on: 'button',
