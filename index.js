@@ -1,4 +1,4 @@
-const client = require('./lib/client')
+const client = require('./lib/Greeting')
 const { DATABASE, VERSION } = require('./config')
 const start = async () => {
 	try {
