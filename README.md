@@ -1,5 +1,4 @@
-# _Raganork-multi-device_
-## _Multi device whatsapp bot created with [@adiwajshing/baileys](https://github.com/adiwajshing/Baileys)_
+# _APARNA MWOL V3 MD MULTI DEVICE BOT
 #### _Looking for non multi device version? Get it [here](https://github.com/souravkl11/raganork-legacy)_
 <!---## Readme first before using 👇❌
 ### (Due to the removal of heroku-github integration, this project is currently unable to deploy to heroku servers. As of this, existing users also couldn't update their bots.)
