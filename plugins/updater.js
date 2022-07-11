@@ -39,7 +39,7 @@ Module({
             }
         );
         mss = changelog;
-       var img = "https://i.imgur.com/z31OAAK.jpeg"
+       var img = "https://i.imgur.com/SejLinU.jpeg"
        var buttons = [{
         urlButton: {
             displayText: 'WIKI',
