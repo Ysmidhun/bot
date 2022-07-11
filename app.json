@@ -52,7 +52,7 @@
         "BOT_NAME": {
             "description": "Name of AI chatbot",
             "required": true,
-            "value":"Raganork"
+            "value":"★⃝🇦🇺𝘼𝙋𝘼𝙍𝙉𝘼 𝙈𝙒𝙊𝙇⏤͟͟͞͞★➵͜͡🌸"
         },
         "AUDIO_DATA": {
             "description": "Name of audio (take) name;name;image(url)",
