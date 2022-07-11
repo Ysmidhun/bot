@@ -221,7 +221,7 @@ Module({
             id: 'private '+message.myjid
         }  
     }]
-    await message.sendImageTemplate(await skbuffer("https://mma.prnewswire.com/media/701943/Mode_Logo.jpg"),"Working mode configuration","Current mode: "+Config.MODE,buttons);
+    await message.sendImageTemplate(await skbuffer("https://i.imgur.com/SejLinU.jpeg"),"Working mode configuration","Current mode: "+Config.MODE,buttons);
     }));
 Module({
     pattern: 'chatbot',
@@ -246,7 +246,7 @@ Module({
             id: 'cbd '+message.myjid
         }  
     }]
-    await message.sendImageTemplate(await skbuffer("https://kriyatec.com/wp-content/uploads/2020/05/chatbot2.jpeg"),"🤖 Chatbot configuration","Current status: "+Config.CHATBOT,buttons);
+    await message.sendImageTemplate(await skbuffer("https://i.imgur.com/SejLinU.jpeg"),"🤖 Chatbot configuration","Current status: "+Config.CHATBOT,buttons);
     }));
 Module({
     pattern: 'antilink',
@@ -278,7 +278,7 @@ Module({
         }  
     }]
     var status = jids.includes(message.jid) ? 'on' : 'off';
-    await message.sendImageTemplate(await skbuffer("https://thumbs.dreamstime.com/b/settings-gears-icon-crystal-blue-banner-background-isolated-172063768.jpg"),"🔗 Antilink configuration of "+(await message.client.groupMetadata(message.jid)).subject,"Current status: "+status,buttons);
+    await message.sendImageTemplate(await skbuffer("https://i.imgur.com/SejLinU.jpeg"),"🔗 Antilink configuration of "+(await message.client.groupMetadata(message.jid)).subject,"Current status: "+status,buttons);
     }));
 Module({
     on: 'button',
