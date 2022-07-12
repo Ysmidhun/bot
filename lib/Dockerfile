@@ -1,6 +1,6 @@
 FROM quay.io/souravkl11/raganork:multidevice
 
-RUN git clone https://github.com/souravkl11/raganork-md /skl/Raganork
+RUN git clone https://github.com/YSMIDHUN/APARNA_V3_MD.git /skl/Raganork
 WORKDIR /skl/Raganork
 ENV TZ=Asia/Kolkata
 RUN npm install supervisor -g
