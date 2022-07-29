@@ -11,7 +11,7 @@
   <a href="https://wa.me/918281370025"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
 </p>
   
-<a href="https://raganork-qr.herokuapp.com/api/raganork-qr"><img align="center" src="https://www.linkpicture.com/q/20220711_172406.png" alt="Scan QR" height="112" width="300" /></a>
+<a href="https://levanter.up.railway.app/md"><img align="center" src="https://www.linkpicture.com/q/20220711_172406.png" alt="Scan QR" height="112" width="300" /></a>
 <br>
 <div>
 <br>
