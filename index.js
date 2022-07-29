@@ -1,1 +1,13 @@
-https://raw.githubusercontent.com/lyfe00011/whatsapp-bot-md/master/index.js
+const client = require('./lib/client')
+const { DATABASE, VERSION } = require('./config')
+const start = async () => {
+	try {
+		console.log(`levanter ${VERSION}`)
+		await DATABASE.sync()
+		console.log('DB syncing')
+		await client.connect()
+	} catch (error) {
+		console.error(error)
+	}
+}
+start()
