@@ -11,7 +11,7 @@
   <a href="https://wa.me/918281370025"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
 </p>
   
-<a href="https://levanter.up.railway.app/md"><img align="center" src="https://www.linkpicture.com/q/20220711_172406.png" alt="Scan QR" height="112" width="300" /></a>
+<a href="https://raganork-web.vercel.app/"><img align="center" src="https://www.linkpicture.com/q/20220711_172406.png" alt="Scan QR" height="112" width="300" /></a>
 <br>
 <div>
 <br>
@@ -25,4 +25,4 @@
 
 # _[How to use? Documentation](https://github.com/souravkl11/raganork-md/wiki/Raganork-Documentation)_
 
-# You can also use as a BGM bot. [Click here](https://github.com/souravkl11/raganork-md/wiki/Docs#how-to-set-up-bgm-bot)
+# You can also use as a BGM bot. 
