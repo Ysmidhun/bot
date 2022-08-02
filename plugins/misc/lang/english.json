@@ -83,7 +83,7 @@
             "AVMIX_VIDEO_ADDED": "_Saved video_"
         },
         "heroku": {
-            "RESTART_DESC": "Restarts bot",
+            "RESTART_DESC": "Restarts",
             "RESTART_MSG": "_Restarting!_",
             "SHUTDOWN_DESC": "Shutdown Bot",
             "SHUTDOWN_MSG": "_Shutting down ❌_",
@@ -230,3 +230,4 @@
        
     }
 }
+
