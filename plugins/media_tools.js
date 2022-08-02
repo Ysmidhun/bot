@@ -274,4 +274,3 @@ await message.client.sendMessage(message.jid, templateMessage)
     if (match[1] === "flip") angle = "3" 
     await message.sendReply(fs.readFileSync(await rotate(file,angle)),'video')
 });
-
