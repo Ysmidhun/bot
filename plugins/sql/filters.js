@@ -77,3 +77,4 @@ module.exports = {
     setFilter: setFilter,
     deleteFilter: deleteFilter
 };
+
