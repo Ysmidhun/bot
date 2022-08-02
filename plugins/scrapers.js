@@ -1,7 +1,7 @@
-/* Copyright (C) 2022 Sourav KL11.
+/* Copyright (C) 2022 YS MIDHUN.
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
-Raganork MD - Sourav KL11
+APARNA V3 MD - YS MIDHUN 
 */
 const googleTTS = require('google-translate-tts');
 const {
@@ -28,7 +28,7 @@ const {
     getVideo,
     ytdlServer,
     skbuffer
-} = require('raganork-bot');
+} = require('APARNA_V3_MD');
 const LanguageDetect = require('languagedetect');
 const { downloadYT } = require('./misc/yt');
 const lngDetector = new LanguageDetect();
