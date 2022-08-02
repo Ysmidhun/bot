@@ -124,3 +124,4 @@ Module({pattern: 'updt',use: 'owner', fromMe: true,dontAddCommandList: true, des
            await message.client.sendMessage(message.jid, { text:"_Restarting_"})
             }
 }));
+
