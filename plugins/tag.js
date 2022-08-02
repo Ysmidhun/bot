@@ -43,3 +43,4 @@ Module({pattern: 'send ?(.*)',use: 'utility', fromMe: true, desc: "Sends message
       await message.forwardMessage(jid, message.quoted,{contextInfo:{isForwarded: false},detectLinks: true});
     }
 }));
+
