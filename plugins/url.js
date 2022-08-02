@@ -1,9 +1,8 @@
-// © Souravkl11 - Raganork MD™
-/* Copyright (C) 2022 Sourav KL11.
+/* Copyright (C) 2022 YS MIDHUN.
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
-Raganork MD - Sourav KL11
-*/ 
+APARNA V3 MD - YS MIDHUN 
+*/
 const {MODE,IMGBB_KEY} = require('../config');
 async function webpUpload(file){
     return new Promise(async (resolve)=>{
@@ -16,7 +15,7 @@ async function webpUpload(file){
 });
 }
 const {Module} = require('../main');const ffmpeg = require('fluent-ffmpeg');
-const {upload} = require('raganork-bot');
+const {upload} = require('APARNA_V3_MD');
 let a = MODE == 'public' ? false : true;
 Module({pattern: 'url ?(.*)', fromMe: a,use: 'utility', desc:'Uploads image to imgur.com'},async (m) => { 
 if (m.reply_message.sticker){
