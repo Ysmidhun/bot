@@ -380,3 +380,4 @@ Module({
     var poster = posterApi.total_results !== 0 ? "https://image.tmdb.org/t/p/w500/"+posterApi.results[0].poster_path : data.Poster
     return await message.client.sendMessage(message.jid,{image: {url: poster}, caption:msg},{quoted: message.data})
 });
+
