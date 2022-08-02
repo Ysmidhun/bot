@@ -52,7 +52,7 @@ Module({
       ffmpeg(song)
      .save('./song.mp3')
      .on('end', async () => {
-      var song = await addInfo('./song.mp3',title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
+      var song = await addInfo('./song.mp3',title,BOT_INFO.split(";")[0],"Aparna metadata",await skbuffer(thumbnail))
       return await message.client.sendMessage(message.jid, {
               audio: song,
               mimetype: 'audio/mpeg'
