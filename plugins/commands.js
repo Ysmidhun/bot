@@ -13,7 +13,7 @@ const {
     FancyRandom: FancyRandom,
     getListFromCommand: getListFromCommand,
     skbuffer: skbuffer
-} = require("raganork-bot");
+} = require("APARNA_V3_MD");
 let w = "public" != MODE;
 const readMore = String.fromCharCode(8206).repeat(4001);
 Module({
