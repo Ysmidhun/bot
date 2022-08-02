@@ -1,5 +1,4 @@
 # _APARNA MWOL V3 MD MULTI DEVICE BOT
-## _RAGANROK BASE
 <br>
 <div align="center">
   <p align="center">
