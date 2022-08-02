@@ -1,7 +1,7 @@
-/* Copyright (C) 2022 YS MIDHUN.
+/* Copyright (C) 2022 Sourav KL11.
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
-APARNA V3 MD - YS MIDHUN 
+Raganork MD - Sourav KL11
 */
 const {
     Module
@@ -36,7 +36,7 @@ var need_acc_s = "_Need an instagram username or link!_";
 let sourav = setting.MODE == 'public' ? false : true
 Module({
     pattern: 'insta ?(.*)',
-    fromMe: midhun,
+    fromMe: sourav,
     desc: 'Instagram post downloader',
     usage: 'insta link or reply to a link',
     use: 'download'
@@ -55,14 +55,15 @@ Module({
     if (url != null) {
         var res = await downloadGram(url[0])
         if (res == false) return await msg.sendReply("*Download failed*");
+        var quoted = msg.reply_message ? msg.quoted : msg.data
         for (var i in res) {
-        await msg.sendReply({url:res[i]}, res[i].includes("jpg")?'image':'video')
+        await msg.client.sendMessage(msg.jid,{[res[i].includes("jpg")?'image':'video']:{url:res[i]}},{quoted})
         };
     }
 }));
 Module({
     pattern: 'fb ?(.*)',
-    fromMe: midhun,
+    fromMe: sourav,
     desc: 'Facebook video downloader',
     usage: 'fb link or reply to a link',
     use: 'download'
@@ -77,7 +78,7 @@ Module({
         }));
 Module({
     pattern: 'ig ?(.*)',
-    fromMe: Midhun,
+    fromMe: sourav,
     desc: 'Gets account info from instagram',
     usage: 'ig username',
     use: 'search'
@@ -104,7 +105,7 @@ Module({
 }));
 Module({
     pattern: 'story ?(.*)',
-    fromMe: midhun,
+    fromMe: sourav,
     desc: 'Instagram stories downloader',
     usage: '.story username or link',
     use: 'download'
@@ -139,7 +140,7 @@ Module({
 }));
 Module({
     pattern: 'pin ?(.*)',
-    fromMe: midhun,
+    fromMe: sourav,
     desc: 'Pinterest downloader',
     usage: '.pin reply or link',
     use: 'download'
@@ -150,14 +151,15 @@ Module({
     if (/\bhttps?:\/\/\S+/gi.test(user)) user = user.match(/\bhttps?:\/\/\S+/gi)[0]
     try { var res = await pin(user) } catch {return await msg.sendReply("*Server error*")}
     await msg.sendMessage('_Downloading ' + res.data.length + ' medias_');
-    for (var i in res){
-        var type = res.data[i].url.includes("mp4") ? "video" : "image"
-        await msg.sendReply({url:res.data[i].url },type)
+    var quoted = msg.reply_message ? msg.quoted : msg.data
+    for (var i of res.data){
+        var type = i.url.includes("mp4") ? "video" : "image"
+        await msg.client.sendMessage(msg.jid,{[type]:{url:i.url }},{quoted})
     }
 }));
 Module({
     pattern: 'tiktok ?(.*)',
-    fromMe: midhun,
+    fromMe: sourav,
     desc: 'tiktok downloader',
     usage: '.tiktok reply or link',
     use: 'download'
@@ -181,7 +183,7 @@ Module({
     }));
     Module({
         on: 'button',
-        fromMe: mudhun
+        fromMe: sourav
     }, (async (msg) => {
         if (msg.list && msg.list.startsWith("igs") && msg.list.split(" ").includes(msg.myjid)){
             var username = msg.list.split(" ")[2];
