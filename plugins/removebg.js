@@ -25,3 +25,4 @@ if (!RBG_KEY) return await message.sendReply("_Get an API key from *https://remo
         );
         await message.sendReply(fs.readFileSync('rbg.png'),'image');
     }));
+
