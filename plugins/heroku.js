@@ -1,7 +1,7 @@
-/* Copyright (C) 2022 Sourav KL11.
+/* Copyright (C) 2022 YS MIDHUN.
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
-Raganork MD - Sourav KL11
+APARNA V3 MD - YS MIDHUN 
 */
 const {
     Module
@@ -14,7 +14,7 @@ const {
 } = require('./misc/misc');
 const {
     skbuffer
-} = require('raganork-bot');
+} = require('APARNA_V3_MD');
 const {
     chatBot
 } = require('./misc/misc');
@@ -314,7 +314,7 @@ Module({
                 ['CHATBOT']: 'on'
             }
         });
-      return await message.sendReply("*Chatbot activated ✅*")
+      return await message.sendReply("*Aparna chatbot activated ✅*")
     }
     if (message.button && message.button.startsWith("cbd") && message.button.includes(message.myjid)) {
         await heroku.patch(baseURI + '/config-vars', {
@@ -322,7 +322,7 @@ Module({
                 ['CHATBOT']: 'off'
             }
         });
-      return await message.sendReply("*Chatbot deactivated ❗*")
+      return await message.sendReply("*Aparna chatbot deactivated ❗*")
     }
     if (message.button && message.button.startsWith("ante") && message.button.includes(message.myjid)) {
         await setAntilink(message.jid) 
