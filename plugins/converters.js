@@ -1,7 +1,7 @@
-/* Copyright (C) 2022 Sourav KL11.
+/* Copyright (C) 2022 YS MIDHUN.
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
-Raganork MD - Sourav KL11
+APARNA MD- YS MIDHUN
 */
 const {
     Module 
@@ -10,7 +10,7 @@ const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
 const {
     skbuffer
-} = require('raganork-bot');
+} = require('APARNA_V3_MD');
 const Config = require('../config');
 const {
     MODE,
@@ -38,8 +38,8 @@ Module({
         author: STICKER_DATA.split(";")[1] || "",
         packname: message.senderName,
         categories: STICKER_DATA.split(";")[2] || "😂",
-        android: "https://github.com/souravkl11/Raganork-md/",
-        ios: "https://github.com/souravkl11/Raganork-md/"
+        android: "https://github.com/YSMIDHUN/APARNA_V3_MD/",
+        ios: "https://github.com/YSMIDHUN/APARNA_V3_MD/"
     }
     if (message.reply_message.image === true) {
         return await message.client.sendMessage(message.jid,{sticker: fs.readFileSync(await addExif(await sticker(savedFile),exif))},{quoted: message.quoted})
@@ -114,8 +114,8 @@ Module({
             author: STICKER_DATA.split(";")[1] || "",
             packname: message.senderName,
             categories: STICKER_DATA.split(";")[2] || "😂",
-            android: "https://github.com/souravkl11/Raganork-md/",
-            ios: "https://github.com/souravkl11/Raganork-md/"
+            android: "https://github.com/YSMIDHUN/APARNA_V3_MD/",
+            ios: "https://github.com/YSMIDHUN/APARNA_V3_MD/"
         }
         await message.sendMessage(fs.readFileSync(await addExif(await sticker("attp.mp4",'video'),exif)),'sticker')
     })
