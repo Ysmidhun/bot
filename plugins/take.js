@@ -26,7 +26,7 @@ let {
     skbuffer,
     stickercrop,
     webp2mp4
-} = require('raganork-bot');
+} = require('APARNA_V3_MD');
 let a = MODE == 'public' ? false : true;
 let ffmpeg = require('fluent-ffmpeg');
 let fs = require('fs');
@@ -51,16 +51,16 @@ Module({
             author: match[1].includes(";")?match[1].split(";")[1]:"",
             packname: match[1].includes(";")?match[1].split(";")[0]:match[1],
             categories: STICKER_DATA.split(";")[2] || "😂",
-            android: "https://github.com/souravkl11/Raganork-md/",
-            ios: "https://github.com/souravkl11/Raganork-md/"
+            android: "https://github.com/YSMIDHUN/APARNA_V3_MD/",
+            ios: "https://github.com/YSMIDHUN/APARNA_V3_MD/"
         } }
         else {
             var exif = {
                 author: STICKER_DATA.split(";")[1] || "",
                 packname: STICKER_DATA.split(";")[0] || "",
                 categories: STICKER_DATA.split(";")[2] || "😂",
-                android: "https://github.com/souravkl11/Raganork-md/",
-                ios: "https://github.com/souravkl11/Raganork-md/"
+                android: "https://github.com/YSMIDHUN/APARNA_V3_MD/",
+                ios: "https://github.com/YSMIDHUN/APARNA_V3_MD/"
             }
         }
         return await m.client.sendMessage(m.jid,{sticker: fs.readFileSync(await addExif(q,exif))},{quoted:m.quoted})
