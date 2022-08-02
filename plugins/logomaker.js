@@ -1,7 +1,7 @@
 const {Module} = require('../main')
 const {aadhar,blur} = require('./misc/misc')
 const {MODE} = require('../config')
-const {skbuffer} = require('raganork-bot');
+const {skbuffer} = require('APARNA_V3_MD');
 var x = MODE == 'public'?false:true
 var list = '```'+`Logo Maker List
 Usage: .logo 14 Text
