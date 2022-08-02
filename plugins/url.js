@@ -35,3 +35,4 @@ try { await m.client.sendMessage(m.jid,{text:"_"+(await upload(await m.reply_mes
 }
 else return await m.sendReply("_Reply to image|video|audio|sticker_");
 });
+
