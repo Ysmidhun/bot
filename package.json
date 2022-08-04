@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YSMIDHUN/APARNA_V3_MD.git"
+    "url": "git+https://github.com/souravkl11/raganork-md.git"
   },
   "keywords": [
     "whatsapp",
@@ -19,9 +19,9 @@
   "developer": "@souravkl11",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/YSMIDHUN/APARNA_V3_MD/issues"
+    "url": "https://github.com/souravkl11/raganork/issues"
   },
-  "homepage": "https://github.com/YSMIDHUN/APARNA_V3_MD#readme",
+  "homepage": "https://github.com/souravkl11/raganork#readme",
   "dependencies": {
     "@adiwajshing/baileys": "4.1.0",
     "@adiwajshing/keyed-db":"0.2.4",
