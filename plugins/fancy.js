@@ -8,7 +8,7 @@ const {
  } = require('../main')
  const {
      Fancy
- } = require('APARNA_V3_MD')
+ } = require('raganork-bot')
  const {
      MODE
  } = require('../config');
