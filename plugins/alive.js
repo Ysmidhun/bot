@@ -7,7 +7,7 @@ const {
   FancyRandom,
   getListFromCommand,
   skbuffer
-} = require("APARNA_V3_MD");
+} = require("raganork-bot");
 const {
   Module,
   commands
