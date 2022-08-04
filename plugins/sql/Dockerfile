@@ -1,7 +1,7 @@
-FROM quay.io/souravkl11/raganork:multidevice
+FROM quay.io/YSMIDHUN/aparna:multidevice
 
-RUN git clone https://github.com/YSMIDHUN/APARNA_V3_MD /skl/Aparna
-WORKDIR /skl/Aparna
+RUN git clone https://github.com/YSMIDHUN/APARNA_V3_MD /skl/aparna
+WORKDIR /skl/aparna
 ENV TZ=Asia/Kolkata
 RUN npm install supervisor -g
 RUN yarn install --ignore-engines
