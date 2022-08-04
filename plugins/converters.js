@@ -10,7 +10,7 @@ const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
 const {
     skbuffer
-} = require('APARNA_V3_MD');
+} = require('raganork-bot');
 const Config = require('../config');
 const {
     MODE,
