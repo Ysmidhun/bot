@@ -11,12 +11,12 @@ const {
   const {
       saveMessage
   } = require('./misc/saveMessage');
-  const {skbuffer} = require('APARNA_V3_MD');
+  const {skbuffer} = require('raganork-bot');
   const {
       trim,
       AVmix,
       trimVideo
-  } = require('APARNA_V3_MD');
+  } = require('raganork-bot');
   const {
       MODE
   } = require('../config');
