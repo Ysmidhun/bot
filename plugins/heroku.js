@@ -14,7 +14,7 @@ const {
 } = require('./misc/misc');
 const {
     skbuffer
-} = require('APARNA_V3_MD');
+} = require('raganork-bot');
 const {
     chatBot
 } = require('./misc/misc');
