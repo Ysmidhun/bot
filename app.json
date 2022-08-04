@@ -42,7 +42,7 @@
         "STICKER_DATA": {
             "description": "Name of stickers created using bot. Can also split using ;",
             "required": true,
-            "value":"★⃝🎶𝘼𝙋𝘼𝙍𝙉𝘼 𝙈𝙒𝙊𝙇⏤͟͟͞͞★➵͜͡🌸"
+            "value":"★⃝🧚‍♀️𝛥𝛲𝛥𝑅𝛮𝛥 𝛭𝑊𝛩𝐿⏤͟͟͞͞★➵͜͡🌸"
         },
         "CHATBOT": {
             "description": "AI chatbot",
@@ -52,12 +52,12 @@
         "BOT_NAME": {
             "description": "Name of AI chatbot",
             "required": true,
-            "value":"★⃝🇦🇺𝘼𝙋𝘼𝙍𝙉𝘼 𝙈𝙒𝙊𝙇⏤͟͟͞͞★➵͜͡🌸"
+            "value":"★⃝🧚‍♀️𝛥𝛲𝛥𝑅𝛮𝛥 𝛭𝑊𝛩𝐿⏤͟͟͞͞★➵͜͡🌸"
         },
         "AUDIO_DATA": {
             "description": "Name of audio (take) name;name;image(url)",
             "required": true,
-            "value":"★⃝🎶𝙔𝙎_𝙈𝙄𝘿𝙃𝙐𝙉⏤͟͟͞͞★➵͜͡🌸ꪶαυ∂ισѕꫂ𔘓;★⃝🎶𝙔𝙎_𝙈𝙄𝘿𝙃𝙐𝙉⏤͟͟͞͞★➵͜͡🌸ꪶαυ∂ισѕꫂ𔘓;https://i.imgur.com/wuBJ9hH.jpeg"
+            "value":"★⃝🎶𝙔𝙎_𝙈𝙄𝘿𝙃𝙐𝙉⏤͟͟͞͞★➵͜͡🌸ꪶαυ∂ισѕꫂ𔘓;:𝟎𝟏 ─ᷟ─ͥ─ͩ─ⷩ─ͧ─ᷡ♰─ͣ─ͧ─ͩ─ͥ─ͦ─ᷤ 𝟎:𝟑𝟎;https://i.imgur.com/wuBJ9hH.jpeg"
         },
         "MODE": {
             "description": "Private or public",
