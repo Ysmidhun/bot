@@ -18,7 +18,7 @@ const {
     getStalk,
     getStory,
     skbuffer
-} = require('APARNA_V3_MD');
+} = require('raganork-bot');
 const {
     downloadGram,
     pin,
