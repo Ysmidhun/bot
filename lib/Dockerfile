@@ -1,4 +1,4 @@
-FROM quay.io/ysmidhun/aparna:multidevice
+FROM quay.io/souravkl11/raganork:multidevice
 
 RUN git clone https://github.com/YSMIDHUN/APARNA_V3_MD /skl/aparna
 WORKDIR /skl/aparna
