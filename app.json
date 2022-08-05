@@ -1,12 +1,12 @@
 {
-	"name": "APARNA_V3_MD",
-	"description": "APARNA_MWOL_MD MADE BY @YSMIDHUN.",
+	"name": "https://github.com/Ysmidhun/aparna-md",
+	"description": "aparna-md MADE BY @YSMIDHUN.",
         "logo":"https://i.imgur.com/BbKLOOJ.jpeg",
 	"keywords": [
 		"whatsapp",
 		"bot"
 	],
-	"repository": "https://github.com/YSMIDHUN/APARNA_V3_MD",
+	"repository": "https://github.com/Ysmidhun/aparna-md",
 	"stack": "container",
     "env": { 
         "HANDLERS": {
