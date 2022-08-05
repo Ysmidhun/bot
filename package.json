@@ -1,8 +1,8 @@
 {
-  "name": "aparna", 
+  "name": "APARNA_V3_MD", 
   "version": "2.0.1",
   "description": "aparna whatsapp bot- Multi device version.",
-  "main": "./Aparna/index.js",
+  "main": "./APARNA_V3_MD/index.js",
   "scripts": {
     "start": "supervisor -s index.js"
   },
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/YSMIDHUN/APARNA_V3_MD#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "4.1.0",
+    "@adiwajshing/baileys": "git+https://github.com/YSMIDHUN/Baileys.git",
     "@adiwajshing/keyed-db":"0.2.4",
     "acrcloud":"1.4.0",
     "string-crypto": "2.0.2",
