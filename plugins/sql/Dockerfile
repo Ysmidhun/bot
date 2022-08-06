@@ -1,7 +1,7 @@
-FROM fusuf/whatsasena:latest
+FROM quay.io/souravkl11/raganork:multidevice
 
-RUN git clone https://github.com/Ysmidhun/aparna-md /root/WhatsAsenaDuplicated
-WORKDIR /root/WhatsAsenaDuplicated
+RUN git clone https://github.com/Ysmidhun/aparna-md /skl/Raganork
+WORKDIR /skl/Raganork
 ENV TZ=Asia/Kolkata
 RUN npm install supervisor -g
 RUN yarn install --ignore-engines
