@@ -21,7 +21,3 @@
 <a href="https://github.com/Ysmidhun/aparna-md/fork"><img align="center" src="https://www.linkpicture.com/q/20220711_173251.png" alt="Fork and deploy" height="112" width="300" /></a>
 <div>
   <br>
-
-# _[How to use? Documentation](https://github.com/souravkl11/raganork-md/wiki/Raganork-Documentation)_
-
-# You can also use as a BGM bot. 
