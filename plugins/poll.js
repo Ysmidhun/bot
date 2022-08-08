@@ -1,8 +1,3 @@
-/* Copyright (C) 2022 YS MIDHUN.
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-APARNA V3 MD - YS MIDHUN 
-*/
 var _0x41a6fb = _0x3229;
 
 function _0x3229(_0x1bd01c, _0x58981f) {
@@ -33,7 +28,6 @@ function _0x35c4() {
         return _0x156e79;
     }, _0x35c4();
 }
-
 
 function _0x5c16(_0xef35f4, _0x166439) {
     var _0x24dcbb = _0x35c4();
