@@ -1,8 +1,3 @@
-/* Copyright (C) 2022 YS MIDHUN.
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-APARNA V3 MD - YS MIDHUN 
-*/
 const {find} = require('raganork-bot')
 const {Module} = require('../main');
 const s = require('../config');
@@ -25,4 +20,3 @@ var number = initt.replace('+','')
 var res = await find(number,'',msg.client.user.id)
 if (res == 'error') return await msg.sendReply("_Truecaller limit over! (20/20) Contact owner_")
 await msg.sendReply(res);});
-
