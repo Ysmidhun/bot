@@ -1,7 +1,7 @@
-/* Copyright (C) 2022 YS MIDHUN.
+/* Copyright (C) 2022 Sourav KL11.
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
-APARNA V3 MD - YS MIDHUN 
+Raganork MD - Sourav KL11
 */
 const {
   FancyRandom,
@@ -34,7 +34,7 @@ Module({
   var buttons = [{
     urlButton: {
         displayText: 'Github',
-        url: 'https://github.com/YSMIDHUN/APARNA_V3_MD'
+        url: 'https://github.com/souravkl11/raganork'
     }
 }, {
   urlButton: {
