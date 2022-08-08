@@ -1,4 +1,3 @@
-*/
 const {
     getString
 } = require('./misc/lang');
