@@ -1,32 +1,37 @@
 {
-  "name": "raganork", 
+  "name": "aparna-md", 
   "version": "2.0.1",
-  "description": "Raganork whatsapp bot- Multi device version.",
-  "main": "./Raganork/index.js",
+  "description": "aparna whatsapp bot- Multi device version.",
+  "main": "./aparna-md/index.js",
   "scripts": {
     "start": "supervisor -s index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/souravkl11/raganork-md.git"
+    "url": "git+https://github.com/Ysmidhun/aparna-md.git"
   },
   "keywords": [
     "whatsapp",
-    "bot",
+    "Aparna",
     "multi-device"
   ],
-  "author": "Sourav",
-  "developer": "@souravkl11",
+  "author": "Jsl",
+  "developer": "@Ysmidhun",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/souravkl11/raganork/issues"
+    "url": "https://github.com/Ysmidhun/aparna-md/issues"
   },
-  "homepage": "https://github.com/souravkl11/raganork#readme",
+  "homepage": "https://github.com/Ysmidhun/aparna-md#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "4.1.0",
+    "@adiwajshing/baileys": "4.3.0",
     "@adiwajshing/keyed-db":"0.2.4",
+    "Aparna-bot": "2.4.0",    
     "acrcloud":"1.4.0",
+    "chalk": "4.1.0",
+    "got": "11.8.2",
     "string-crypto": "2.0.2",
+    "simple-git": "3.10.0",
+    "pino": "8.3.0 ",
     "link-preview-js":"2.1.15",
     "mongodb": "^4.3.1",
     "node-webpmux": "^3.1.0",
