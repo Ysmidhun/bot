@@ -1,8 +1,3 @@
-/* Copyright (C) 2022 YS MIDHUN.
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-APARNA V3 MD - YS MIDHUN 
-*/
 const simpleGit = require('simple-git');
 const git = simpleGit();
 const {Module} = require('../main');
@@ -28,7 +23,7 @@ Module({
     var buttons = [{
         urlButton: {
             displayText: 'WIKI',
-            url: 'https://github.com/YSMIDHUN/APARNA_V3_MD/wiki'
+            url: 'https://github.com/Ysmidhun/aparna-md/wiki'
         }
     }];
     } else {
@@ -39,16 +34,16 @@ Module({
             }
         );
         mss = changelog;
-       var img = "https://i.imgur.com/SejLinU.jpeg"
+       var img = "https://i.imgur.com/z31OAAK.jpeg"
        var buttons = [{
         urlButton: {
             displayText: 'WIKI',
-            url: 'https://github.com/YSMIDHUN/APARNA_V3_MD/wiki'
+            url: 'https://github.com/Ysmidhun/aparna-md/wiki'
         }
     },
     {
         quickReplyButton: {
-            displayText: 'START APARNA UPDATE',
+            displayText: 'START UPDATE',
             id: 'upd '+message.myjid
         }
     }];
@@ -124,4 +119,3 @@ Module({pattern: 'updt',use: 'owner', fromMe: true,dontAddCommandList: true, des
            await message.client.sendMessage(message.jid, { text:"_Restarting_"})
             }
 }));
-
