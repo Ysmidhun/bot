@@ -1,8 +1,3 @@
-/* Copyright (C) 2022 YS MIDHUN.
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-APARNA V3 MD - YS MIDHUN 
-*/
 const {
   Module
 } = require('../main');
@@ -52,7 +47,7 @@ Module({
       ffmpeg(song)
      .save('./song.mp3')
      .on('end', async () => {
-      var song = await addInfo('./song.mp3',title,BOT_INFO.split(";")[0],"Aparna metadata",await skbuffer(thumbnail))
+      var song = await addInfo('./song.mp3',title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
       return await message.client.sendMessage(message.jid, {
               audio: song,
               mimetype: 'audio/mpeg'
@@ -201,7 +196,7 @@ Module({
           ffmpeg(song)
          .save('./song.mp3')
          .on('end', async () => {
-          var song = await addInfo('./song.mp3',title,BOT_INFO.split(";")[0],"Raganork audio downloader",await skbuffer(thumbnail))
+          var song = await addInfo('./song.mp3',title,BOT_INFO.split(";")[0],"Aparna audio downloader",await skbuffer(thumbnail))
           return await message.client.sendMessage(message.jid, {
               audio:song,
               mimetype: 'audio/mp4'
