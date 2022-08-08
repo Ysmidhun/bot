@@ -1,8 +1,3 @@
-/* Copyright (C) 2022 YS MIDHUN.
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-APARNA V3 MD - YS MIDHUN 
-*/
 const {
     Module
 } = require('../main');
@@ -100,10 +95,10 @@ Module({
             percentage = Math.round((quota_used / total_quota) * 100);
             remaining = total_quota - quota_used;
             await message.sendReply(
-                "Total: ```{}```\n\n".format(secondsToDhms(total_quota)) +
-                "Used: ```{}```\n".format(secondsToDhms(quota_used)) +
-                "Percent: ```{}```\n\n".format(percentage) +
-                "Remaining: ```{}```\n".format(secondsToDhms(remaining)))
+                "_Total: *{}*_\n".format(secondsToDhms(total_quota)) +
+                "_Used: *{}*_\n".format(secondsToDhms(quota_used)) +
+                "_Percent: *{}*_\n".format(percentage) +
+                "_Remaining: *{}*_\n".format(secondsToDhms(remaining)))
 
         }).catch(async (err) => {
             await message.sendMessage(error.message)
@@ -207,7 +202,7 @@ Module({
     var buttons = [{
         urlButton: {
             displayText: 'WIKI',
-            url: 'https://github.com/souravkl11/raganork-md/wiki'
+            url: 'https://github.com/Ysmidhun/aparna-md/wiki'
         }
     },
     {
@@ -221,7 +216,7 @@ Module({
             id: 'private '+message.myjid
         }  
     }]
-    await message.sendImageTemplate(await skbuffer("https://i.imgur.com/SejLinU.jpeg"),"Working mode configuration","Current mode: "+Config.MODE,buttons);
+    await message.sendImageTemplate(await skbuffer("https://mma.prnewswire.com/media/701943/Mode_Logo.jpg"),"Working mode configuration","Current mode: "+Config.MODE,buttons);
     }));
 Module({
     pattern: 'chatbot',
@@ -232,7 +227,7 @@ Module({
     var buttons = [{
         urlButton: {
             displayText: 'WIKI',
-            url: 'https://github.com/souravkl11/raganork-md/wiki'
+            url: 'https://github.com/Ysmidhun/aparna-md/wiki'
         }
     },
     {
@@ -246,7 +241,7 @@ Module({
             id: 'cbd '+message.myjid
         }  
     }]
-    await message.sendImageTemplate(await skbuffer("https://i.imgur.com/SejLinU.jpeg"),"🤖 Chatbot configuration","Current status: "+Config.CHATBOT,buttons);
+    await message.sendImageTemplate(await skbuffer("https://kriyatec.com/wp-content/uploads/2020/05/chatbot2.jpeg"),"🤖 Chatbot configuration","Current status: "+Config.CHATBOT,buttons);
     }));
 Module({
     pattern: 'antilink',
@@ -263,7 +258,7 @@ Module({
     var buttons = [{
         urlButton: {
             displayText: 'WIKI',
-            url: 'https://github.com/souravkl11/raganork-md/wiki'
+            url: 'https://github.com/Ysmidhun/aparna-md/wiki'
         }
     },
     {
@@ -278,12 +273,12 @@ Module({
         }  
     }]
     var status = jids.includes(message.jid) ? 'on' : 'off';
-    await message.sendImageTemplate(await skbuffer("https://i.imgur.com/SejLinU.jpeg"),"🔗 Antilink configuration of "+(await message.client.groupMetadata(message.jid)).subject,"Current status: "+status,buttons);
+    await message.sendImageTemplate(await skbuffer("https://thumbs.dreamstime.com/b/settings-gears-icon-crystal-blue-banner-background-isolated-172063768.jpg"),"🔗 Antilink configuration of "+(await message.client.groupMetadata(message.jid)).subject,"Current status: "+status,buttons);
     }));
 Module({
     on: 'button',
     fromMe: true
-}, (async (message, match) => {
+}, (async (message) => {
     if (message.button && message.button.startsWith("restart") && message.button.includes(message.myjid)) {
         await message.sendReply("_Restarting_")
         await heroku.delete(baseURI + '/dynos').catch(async (error) => {
@@ -314,7 +309,7 @@ Module({
                 ['CHATBOT']: 'on'
             }
         });
-      return await message.sendReply("*Aparna chatbot activated ✅*")
+      return await message.sendReply("*Aparna Chatbot activated ✅*")
     }
     if (message.button && message.button.startsWith("cbd") && message.button.includes(message.myjid)) {
         await heroku.patch(baseURI + '/config-vars', {
@@ -322,7 +317,7 @@ Module({
                 ['CHATBOT']: 'off'
             }
         });
-      return await message.sendReply("*Aparna chatbot deactivated ❗*")
+      return await message.sendReply("*Aparna Chatbot deactivated ❗*")
     }
     if (message.button && message.button.startsWith("ante") && message.button.includes(message.myjid)) {
         await setAntilink(message.jid) 
@@ -340,11 +335,6 @@ Module({
     if (Config.CHATBOT === 'on') {
         await chatBot(message, Config.BOT_NAME)
     }
-}));
-Module({
-    on: 'text',
-    fromMe: false
-}, (async (message, match) => {
     if (/\bhttps?:\/\/\S+/gi.test(message.message)){
     var db = await getAntilink();
     const jids = []
@@ -357,11 +347,11 @@ Module({
     allowed.split(",").map(e=> checker.push(message.message.includes(e)))
     if (!checker.includes(true)){
     if (!(await isAdmin(message,message.sender))) {
+    var usr = message.sender.includes(":") ? message.sender.split(":")[0]+"@s.whatsapp.net" : message.sender
     await message.sendReply("*Links aren't allowed!*");
-    await message.client.groupParticipantsUpdate(message.jid, [message.sender], "remove")
+    await message.client.groupParticipantsUpdate(message.jid, [usr], "remove")
     }
     }
     }
 }
 }));
-
