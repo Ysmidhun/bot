@@ -109,7 +109,7 @@ var {
             index: 1,
             urlButton: {
                 displayText: 'WIKI',
-                url: 'https://github.com/YSMIDHUN/APARNA_V3_MD/wiki/Docs'
+                url: 'https://github.com/Ysmidhun/aparna-md/wiki/Docs'
             }
         },
         {
