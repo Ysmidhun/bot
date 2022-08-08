@@ -1,8 +1,3 @@
-/* Copyright (C) 2022 YS MIDHUN.
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-APARNA V3 MD - YS MIDHUN 
-*/
 let {
     saveMessage
 } = require('./misc/saveMessage');
@@ -26,7 +21,7 @@ let {
     skbuffer,
     stickercrop,
     webp2mp4
-} = require('APARNA_V3_MD');
+} = require('raganork-bot');
 let a = MODE == 'public' ? false : true;
 let ffmpeg = require('fluent-ffmpeg');
 let fs = require('fs');
@@ -51,16 +46,16 @@ Module({
             author: match[1].includes(";")?match[1].split(";")[1]:"",
             packname: match[1].includes(";")?match[1].split(";")[0]:match[1],
             categories: STICKER_DATA.split(";")[2] || "😂",
-            android: "https://github.com/YSMIDHUN/APARNA_V3_MD/",
-            ios: "https://github.com/YSMIDHUN/APARNA_V3_MD/"
+            android: "https://github.com/Ysmidhun/aparna-md/",
+            ios: "https://github.com/Ysmidhun/aparna-md/"
         } }
         else {
             var exif = {
                 author: STICKER_DATA.split(";")[1] || "",
                 packname: STICKER_DATA.split(";")[0] || "",
                 categories: STICKER_DATA.split(";")[2] || "😂",
-                android: "https://github.com/YSMIDHUN/APARNA_V3_MD/",
-                ios: "https://github.com/YSMIDHUN/APARNA_V3_MD/"
+                android: "https://github.com/Ysmidhun/aparna-md/",
+                ios: "https://github.com/Ysmidhun/aparna-md/"
             }
         }
         return await m.client.sendMessage(m.jid,{sticker: fs.readFileSync(await addExif(q,exif))},{quoted:m.quoted})
@@ -68,7 +63,7 @@ Module({
     if (!stickermsg && audiomsg) {
                 let inf = match[1] !== '' ? match[1] : AUDIO_DATA
                 var spl = inf.split(';')
-                var image = spl[2]?await skbuffer(spl[2]): BOT_INFO.split(";")[3]
+                var image = spl[2] ? await skbuffer(spl[2]): await skbuffer(BOT_INFO.split(";")[3])
                 var res = await addInfo(q,spl[0],spl[1]?spl[1]:AUDIO_DATA.split(";")[1], 'Raganork Engine', image)
                 await m.client.sendMessage(m.jid, {
                     audio: res,
@@ -105,4 +100,3 @@ Module({
         }, {quoted:m.quoted});
     } else return await m.sendReply('_Reply to an animated sticker!_');
 }));
-
