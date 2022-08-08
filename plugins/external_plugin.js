@@ -9,6 +9,7 @@ let {
     getString
 } = require('./misc/lang');
 let Lang = getString('external_plugin');
+var handler = Config.HANDLERS !== 'false'?Config.HANDLERS.split("")[0]:""
 
 Module({
     pattern: 'install ?(.*)',
@@ -37,7 +38,8 @@ Module({
         return await message.sendMessage(Lang.INVALID_URL)
     }
     let plugin_name = /pattern: ["'](.*)["'],/g.exec(response.data)
-    plugin_name = plugin_name[1].split(" ")[0]
+    var plugin_name_temp = response.data.match(/pattern: ["'](.*)["'],/g)?response.data.match(/pattern: ["'](.*)["'],/g).map(e=>e.replace("pattern","").replace(/[^a-zA-Z]/g, "")):"temp"
+    try { plugin_name = plugin_name[1].split(" ")[0] } catch { return await message.sendReply("_Invalid plugin. No plugin name found!_") }
     fs.writeFileSync('./plugins/' + plugin_name + '.js', response.data);
     try {
         require('./' + plugin_name);
@@ -46,7 +48,7 @@ Module({
         return await message.sendReply(Lang.INVALID_PLUGIN + e);
     }
     await Db.installPlugin(url, plugin_name);
-    await message.sendMessage(Lang.INSTALLED.format(plugin_name));
+    await message.sendMessage(Lang.INSTALLED.format(plugin_name_temp.join(", ")));
 }
 }));
 
@@ -58,7 +60,7 @@ Module({
 }, (async (message, match) => {
     var plugins = await Db.PluginDB.findAll();
     if (match[1] !== '') {
-        var plugin = plugins.filter(_plugin => _plugin.dataValues.name == match[1])
+        var plugin = plugins.filter(_plugin => _plugin.dataValues.name === match[1])
         try {
             await message.sendReply(plugin.dataValues.name + ": " + plugin.dataValues.url);
         } catch {
@@ -98,7 +100,7 @@ Module({
         await plugin[0].destroy();
         delete require.cache[require.resolve('./' + match[1] + '.js')]
         fs.unlinkSync('./plugins/' + match[1] + '.js');
-    const buttons = [{buttonId: 'restart '+message.myid, buttonText: {displayText: 'Restart'}, type: 1}]
+    const buttons = [{buttonId: handler+'restart', buttonText: {displayText: 'Restart'}, type: 1}]
           
           const buttonMessage = {
               text: Lang.DELETED.format(match[1]),
