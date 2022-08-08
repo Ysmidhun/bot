@@ -1,8 +1,3 @@
-/* Copyright (C) 2022 YS MIDHUN.
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-APARNA V3 MD - YS MIDHUN 
-*/
 let {Module} = require('../main');
 let {WARN,ANTILINK_WARN} = require('../config');
 let {getString} = require('./misc/lang');
@@ -68,4 +63,3 @@ Module({on: 'text', fromMe: false}, (async (m, mat) => {
      }
     }
     }));
-
