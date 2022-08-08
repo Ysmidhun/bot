@@ -1,8 +1,3 @@
-/* Copyright (C) 2022 YS MIDHUN.
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-APARNA V3 MD - YS MIDHUN 
-*/
 const googleTTS = require('google-translate-tts');
 const {
     MODE
@@ -27,8 +22,8 @@ const {
 const {
     getVideo,
     ytdlServer,
-    skbuffer
-} = require('APARNA_V3_MD');
+    getBuffer
+} = require('abu-bot');
 const LanguageDetect = require('languagedetect');
 const { downloadYT } = require('./misc/yt');
 const lngDetector = new LanguageDetect();
@@ -117,7 +112,7 @@ Module({
         const results = await gis(query);
         await message.sendReply(Lang.IMG.format(results.splice(0, count).length, query))
         for (var i = 0; i < (results.length < count ? results.length : count); i++) {
-         var buff = await skbuffer(results[i].url);
+         var buff = await getBuffer(results[i].url);
          await message.sendMessage(buff, 'image');
         }
     } catch (e) {
@@ -147,7 +142,7 @@ Module({
             },
             mimetype: "video/mp4",
             caption: title,
-            thumbnail: await skbuffer(thumbnail)
+            thumbnail: await getBuffer(thumbnail)
         });
     });
 Module({
@@ -175,7 +170,7 @@ Module({
             }  
         }
 ]
-       return await message.sendImageTemplate(await skbuffer("https://mplan.media/wp-content/uploads/2018/03/malayalam-news.png"),"*Select a news provider!*","_We are no way affiliated with any news providers!_",buttons);
+       return await message.sendImageTemplate(await getBuffer("https://mplan.media/wp-content/uploads/2018/03/malayalam-news.png"),"*Select a news provider!*","_We are no way affiliated with any news providers!_",buttons);
     }
 if (match[1].toLowerCase() === "india") {
     var news = [];
@@ -228,7 +223,7 @@ Module({
         }
     }]
    var header = "_File:_ "+title+"\n _Size:_ "+size+"\n _Click this button to download_"
-return await message.sendImageTemplate(await skbuffer("https://play-lh.googleusercontent.com/Br7DFOmd9GCUmXdyTnPVqNj_klusX0OEx6MrElu8Avl2KJ7wbsS7dBdci293o7vF4fk"),header,"Mediafire Downloader",mediaFire)
+return await message.sendImageTemplate(await getBuffer("https://play-lh.googleusercontent.com/Br7DFOmd9GCUmXdyTnPVqNj_klusX0OEx6MrElu8Avl2KJ7wbsS7dBdci293o7vF4fk"),header,"Mediafire Downloader",mediaFire)
 });
 Module({
     pattern: 'ss ?(.*)',
@@ -239,7 +234,7 @@ Module({
     var url = match[1] || message.reply_message.text
     if (!url || !/\bhttps?:\/\/\S+/gi.test(url)) return await message.sendReply("*Need url*");
     await message.sendMessage("*Taking screenshot...*");
-    return await message.sendReply(await skbuffer("https://shot.screenshotapi.net/screenshot?&url="+url.match(/\bhttps?:\/\/\S+/gi)[0]+"&fresh=true&output=image&file_type=png&wait_for_event=load"),'image')
+    return await message.sendReply(await getBuffer("https://shot.screenshotapi.net/screenshot?&url="+url.match(/\bhttps?:\/\/\S+/gi)[0]+"&fresh=true&output=image&file_type=png&wait_for_event=load"),'image')
 });
 Module({
     on: 'button',
@@ -380,4 +375,3 @@ Module({
     var poster = posterApi.total_results !== 0 ? "https://image.tmdb.org/t/p/w500/"+posterApi.results[0].poster_path : data.Poster
     return await message.client.sendMessage(message.jid,{image: {url: poster}, caption:msg},{quoted: message.data})
 });
-
