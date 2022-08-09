@@ -34,7 +34,6 @@
     "link-preview-js":"2.1.15",
     "mongodb": "^4.3.1",
     "node-webpmux": "^3.1.0",
-    "node-cron": "3.0.1",
     "async-g-i-s": "1.0.0",
     "raganork-bot": "2.0.7",
     "sequelize": "^6.13.0",
