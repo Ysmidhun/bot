@@ -19,7 +19,7 @@ Module({
     var mss = '';
     if (commits.total === 0) {
     mss = "*No pending updates!*";
-    var img = "https://i.imgur.com/ewoHjmm.jpeg"
+    var img = "https://i.imgur.com/dEXBa2R.jpeg"
     var buttons = [{
         urlButton: {
             displayText: 'WIKI',
@@ -34,7 +34,7 @@ Module({
             }
         );
         mss = changelog;
-       var img = "https://i.imgur.com/z31OAAK.jpeg"
+       var img = "https://i.imgur.com/dEXBa2R.jpeg"
        var buttons = [{
         urlButton: {
             displayText: 'WIKI',
