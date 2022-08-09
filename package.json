@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Ysmidhun/aparna-md#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "git+https://github.com/adiwajshing/Baileys.git",
+    "@adiwajshing/baileys": "4.3.0",
     "@adiwajshing/keyed-db":"0.2.4",    
     "acrcloud":"1.4.0",
     "chalk": "4.1.0",
