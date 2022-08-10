@@ -1,4 +1,4 @@
-FROM quay.io/souravkl11/raganork:multidevice
+FROM quay.io/afx-abu/multi-beta
 
 RUN git clone https://github.com/Ysmidhun/aparna-md /skl/Aparna
 WORKDIR /skl/Aparna
