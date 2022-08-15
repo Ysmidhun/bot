@@ -25,7 +25,6 @@
   "dependencies": {
     "@adiwajshing/baileys": "4.3.0",
     "@adiwajshing/keyed-db":"0.2.4",
-    "abu-bot": "2.4.0",    
     "acrcloud":"1.4.0",
     "chalk": "4.1.0",
     "got": "11.8.2",
